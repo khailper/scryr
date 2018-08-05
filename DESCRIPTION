@@ -1,0 +1,16 @@
+Package: scyr
+Title: Wrapper for Scryfall API
+Version: 0.0.0.9000
+Authors@R: person('Karl', 'Hailperin', email = 'khailper@gmail.com', role = c('cre', 'aut'))
+Description: A long description of this super package I'm working on.
+License: MIT + file LICENSE
+URL: http://this
+BugReports: http://that
+Imports: 
+    attempt,
+    curl,
+    httr,
+    jsonlite,
+    purrr
+Encoding: UTF-8
+LazyData: true
