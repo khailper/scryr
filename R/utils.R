@@ -11,4 +11,10 @@ check_status <- function(res){
               msg = "The API returned an error")
 }
 
-set_url <- "https://api.scryfall.com/sets"
+base_url <- "https://api.scryfall.com/"
+set_url <- paste0(base_url, "sets")
+
+
+# functions for checking function arguements
+# 
+# testing if set code is accepted 3 character code
