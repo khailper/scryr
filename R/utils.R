@@ -25,9 +25,8 @@ polite_rate_limit <- function(delay){
   Sys.sleep(delay/1000)
 }
 
-# functions for checking function arguements
+# functions for checking function arguments
 # 
-# testing if set code is accepted 3 character code
 
 
 # set user agent per httr vignette
