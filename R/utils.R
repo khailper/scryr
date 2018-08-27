@@ -1,7 +1,9 @@
 #' @importFrom attempt stop_if_not
 #' @importFrom curl has_internet
+#' @importFrom httr user_agent
 check_internet <- function(){
-  stop_if_not(.x = has_internet(), msg = "Please check your internet connexion")
+  stop_if_not(.x = curl::has_internet(), 
+              msg = "Please check your internet connection")
 }
 
 #' @importFrom httr status_code
@@ -12,7 +14,7 @@ check_status <- function(res){
 }
 
 base_url <- "https://api.scryfall.com/"
-set_url <- paste0(base_url, "sets")
+set_url <- paste0(base_url, "sets/")
 
 
 # function for enforcing rate limits
@@ -20,7 +22,7 @@ set_url <- paste0(base_url, "sets")
 # (https://scryfall.com/docs/api)
 polite_rate_limit <- function(delay){
   if(delay < 50){
-    stop()
+    stop("Please respect Scryfall's rate limit.")
   }
   Sys.sleep(delay/1000)
 }
@@ -31,4 +33,4 @@ polite_rate_limit <- function(delay){
 
 # set user agent per httr vignette
 # (https://cran.r-project.org/web/packages/httr/vignettes/api-packages.html)
-ua <- user_agent("http://github.com/khailper/scryr")
+ua <- httr::user_agent("http://github.com/khailper/scryr")
