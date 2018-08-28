@@ -9,7 +9,7 @@
 #' @export
 #' @rdname scry_set
 #' 
-#' @return result of query (document of set object at https://scryfall.com/docs/api/sets)
+#' @return result of query (document of set object at https://scryfall.com/docs/api/sets); tibble
 #' @examples 
 scry_sets <- function(set_code = NULL, delay = 75){
 
