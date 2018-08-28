@@ -8,6 +8,8 @@ test_that("sets have all the columns", {
                                   "set_type", "card_count", "digital", 
                                   "foil_only", "block_code", 
                                   "block", "icon_svg_uri"))
+  
+  
 })
 
 test_that("only one set returned and it's the right type", {
@@ -16,9 +18,9 @@ test_that("only one set returned and it's the right type", {
 })
 
 test_that("set returns error if wrong code used", {
-  expect_error(scry_sets("m29"), "Error message for non-existant set")
-  expect_error(scry_sets("M19"), "Error message for non-existant set")
-  expect_error(scry_sets("m190"), "Error message for non-existant set")
+  expect_error(scry_sets("m29"), "The API returned an error")
+  expect_error(scry_sets("M19"), "The API returned an error")
+  expect_error(scry_sets("m190"), "The API returned an error")
 })
 
 test_that("rate limit works"{

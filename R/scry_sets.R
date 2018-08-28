@@ -29,4 +29,7 @@ scry_sets <- function(set_code = NULL, delay = 75){
   
   # Get the content and return it as a data.frame
   tibble::as_tibble(fromJSON(rawToChar(res$content)))
+  
+  # may want to add ways to handle the fact that some sets don't have all 
+  # values/columns. Probably not going to have much impact, so not urgent.
 }
