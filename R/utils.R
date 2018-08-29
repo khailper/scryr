@@ -2,7 +2,7 @@
 #' @importFrom curl has_internet
 #' @importFrom httr user_agent
 check_internet <- function(){
-  stop_if_not(.x = curl::has_internet(), 
+  stop_if_not(.x = has_internet(), 
               msg = "Please check your internet connection")
 }
 
@@ -34,4 +34,4 @@ polite_rate_limit <- function(delay){
 
 # set user agent per httr vignette
 # (https://cran.r-project.org/web/packages/httr/vignettes/api-packages.html)
-ua <- httr::user_agent("http://github.com/khailper/scryr")
+ua <- user_agent("http://github.com/khailper/scryr")

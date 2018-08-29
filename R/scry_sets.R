@@ -30,7 +30,7 @@ scry_sets <- function(set_code = NULL, delay = 75){
   # Get the content and return it as a data.frame
   
   if (!is.null(set_code)){
-    return(tibble::as_tibble(fromJSON(rawToChar(res$content))))
+    return(as_tibble(fromJSON(rawToChar(res$content))))
   }
   tibble::as_tibble(fromJSON(rawToChar(res$content))$data)
   
