@@ -1,4 +1,7 @@
-#' query Scryfall set API
+#' @title Query Scryfall Set API
+#' 
+#' @description Function for getting-set level information (e.g. release date, 
+#' number of cards). Formatted as a tibble.
 #'
 #' @importFrom attempt stop_if_all
 #' @importFrom purrr compact
@@ -9,12 +12,15 @@
 #' @export
 #' @rdname scry_set
 #' 
-#' @return result of query (document of set object at https://scryfall.com/docs/api/sets); tibble
-#' @examples 
+#' @return result of query (document of set object at https://scryfall.com/docs/api/sets)
+#' @examples
+#' scry_sets() #returns all sets
+#' scry_sets("aer") 
+#' scry_sets("m19") # block-related columns absent
 scry_sets <- function(set_code = NULL, delay = 75){
 
-  
   polite_rate_limit(delay)
+  
   # create query URL
   query_url <- paste0(set_url, set_code)
   
@@ -22,7 +28,7 @@ scry_sets <- function(set_code = NULL, delay = 75){
   check_internet()
   
   # Get search results
-  res <- GET(query_url)
+  res <- GET(query_url, ua)
   
   # Check the result
   check_status(res)
