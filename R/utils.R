@@ -1,6 +1,7 @@
 #' @importFrom attempt stop_if_not
 #' @importFrom curl has_internet
 #' @importFrom httr user_agent
+#' 
 check_internet <- function(){
   stop_if_not(.x = has_internet(), 
               msg = "Please check your internet connection")
@@ -16,6 +17,7 @@ check_status <- function(res){
 
 base_url <- "https://api.scryfall.com/"
 set_url <- paste0(base_url, "sets/")
+card_search_url <- paste0(base_url, "sets/cards/search")
 
 
 # function for enforcing rate limits
