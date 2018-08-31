@@ -3,13 +3,13 @@
 #' @description Function for contents of catalogs. Catalogs contains all 
 #' existing versions of that object. For example scry_catalog("toughnesses") 
 #' returns every toughness that has ever been printed on a __Magic__ card, 
-#' including non-mumeric values like "*+1".
+#' including non-mumeric values like "*+1". \cr
 #' Available catalogs are "card-names", "artist-names", "word-bank",
 #' "creature-types", "planeswalker-types", "land-types","artifact-types",
 #' "enchantment-types", "spell-types", "powers", "toughnesses",
-#' "loyalties", "watermarks"
-#' "word-bank" is every English word of 2+ letters that's appears in a card 
-#' name.
+#' "loyalties", "watermarks". \cr
+#' While most catalog names are self-explanatory, "word-bank" is every English 
+#' word of 2+ letters that's appears in a card name.
 #'
 #' @importFrom attempt stop_if_all
 #' @importFrom jsonlite fromJSON
@@ -21,7 +21,7 @@
 #' @return character vector of objects in the catalog
 #' @examples
 #' scry_catalog("artist-names")
-scry_sets <- function(catalog_name, delay = 75){
+scry_catalog <- function(catalog_name, delay = 75){
   
   polite_rate_limit(delay)
   
