@@ -13,7 +13,7 @@ scry_sets(set_code = NULL, delay = 75)
 result of query (document of set object at https://scryfall.com/docs/api/sets)
 }
 \description{
-Function for getting-set level information (e.g. release date, 
+Function for getting-set level information (e.g. release date,
 number of cards). Formatted as a tibble.
 }
 \examples{
