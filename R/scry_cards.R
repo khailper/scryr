@@ -1,4 +1,4 @@
-#' @title Query Scryfall Catalog API
+#' @title Query Scryfall Card Search API
 #' 
 #' @description Function for contents of catalogs. Catalogs contains all 
 #' existing versions of that object. For example scry_catalog("toughnesses") 
@@ -15,16 +15,26 @@
 #' @importFrom httr modify_url
 #' @importFrom attempt stop_if_all
 #' @importFrom jsonlite fromJSON
+#' @param query
+#' @param .unique
+#' @param .order
+#' @param direction
+#' @param include_extras
+#' @param include_multilingual
+#' @param delay how many microseconds should scryr wait between requests 
+#' (Scryfall asks for 50-100)
 #' @importFrom httr GET 
 #' @export
-#' @rdname scry_catalog
+#' @rdname scry_cards
 #' 
-#' @return character vector of objects in the catalog
+#' @return data frame of cards matching the search parameters
 #' @examples
 #' scry_catalog("artist-names")
 #' library(dplyr)
 #' scry_catalog("toughnesses") %>% as.numeric() %>% unique()
-scry_cards <- function(catalog_name, delay = 75){
+scry_cards <- function(query, .unique, .order, direction, 
+                       include_extras = FALSE, include_multilingual = FALSE,
+                       delay = 75){
   
   polite_rate_limit(delay)
   
@@ -34,7 +44,7 @@ scry_cards <- function(catalog_name, delay = 75){
   }
   
   # create query URL
-  query_url <- paste0(catalog_url, catalog_name)
+  query_url <- paste0(card_search_url, catalog_name)
   
   # Check for internet
   check_internet()
