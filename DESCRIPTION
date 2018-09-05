@@ -1,7 +1,7 @@
-Package: scyr
+Package: scryr
 Title: Wrapper for Scryfall API
 Version: 0.0.0.9000
-Authors@R: person('Karl', 'Hailperin', email = 'khailper@gmail.com', role = c('cre', 'aut'))
+Authors@R: c(person('Karl', 'Hailperin', email = 'khailper@gmail.com', role = c('cre', 'aut')), person('Colin', 'Fay', role = c('ctb'), comment = c('Wrote generic API code that was the basis of much of the scry_* functions (https://colinfay.me/build-api-wrapper-package-r/)')))
 Description: A long description of this super package I'm working on.
 License: MIT + file LICENSE
 URL: http://this
