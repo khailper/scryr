@@ -15,18 +15,18 @@ check_status <- function(res){
               msg = "The API returned an error")
 }
 
+
+# set user agent per httr vignette
+# (https://cran.r-project.org/web/packages/httr/vignettes/api-packages.html)
+ua <- user_agent("http://github.com/khailper/scryr")
+
+
 # set up urls functions will need for API queries
 base_url <- "https://api.scryfall.com/"
 set_url <- paste0(base_url, "sets/")
 catalog_url <- paste0(base_url, "catalog/")
 card_search_url <- paste0(base_url, "sets/cards/search")
 
-# list of available catalogs so scry_catalog() can throw error
-# source: https://scryfall.com/docs/api/catalogs
-catalog_list <- c("card-names", "artist-names", "word-bank", "creature-types",
-                  "planeswalker-types", "land-types","artifact-types",
-                  "enchantment-types", "spell-types", "powers", "toughnesses",
-                  "loyalties", "watermarks")
 
 
 # function for enforcing rate limits
@@ -41,8 +41,13 @@ polite_rate_limit <- function(delay){
 
 # functions for checking function arguments
 # 
+# list of available catalogs so scry_catalog() can throw error
+# source: https://scryfall.com/docs/api/catalogs
+catalog_list <- c("card-names", "artist-names", "word-bank", "creature-types",
+                  "planeswalker-types", "land-types","artifact-types",
+                  "enchantment-types", "spell-types", "powers", "toughnesses",
+                  "loyalties", "watermarks")
 
 
-# set user agent per httr vignette
-# (https://cran.r-project.org/web/packages/httr/vignettes/api-packages.html)
-ua <- user_agent("http://github.com/khailper/scryr")
+
+
