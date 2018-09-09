@@ -1,6 +1,7 @@
 #' @importFrom attempt stop_if_not
 #' @importFrom curl has_internet
 #' @importFrom httr user_agent
+#' importFrom dplyr bind_rows
 #' 
 check_internet <- function(){
   stop_if_not(.x = has_internet(), 
@@ -51,6 +52,7 @@ catalog_list <- c("card-names", "artist-names", "word-bank", "creature-types",
 # function for handling large responses
 handle_pagination <- function(current_data, next_page_uri){
   
+  bind_rows(current_data, next_page_data)
 }
 
 
