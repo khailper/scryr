@@ -32,9 +32,9 @@
 #' scry_catalog("artist-names")
 #' library(dplyr)
 #' scry_catalog("toughnesses") %>% as.numeric() %>% unique()
-scry_cards <- function(query, .unique, .order, direction, 
-                       include_extras = FALSE, include_multilingual = FALSE,
-                       delay = 75){
+scry_cards <- function(query, .unique = "cards", .order = "name", 
+                       direction = "auto", include_extras = FALSE, 
+                       include_multilingual = FALSE, delay = 75){
   
   polite_rate_limit(delay)
   
