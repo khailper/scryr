@@ -51,7 +51,8 @@ catalog_list <- c("card-names", "artist-names", "word-bank", "creature-types",
 
 # function for handling large responses
 handle_pagination <- function(current_data, next_page_uri){
-  
+  # plan: pull data from next_page_uri, check data for another next_page,
+  # if there, call handle_pagination; finally bind results to current_data
   bind_rows(current_data, next_page_data)
 }
 
