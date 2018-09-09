@@ -48,6 +48,9 @@ catalog_list <- c("card-names", "artist-names", "word-bank", "creature-types",
                   "enchantment-types", "spell-types", "powers", "toughnesses",
                   "loyalties", "watermarks")
 
-
+# function for handling large responses
+handle_pagination <- function(current_data, next_page_uri){
+  
+}
 
 
