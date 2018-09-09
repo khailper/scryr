@@ -8,13 +8,16 @@ scry_catalog(catalog_name, delay = 75)
 }
 \arguments{
 \item{catalog_name}{name of catalog you want (character). See above for available catalogs.}
+
+\item{delay}{how many microseconds should scryr wait between requests
+(Scryfall asks for 50-100)}
 }
 \value{
 character vector of objects in the catalog
 }
 \description{
-Function for contents of catalogs. Catalogs contains all
-existing versions of that object. For example scry_catalog("toughnesses")
+Function for reuqesting contents of catalogs. Catalogs contains
+all existing versions of that object. For example scry_catalog("toughnesses")
 returns every toughness that has ever been printed on a \strong{Magic} card,
 including non-mumeric values like "*+1". \cr
 Available catalogs are "card-names", "artist-names", "word-bank",
@@ -26,4 +29,6 @@ word of 2+ letters that's appears in a card name.
 }
 \examples{
 scry_catalog("artist-names")
+library(dplyr)
+scry_catalog("toughnesses") \%>\% as.numeric() \%>\% unique()
 }
