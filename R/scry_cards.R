@@ -21,7 +21,8 @@
 #' @param direction
 #' @param include_extras
 #' @param include_multilingual
-#' @param delay how many microseconds should scryr wait between requests 
+#' @param delay 
+#' Number of microseconds scryr should wait between requests. 
 #' (Scryfall asks for 50-100)
 #' @importFrom httr GET 
 #' @export
