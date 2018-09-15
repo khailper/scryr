@@ -56,6 +56,12 @@ scry_cards <- function(query, .unique = "cards", .order = "name",
   # Check the result
   check_status(res)
   
-  # Get the content
-  fromJSON(rawToChar(res$content))$data
+  # Get the first page
+  first_page <- fromJSON(rawToChar(res$content))$data
+  
+  # if the results are large, we need to query multiple times and consolidate 
+  # the data. If not, we can return early
+  if (!exists(fromJSON(rawToChar(res$content))$next_page)){
+    return(first_page)
+  }
 }
