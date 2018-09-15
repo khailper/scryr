@@ -41,7 +41,7 @@ scry_sets <- function(set_code = NULL, delay = 75){
   if (!is.null(set_code)){
     return(as_tibble(fromJSON(rawToChar(res$content))))
   }
-  tibble::as_tibble(fromJSON(rawToChar(res$content))$data)
+  as_tibble(fromJSON(rawToChar(res$content))$data)
   
   # may want to add ways to handle the fact that some sets don't have all 
   # values/columns. Probably not going to have much impact, so not urgent.
