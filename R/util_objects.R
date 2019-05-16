@@ -1,7 +1,7 @@
 #' set user agent per httr vignette
 #' @importFrom httr user_agent
-#' (https://cran.r-project.org/web/packages/httr/vignettes/api-packages.html)
 #' @noRd
+# based on: https://cran.r-project.org/web/packages/httr/vignettes/api-packages.html
 ua <- user_agent("http://github.com/khailper/scryr")
 #'
 #' set up urls functions will need for API queries

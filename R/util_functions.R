@@ -32,8 +32,6 @@ polite_rate_limit <- function(delay){
   }
   Sys.sleep(delay/1000)
 }
-#' functions for checking function arguments
-#' 
 #' 
 #' Handle pagination
 #' 
