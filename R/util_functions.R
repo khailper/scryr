@@ -6,7 +6,7 @@ check_internet <- function(){
 
 check_status <- function(res){
   # long-term goal: customize to Scryfall's error messages
-  attempt::stop_if_not(.x = httrstatus_code(res), 
+  attempt::stop_if_not(.x = httr::status_code(res), 
               .p = ~ .x == 200,
               msg = "The API returned an error")
 }

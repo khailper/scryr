@@ -88,7 +88,7 @@ scry_cards <- function(query, .unique = "cards", .order = "name",
   check_internet()
   
   # Get search results
-  res <- httr:GET(query_url, scryr_ua)
+  res <- httr::GET(query_url, scryr_ua)
   
   # Check the result
   check_status(res)
