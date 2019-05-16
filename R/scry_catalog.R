@@ -25,7 +25,7 @@
 #' @examples
 #' scry_catalog("artist-names")
 #' library(dplyr)
-#' scry_catalog("toughnesses") %>% as.numeric() %>% unique()
+#' scry_catalog("toughnesses") %>% as.numeric()
 scry_catalog <- function(catalog_name, delay = 75){
   
   polite_rate_limit(delay)

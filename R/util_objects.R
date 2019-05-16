@@ -9,7 +9,7 @@ scryr_ua <- user_agent("http://github.com/khailper/scryr")
 scryr_base_url <- "https://api.scryfall.com/"
 scryr_set_url <- paste0(scryr_base_url, "sets/")
 scryr_catalog_url <- paste0(scryr_base_url, "catalog/")
-scryr_card_search_url <- paste0(scryr_base_url, "sets/cards/search")
+scryr_card_search_url <- paste0(scryr_base_url, "sets/cards/search?q=")
 #'
 #'list of available catalogs so scry_catalog() can throw error
 #' source: https://scryfall.com/docs/api/catalogs
