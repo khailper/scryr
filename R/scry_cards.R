@@ -102,7 +102,7 @@ scry_cards <- function(query, .unique = "cards", .order = "name",
   
   # if the results are large, we need to query multiple times and consolidate 
   # the data. If not, we can return early
-  if (!exists(fromJSON(rawToChar(res$content))$next_page)){
+  if (!exists("next_page", where = fromJSON(rawToChar(res$content)))){
     return(first_page)
   }
   handle_pagination(current_data = first_page, 
