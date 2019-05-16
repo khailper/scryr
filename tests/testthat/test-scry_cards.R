@@ -16,5 +16,5 @@ test_that("pagination works for two pages", {
 
 test_that("pagination works for three or more pages", {
   # 688 from manual search
-  expect_equal(nrow(scry_cards(query = "b:ktk")), 688)
+  expect_equal(nrow(scry_cards(query = "b:ktk", .unique = "prints")), 688)
 })
