@@ -56,7 +56,7 @@ handle_pagination <- function(current_data, next_page_uri, delay){
   # Check the result
   check_status(next_page_res) 
   
-  next_page_data <- fromJSON(rawToChar(next_page_res$content), flatten = TRUE)$data
+  next_page_data <- jsonlite::fromJSON(rawToChar(next_page_res$content), flatten = TRUE)$data
   
   if (exists("next_page", where = jsonlite::fromJSON(rawToChar(next_page_res$content)))){
     handle_pagination(current_data = first_page, 
