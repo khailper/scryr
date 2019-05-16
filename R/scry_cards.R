@@ -53,8 +53,8 @@ scry_cards <- function(query, .unique = "cards", .order = "name",
 
   # Check arguements (https://scryfall.com/docs/api/cards/search for 
   # documentation of options)
-  if (!(.unique %in% c("cards", "part", "prints"))){
-    rlang::abort(".unique must be one of 'cards', 'part', or 'prints'.")
+  if (!(.unique %in% c("cards", "art", "prints"))){
+    rlang::abort(".unique must be one of 'cards', 'art', or 'prints'.")
   }
   
   if (!(.order %in% c("name", "set", "released", "rarity", "color", "usd",

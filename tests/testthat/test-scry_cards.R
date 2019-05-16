@@ -7,7 +7,7 @@ test_that("scry_cards parse search query correctly", {
 
 test_that("scry_cards parse handles bad searches", {
   expect_error(scry_cards(query = "set:ktk", .unique = "card"), 
-               ".unique must be one of 'cards', 'part', or 'prints'")
+               ".unique must be one of 'cards', 'art', or 'prints'")
 })
 
 test_that("pagination works for two pages", {
@@ -16,5 +16,5 @@ test_that("pagination works for two pages", {
 
 test_that("pagination works for three or more pages", {
   # 688 from manual search
-  expect_equal(nrow(scry_cards(query = "b:ktk", .unique = "prints")), 688)
+  expect_equal(nrow(scry_cards(query = "b:ktk", .unique = "art")), 688)
 })
