@@ -23,7 +23,7 @@ check_status <- function(res){
 #' queries.
 #' @importFrom rlang abort
 #' @param delay
-#' Number of microseconds scryr should wait between requests (Scryfall asks for 
+#' Number of milliseconds scryr should wait between requests (Scryfall asks for 
 #' 50-100). (https://scryfall.com/docs/api)
 #' @noRd
 polite_rate_limit <- function(delay){
@@ -41,10 +41,9 @@ polite_rate_limit <- function(delay){
 #' @param next_page_uri 
 #' URI for next page of data. This will be taken from the JSON response of the 
 #' current page
-#' @param delay
-#' Number of microseconds scryr should wait between requests (Scryfall asks for 
-#' 50-100). There's no default value because it will be carried over from 
-#' calling function.
+#' @param delay Number of milliseconds scryr should wait between requests 
+#' (Scryfall asks for 50-100). There's no default value because it will be 
+#' carried over from calling function.
 #' @importFrom dplyr bind_rows
 #' @noRd
 handle_pagination <- function(current_data, next_page_uri, delay){

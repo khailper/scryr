@@ -17,28 +17,24 @@
 #' @importFrom jsonlite fromJSON
 #' @importFrom httr GET 
 #' @param query
-#' @param .unique 
-#' How Scryfall handles cases where different versions of the same card match 
-#' the `query`. "cards" (default) returns only one instance of card, "art" 
-#' returns each instance with a different art "prints" returns all of them.
-#' @param .order
-#' How Scryfall sorts returned cards. "name" (default): card name, "set": set 
-#' code and collector number, "released": release date, "rarity": rarity,
-#' "color": color, "usd": price in US dollars, "tix"; price in tickets on MTGO, 
-#' "eur": price in Euros, "cmc": converted mana cost, "power": power, 
+#' @param .unique  How Scryfall handles cases where different versions of the 
+#' same card match the `query`. "cards" (default) returns only one instance of 
+#' card, "art" returns each instance with a different art "prints" returns all of them.
+#' @param .order How Scryfall sorts returned cards. "name" (default): card name, 
+#' "set": set code and collector number, "released": release date, "rarity": 
+#' rarity, "color": color, "usd": price in US dollars, "tix"; price in tickets 
+#' on MTGO, "eur": price in Euros, "cmc": converted mana cost, "power": power, 
 #' "toughenss": toughness, "edhrec": EDHREC rating, or "artist": artist name. 
 #' See vignette("sorting-cards") for more information on how sorting works.
 #' @param direction Which direction cards are sorted in based on `.order`. 
 #' "auto" (default): order that makes most sense for `.order`, 
 #' "asc": ascending order, and "desc": descending order. See 
 #' vignette("sorting-cards") for more information on how sorting works.
-#' @param include_extras 
-#' Should results include extras like tokens or schemes. The default is FALSE.
-#' @param include_multilingual 
-#' Should results include cards in all supported languages. The default is 
-#' FALSE.
-#' @param delay 
-#' Number of microseconds scryr should wait between requests. 
+#' @param include_extras Should results include extras like tokens or schemes. 
+#' The default is FALSE.
+#' @param include_multilingual Should results include cards in all supported 
+#' languages. The default is FALSE.
+#' @param delay  Number of microseconds scryr should wait between requests. 
 #' (Scryfall asks for 50-100)
 #' @export
 #' @rdname scry_cards

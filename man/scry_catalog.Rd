@@ -7,11 +7,11 @@
 scry_catalog(catalog_name, delay = 75)
 }
 \arguments{
-\item{catalog_name}{The name of thecatalog you want (character). See above for available
-catalogs.}
+\item{catalog_name}{The name of the catalog you want (character). See
+Description for available catalogs.}
 
-\item{delay}{Number of microseconds scryr should wait between requests (Scryfall asks for
-50-100).}
+\item{delay}{Number of microseconds scryr should wait between requests
+(Scryfall asks for 50-100).}
 }
 \value{
 character vector of objects in the catalog

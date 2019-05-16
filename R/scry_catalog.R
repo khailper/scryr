@@ -14,12 +14,10 @@
 #' @importFrom attempt stop_if_all
 #' @importFrom jsonlite fromJSON
 #' @importFrom httr GET
-#' @param catalog_name 
-#' The name of thecatalog you want (character). See above for available 
-#' catalogs.
-#' @param delay 
-#' Number of microseconds scryr should wait between requests (Scryfall asks for 
-#' 50-100).
+#' @param catalog_name The name of the catalog you want (character). See 
+#' Description for available catalogs.
+#' @param delay Number of microseconds scryr should wait between requests 
+#' (Scryfall asks for 50-100).
 #' @export
 #' @rdname scry_catalog
 #' 
