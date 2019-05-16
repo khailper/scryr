@@ -24,7 +24,6 @@ test_that("all sets returned for sets = NULL and it's the right type", {
 
 test_that("set returns error if wrong code used", {
   expect_error(scry_sets("m29"), "The API returned an error")
-  expect_error(scry_sets("M19"), "The API returned an error")
   expect_error(scry_sets("m190"), "The API returned an error")
 })
 
