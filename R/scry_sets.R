@@ -9,7 +9,7 @@
 #' @importFrom httr GET
 #' @importFrom tibble as_tibble
 #' @param set_code Three letter set code. If NULL (default), returns all sets.
-#' @param delay Number of microseconds scryr should wait between requests 
+#' @param delay Number of milliseconds scryr should wait between requests 
 #' (Scryfall asks for 50-100).
 #' @export
 #' @rdname scry_set

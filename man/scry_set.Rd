@@ -9,7 +9,7 @@ scry_sets(set_code = NULL, delay = 75)
 \arguments{
 \item{set_code}{Three letter set code. If NULL (default), returns all sets.}
 
-\item{delay}{Number of microseconds scryr should wait between requests
+\item{delay}{Number of milliseconds scryr should wait between requests
 (Scryfall asks for 50-100).}
 }
 \value{

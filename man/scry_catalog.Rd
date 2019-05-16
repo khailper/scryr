@@ -10,7 +10,7 @@ scry_catalog(catalog_name, delay = 75)
 \item{catalog_name}{The name of the catalog you want (character). See
 Description for available catalogs.}
 
-\item{delay}{Number of microseconds scryr should wait between requests
+\item{delay}{Number of milliseconds scryr should wait between requests
 (Scryfall asks for 50-100).}
 }
 \value{

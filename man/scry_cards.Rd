@@ -31,7 +31,7 @@ The default is FALSE.}
 \item{include_multilingual}{Should results include cards in all supported
 languages. The default is FALSE.}
 
-\item{delay}{Number of microseconds scryr should wait between requests.
+\item{delay}{Number of milliseconds scryr should wait between requests.
 (Scryfall asks for 50-100)}
 }
 \value{

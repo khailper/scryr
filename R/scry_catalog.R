@@ -16,7 +16,7 @@
 #' @importFrom httr GET
 #' @param catalog_name The name of the catalog you want (character). See 
 #' Description for available catalogs.
-#' @param delay Number of microseconds scryr should wait between requests 
+#' @param delay Number of milliseconds scryr should wait between requests 
 #' (Scryfall asks for 50-100).
 #' @export
 #' @rdname scry_catalog

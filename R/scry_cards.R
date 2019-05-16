@@ -34,7 +34,7 @@
 #' The default is FALSE.
 #' @param include_multilingual Should results include cards in all supported 
 #' languages. The default is FALSE.
-#' @param delay  Number of microseconds scryr should wait between requests. 
+#' @param delay  Number of milliseconds scryr should wait between requests. 
 #' (Scryfall asks for 50-100)
 #' @export
 #' @rdname scry_cards
