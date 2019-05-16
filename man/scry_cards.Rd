@@ -6,12 +6,14 @@
 \usage{
 scry_cards(query, .unique = "cards", .order = "name",
   direction = "auto", include_extras = FALSE,
-  include_multilingual = FALSE, delay = 75)
+  include_multilingual = FALSE, include_variations = FALSE,
+  delay = 75)
 }
 \arguments{
 \item{.unique}{How Scryfall handles cases where different versions of the
 same card match the \code{query}. "cards" (default) returns only one instance of
-card, "art" returns each instance with a different art "prints" returns all of them.}
+card, "art" returns each instance with a different art "prints" returns all
+of them.}
 
 \item{.order}{How Scryfall sorts returned cards. "name" (default): card name,
 "set": set code and collector number, "released": release date, "rarity":
@@ -30,6 +32,9 @@ The default is FALSE.}
 
 \item{include_multilingual}{Should results include cards in all supported
 languages. The default is FALSE.}
+
+\item{include_variations}{Should results include rare case variants. The
+default is FALSE.}
 
 \item{delay}{Number of milliseconds scryr should wait between requests.
 (Scryfall asks for 50-100)}
