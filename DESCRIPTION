@@ -11,10 +11,16 @@ Imports:
     curl,
     httr,
     jsonlite,
-    purrr
+    purrr,
+    dplyr,
+    tibble,
+    rlang
 Encoding: UTF-8
 LazyData: true
 Suggests: 
-    testthat
-RoxygenNote: 6.1.0
+    testthat,
+    knitr,
+    rmarkdown
+RoxygenNote: 6.1.1
 Roxygen: list(markdown = TRUE)
+VignetteBuilder: knitr
