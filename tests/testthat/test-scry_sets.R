@@ -28,7 +28,7 @@ test_that("set returns error if wrong code used", {
   expect_error(scry_sets("m190"), "The API returned an error")
 })
 
-test_that("rate limit works"{
+test_that("rate limit works", {
   expect_error(scry_sets("m19", delay = 25), 
                "Please respect Scryfall's rate limit.")
 })
