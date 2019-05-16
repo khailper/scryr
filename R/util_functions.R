@@ -56,7 +56,7 @@ handle_pagination <- function(current_data, next_page_uri, delay){
   # Check the result
   check_status(next_page_res) 
   
-  next_page_data <- fromJSON(rawToChar(next_page_res$content))$data
+  next_page_data <- fromJSON(rawToChar(next_page_res$content), flatten = TRUE)$data
   
   if (exists("next_page", where = fromJSON(rawToChar(next_page_res$content)))){
     handle_pagination(current_data = first_page, 
@@ -65,7 +65,7 @@ handle_pagination <- function(current_data, next_page_uri, delay){
   }
   
   
-  vctrs::vec_rbind(c(current_data, next_page_data))
+  dplyr::bind_rows(current_data, next_page_data)
 }
 
 

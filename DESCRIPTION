@@ -14,8 +14,7 @@ Imports:
     purrr,
     dplyr,
     tibble,
-    rlang,
-    vctrs
+    rlang
 Encoding: UTF-8
 LazyData: true
 Suggests: 

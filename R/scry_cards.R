@@ -94,7 +94,7 @@ scry_cards <- function(query, .unique = "cards", .order = "name",
   check_status(res)
   
   # Get the first page
-  first_page <- jsonlite::fromJSON(rawToChar(res$content))$data
+  first_page <- jsonlite::fromJSON(rawToChar(res$content), flatten = TRUE)$data
   
   # if the results are large, we need to query multiple times and consolidate 
   # the data. If not, we can return early
