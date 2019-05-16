@@ -26,7 +26,7 @@ scry_sets <- function(set_code = NULL, delay = 75){
   check_internet()
   
   # Get search results
-  res <- curl::GET(query_url, scryr_ua)
+  res <- httr::GET(query_url, scryr_ua)
   
   # Check the result
   check_status(res)

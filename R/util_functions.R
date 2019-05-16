@@ -51,7 +51,7 @@ handle_pagination <- function(current_data, next_page_uri, delay){
   check_internet()
   
   # Get search results
-  next_page_res <-  GET(next_page_uri, scryr_ua)
+  next_page_res <-  httr::GET(next_page_uri, scryr_ua)
 
   # Check the result
   check_status(next_page_res) 

@@ -38,7 +38,7 @@ scry_catalog <- function(catalog_name, delay = 75){
   # Check for internet
   check_internet()
   # Get search results
-  res <- curl::GET(query_url, scryr_ua)
+  res <- httr::GET(query_url, scryr_ua)
   
   # Check the result
   check_status(res)
