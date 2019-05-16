@@ -9,6 +9,27 @@ scry_cards(query, .unique = "cards", .order = "name",
   include_multilingual = FALSE, delay = 75)
 }
 \arguments{
+\item{.unique}{How Scryfall handles cases where different versions of the same card match
+the \code{query}. "cards" (default) returns only one instance of card, "art"
+returns each instance with a different art "prints" returns all of them.}
+
+\item{.order}{How Scryfall sorts returned cards. "name" (default): card name, "set": set
+code and collector number, "released": release date, "rarity": rarity,
+"color": color, "usd": price in US dollars, "tix"; price in tickets on MTGO,
+"eur": price in Euros, "cmc": converted mana cost, "power": power,
+"toughenss": toughness, "edhrec": EDHREC rating, or "artist": artist name.
+See vignette("sorting-cards") for more information on how sorting works.}
+
+\item{direction}{Which direction cards are sorted in based on \code{.order}.
+"auto" (default): order that makes most sense for \code{.order},
+"asc": ascending order, and "desc": descending order. See
+vignette("sorting-cards") for more information on how sorting works.}
+
+\item{include_extras}{Should results include extras like tokens or schemes. The default is FALSE.}
+
+\item{include_multilingual}{Should results include cards in all supported languages. The default is
+FALSE.}
+
 \item{delay}{Number of microseconds scryr should wait between requests.
 (Scryfall asks for 50-100)}
 }

@@ -15,20 +15,36 @@
 #' @importFrom httr modify_url
 #' @importFrom attempt stop_if_all
 #' @importFrom jsonlite fromJSON
+#' @importFrom httr GET 
 #' @param query
-#' @param .unique
+#' @param .unique 
+#' How Scryfall handles cases where different versions of the same card match 
+#' the `query`. "cards" (default) returns only one instance of card, "art" 
+#' returns each instance with a different art "prints" returns all of them.
 #' @param .order
-#' @param direction
-#' @param include_extras
-#' @param include_multilingual
+#' How Scryfall sorts returned cards. "name" (default): card name, "set": set 
+#' code and collector number, "released": release date, "rarity": rarity,
+#' "color": color, "usd": price in US dollars, "tix"; price in tickets on MTGO, 
+#' "eur": price in Euros, "cmc": converted mana cost, "power": power, 
+#' "toughenss": toughness, "edhrec": EDHREC rating, or "artist": artist name. 
+#' See vignette("sorting-cards") for more information on how sorting works.
+#' @param direction Which direction cards are sorted in based on `.order`. 
+#' "auto" (default): order that makes most sense for `.order`, 
+#' "asc": ascending order, and "desc": descending order. See 
+#' vignette("sorting-cards") for more information on how sorting works.
+#' @param include_extras 
+#' Should results include extras like tokens or schemes. The default is FALSE.
+#' @param include_multilingual 
+#' Should results include cards in all supported languages. The default is 
+#' FALSE.
 #' @param delay 
 #' Number of microseconds scryr should wait between requests. 
 #' (Scryfall asks for 50-100)
-#' @importFrom httr GET 
 #' @export
 #' @rdname scry_cards
 #' 
-#' @return data frame of cards matching the search parameters
+#' @return a [tibble][tibble::tibble-package] of cards matching the search 
+#' parameters
 #' @examples
 #' scry_catalog("artist-names")
 #' library(dplyr)
@@ -39,9 +55,14 @@ scry_cards <- function(query, .unique = "cards", .order = "name",
   
   polite_rate_limit(delay)
   
-  # Throw error if user accidentally provides catalog_name that doesn't exist
-  if (!(catalog_name %in% catalog_list)){
-    stop("That catalog doesn't exist. ?scry_catalog for list of available catalogs.")
+
+  # Check arguements (https://scryfall.com/docs/api/cards/search for 
+  # documentation of options)
+  if (!(unique %in% c("cards", "part", "prints"))){
+    stop(".unique must be one of 'cards', 'part', or 'prints'")
+  }
+  if (!(order %in% c("cards", "part", "prints"))){
+    stop(".unique must be one of 'cards', 'part', or 'prints'")
   }
   
   # create query URL
@@ -64,4 +85,7 @@ scry_cards <- function(query, .unique = "cards", .order = "name",
   if (!exists(fromJSON(rawToChar(res$content))$next_page)){
     return(first_page)
   }
+  handle_pagination(current_data = first_page, 
+                    next_page_uri = fromJSON(rawToChar(res$content))$next_page,
+                    delay = delay)
 }
