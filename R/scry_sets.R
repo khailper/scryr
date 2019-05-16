@@ -3,10 +3,6 @@
 #' @description Function for getting-set level information (e.g. release date, 
 #' number of cards). Formatted as a tibble.
 #'
-#' @importFrom purrr compact
-#' @importFrom jsonlite fromJSON
-#' @importFrom httr GET
-#' @importFrom tibble as_tibble
 #' @param set_code Three letter set code. If NULL (default), returns all sets.
 #' @param delay Number of milliseconds scryr should wait between requests 
 #' (Scryfall asks for 50-100).
@@ -30,7 +26,7 @@ scry_sets <- function(set_code = NULL, delay = 75){
   check_internet()
   
   # Get search results
-  res <- GET(query_url, scryr_ua)
+  res <- curl::GET(query_url, scryr_ua)
   
   # Check the result
   check_status(res)
@@ -38,9 +34,9 @@ scry_sets <- function(set_code = NULL, delay = 75){
   # Get the content and return it as a data.frame
   
   if (!is.null(set_code)){
-    return(as_tibble(fromJSON(rawToChar(res$content))))
+    return(tibble::as_tibble(jsonlite::fromJSON(rawToChar(res$content))))
   }
-  as_tibble(fromJSON(rawToChar(res$content))$data)
+  tibble::as_tibble(jsonlite::fromJSON(rawToChar(res$content))$data)
   
   # may want to add ways to handle the fact that some sets don't have all 
   # values/columns. Probably not going to have much impact, so not urgent.

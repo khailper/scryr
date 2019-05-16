@@ -11,8 +11,6 @@
 #' While most catalog names are self-explanatory, "word-bank" is every English 
 #' word of 2+ letters that's appears in a card name.
 #'
-#' @importFrom jsonlite fromJSON
-#' @importFrom httr GET
 #' @param catalog_name The name of the catalog you want (character). See 
 #' Description for available catalogs.
 #' @param delay Number of milliseconds scryr should wait between requests 
@@ -31,7 +29,7 @@ scry_catalog <- function(catalog_name, delay = 75){
   
   # Throw error if user accidentally provides catalog_name that doesn't exist
   if (!(catalog_name %in% catalog_list)){
-    abort("That catalog doesn't exist. ?scry_catalog for list of available catalogs.")
+    rlang::abort("That catalog doesn't exist. ?scry_catalog for list of available catalogs.")
   }
   
   # create query URL
@@ -40,11 +38,11 @@ scry_catalog <- function(catalog_name, delay = 75){
   # Check for internet
   check_internet()
   # Get search results
-  res <- GET(query_url, scryr_ua)
+  res <- curl::GET(query_url, scryr_ua)
   
   # Check the result
   check_status(res)
   
   # Get the content
-  fromJSON(rawToChar(res$content))$data
+  jsonlite::fromJSON(rawToChar(res$content))$data
 }

@@ -11,11 +11,6 @@
 #' While most catalog names are self-explanatory, "word-bank" is every English 
 #' word of 2+ letters that's appears in a card name.
 #'
-#' @importFrom utils URLencode
-#' @importFrom httr modify_url
-#' @importFrom jsonlite fromJSON
-#' @importFrom httr GET
-#' @importFrom rlang abort 
 #' @param query
 #' @param .unique  How Scryfall handles cases where different versions of the 
 #' same card match the `query`. "cards" (default) returns only one instance of 
@@ -59,24 +54,25 @@ scry_cards <- function(query, .unique = "cards", .order = "name",
   # Check arguements (https://scryfall.com/docs/api/cards/search for 
   # documentation of options)
   if (!(.unique %in% c("cards", "part", "prints"))){
-    abort(".unique must be one of 'cards', 'part', or 'prints'.")
+    rlang::abort(".unique must be one of 'cards', 'part', or 'prints'.")
   }
   
   if (!(.order %in% c("name", "set", "released", "rarity", "color", "usd",
                       "tix", "eur", "cmc", "power", "toughness", "edhrec",
                       "artist"))){
-    abort(".order must be one of 'name', 'set', 'released', 'rarity', 'color', 
-    'usd', 'tix', 'eur', 'cmc', 'power', 'toughness', 'edhrec', or 'artist'.")
+    rlang::abort(".order must be one of 'name', 'set', 'released', 'rarity', 
+    'color', 'usd', 'tix', 'eur', 'cmc', 'power', 'toughness', 'edhrec', or 
+                 'artist'.")
   }
   
   if (!(direction %in% c("auto", "asc", "desc"))){
-    abort("direction must be one of 'auto', 'asc', or 'desc'.")
+    rlang::abort("direction must be one of 'auto', 'asc', or 'desc'.")
   }
   
   if (!is.logical(include_extras) || !is.logical(include_multilingual) ||
       !is.logical(include_variations)){
-    abort("Both include_extras, include multilingual, and include_variations 
-          need to be Booleans.")
+    rlang::abort("Both include_extras, include multilingual, and 
+    include_variations need to be Booleans.")
   }
   
   
@@ -92,20 +88,20 @@ scry_cards <- function(query, .unique = "cards", .order = "name",
   check_internet()
   
   # Get search results
-  res <- GET(query_url, scryr_ua)
+  res <- curl::GET(query_url, scryr_ua)
   
   # Check the result
   check_status(res)
   
   # Get the first page
-  first_page <- fromJSON(rawToChar(res$content))$data
+  first_page <- jsonlite::fromJSON(rawToChar(res$content))$data
   
   # if the results are large, we need to query multiple times and consolidate 
   # the data. If not, we can return early
-  if (!exists("next_page", where = fromJSON(rawToChar(res$content)))){
+  if (!exists("next_page", where = jsonlite::fromJSON(rawToChar(res$content)))){
     return(first_page)
   }
   handle_pagination(current_data = first_page, 
-                    next_page_uri = fromJSON(rawToChar(res$content))$next_page,
+                    next_page_uri = jsonlite::fromJSON(rawToChar(res$content))$next_page,
                     delay = delay)
 }
