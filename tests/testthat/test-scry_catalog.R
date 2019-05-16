@@ -5,6 +5,6 @@ test_that("scry_catalog returns a character vector", {
 })
 
 test_that("scry_catalog returns informative error if catalog doesn't exist", {
-  expect_equal(typeof(scry_catalog("crd-names"), 
-                      "That catalog doesn't exist. ?scry_catalog for list of available catalogs."))
+  expect_error(scry_catalog("crd-names", 
+                            "That catalog doesn't exist. ?scry_catalog for list of available catalogs."))
 })
