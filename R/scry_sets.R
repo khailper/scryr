@@ -15,7 +15,8 @@
 #' @export
 #' @rdname scry_set
 #' 
-#' @return result of query (document of set object at https://scryfall.com/docs/api/sets)
+#' @return a [tibble][tibble::tibble-package] of the result of the query 
+#' (documention of set object at https://scryfall.com/docs/api/sets)
 #' @examples
 #' scry_sets() #returns all sets
 #' scry_sets("aer") 

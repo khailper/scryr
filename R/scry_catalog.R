@@ -34,7 +34,7 @@ scry_catalog <- function(catalog_name, delay = 75){
   
   # Throw error if user accidentally provides catalog_name that doesn't exist
   if (!(catalog_name %in% catalog_list)){
-    stop("That catalog doesn't exist. ?scry_catalog for list of available catalogs.")
+    abort("That catalog doesn't exist. ?scry_catalog for list of available catalogs.")
   }
   
   # create query URL
@@ -42,7 +42,6 @@ scry_catalog <- function(catalog_name, delay = 75){
   
   # Check for internet
   check_internet()
-  
   # Get search results
   res <- GET(query_url, ua)
   
