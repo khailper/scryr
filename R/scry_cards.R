@@ -36,6 +36,8 @@
 #' The default is FALSE.
 #' @param include_multilingual Should results include cards in all supported 
 #' languages. The default is FALSE.
+#' @param include_variations Should results include rare case variants. The 
+#' default is FALSE.
 #' @param delay  Number of milliseconds scryr should wait between requests. 
 #' (Scryfall asks for 50-100)
 #' @export
@@ -49,22 +51,43 @@
 #' scry_catalog("toughnesses") %>% as.numeric() %>% unique()
 scry_cards <- function(query, .unique = "cards", .order = "name", 
                        direction = "auto", include_extras = FALSE, 
-                       include_multilingual = FALSE, delay = 75){
+                       include_multilingual = FALSE, include_variations = FALSE,
+                       delay = 75){
   
   polite_rate_limit(delay)
   
 
   # Check arguements (https://scryfall.com/docs/api/cards/search for 
   # documentation of options)
-  if (!(unique %in% c("cards", "part", "prints"))){
-    abort(".unique must be one of 'cards', 'part', or 'prints'")
-  }
-  if (!(.order %in% c("cards", "part", "prints"))){
-    abort(".order must be one of 'cards', 'part', or 'prints'")
+  if (!(.unique %in% c("cards", "part", "prints"))){
+    abort(".unique must be one of 'cards', 'part', or 'prints'.")
   }
   
+  if (!(.order %in% c("name", "set", "released", "rarity", "color", "usd",
+                      "tix", "eur", "cmc", "power", "toughness", "edhrec",
+                      "artist"))){
+    abort(".order must be one of 'name', 'set', 'released', 'rarity', 'color', 
+    'usd', 'tix', 'eur', 'cmc', 'power', 'toughness', 'edhrec', or 'artist'.")
+  }
+  
+  if (!(direction %in% c("auto", "asc", "desc"))){
+    abort("direction must be one of 'auto', 'asc', or 'desc'.")
+  }
+  
+  if (!is.logical(include_extras) || !is.logical(include_multilingual) ||
+      !is.logical(include_variations)){
+    abort("Both include_extras, include multilingual, and include_variations 
+          need to be Booleans.")
+  }
+  
+  
   # create query URL
-  query_url <- paste0(scryr_card_search_url, catalog_name)
+  encoded_query <- URLencode(query)
+  query_url <- paste0(scryr_card_search_url, encoded_query, "&unique=", 
+                      .unique, "&order=", .order, "&dir=", direction,
+                      "&include_extras=", include_extras, 
+                      "&include_multilingual=", "&include_variations=",
+                      include_variations)
   
   # Check for internet
   check_internet()
