@@ -3,11 +3,11 @@ library(scryr)
 
 test_that("sets have all the columns", {
   expect_equal(names(scry_sets("aer")), 
-                                c("object","code", "mtgo_code", "name", "uri",
-                                  "scryfall_uri", "search_uri", "released_at", 
-                                  "set_type", "card_count", "digital", 
-                                  "foil_only", "block_code", 
-                                  "block", "icon_svg_uri"))
+                                c("object", "id", "code", "mtgo_code", 
+                                  "tcgplayer_id", "name", "uri", "scryfall_uri", 
+                                  "search_uri", "released_at", "set_type", 
+                                  "card_count", "digital", "foil_only", 
+                                  "block_code", "block", "icon_svg_uri"))
   
   
 })
@@ -19,7 +19,7 @@ test_that("only one set returned and it's the right type", {
 
 test_that("all sets returned for sets = NULL and it's the right type", {
   expect_true(tibble::is_tibble(scry_sets()))
-  expect_gt(nrow(scry_sets("m19")), 1)
+  expect_gt(nrow(scry_sets()), 1)
 })
 
 test_that("set returns error if wrong code used", {
