@@ -36,12 +36,12 @@ scry_catalog <- function(catalog_name, delay = 75){
   }
   
   # create query URL
-  query_url <- paste0(catalog_url, catalog_name)
+  query_url <- paste0(scryr_catalog_url, catalog_name)
   
   # Check for internet
   check_internet()
   # Get search results
-  res <- GET(query_url, ua)
+  res <- GET(query_url, scryr_ua)
   
   # Check the result
   check_status(res)

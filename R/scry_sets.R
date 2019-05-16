@@ -25,13 +25,13 @@ scry_sets <- function(set_code = NULL, delay = 75){
   polite_rate_limit(delay)
   
   # create query URL
-  query_url <- paste0(set_url, set_code)
+  query_url <- paste0(scryr_set_url, set_code)
   
   # Check for internet
   check_internet()
   
   # Get search results
-  res <- GET(query_url, ua)
+  res <- GET(query_url, scryr_ua)
   
   # Check the result
   check_status(res)

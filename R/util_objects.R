@@ -2,14 +2,14 @@
 #' @importFrom httr user_agent
 #' @noRd
 # based on: https://cran.r-project.org/web/packages/httr/vignettes/api-packages.html
-ua <- user_agent("http://github.com/khailper/scryr")
+scryr_ua <- user_agent("http://github.com/khailper/scryr")
 #'
 #' set up urls functions will need for API queries
 #' @noRd
-base_url <- "https://api.scryfall.com/"
-set_url <- paste0(base_url, "sets/")
-catalog_url <- paste0(base_url, "catalog/")
-card_search_url <- paste0(base_url, "sets/cards/search")
+scryr_base_url <- "https://api.scryfall.com/"
+scryr_set_url <- paste0(scryr_base_url, "sets/")
+scryr_catalog_url <- paste0(scryr_base_url, "catalog/")
+scryr_card_search_url <- paste0(scryr_base_url, "sets/cards/search")
 #'
 #'list of available catalogs so scry_catalog() can throw error
 #' source: https://scryfall.com/docs/api/catalogs

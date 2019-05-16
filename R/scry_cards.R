@@ -15,11 +15,13 @@
 #' @importFrom httr modify_url
 #' @importFrom attempt stop_if_all
 #' @importFrom jsonlite fromJSON
-#' @importFrom httr GET 
+#' @importFrom httr GET
+#' @importFrom rlang abort 
 #' @param query
 #' @param .unique  How Scryfall handles cases where different versions of the 
 #' same card match the `query`. "cards" (default) returns only one instance of 
-#' card, "art" returns each instance with a different art "prints" returns all of them.
+#' card, "art" returns each instance with a different art "prints" returns all 
+#' of them.
 #' @param .order How Scryfall sorts returned cards. "name" (default): card name, 
 #' "set": set code and collector number, "released": release date, "rarity": 
 #' rarity, "color": color, "usd": price in US dollars, "tix"; price in tickets 
@@ -55,20 +57,20 @@ scry_cards <- function(query, .unique = "cards", .order = "name",
   # Check arguements (https://scryfall.com/docs/api/cards/search for 
   # documentation of options)
   if (!(unique %in% c("cards", "part", "prints"))){
-    stop(".unique must be one of 'cards', 'part', or 'prints'")
+    abort(".unique must be one of 'cards', 'part', or 'prints'")
   }
-  if (!(order %in% c("cards", "part", "prints"))){
-    stop(".unique must be one of 'cards', 'part', or 'prints'")
+  if (!(.order %in% c("cards", "part", "prints"))){
+    abort(".order must be one of 'cards', 'part', or 'prints'")
   }
   
   # create query URL
-  query_url <- paste0(card_search_url, catalog_name)
+  query_url <- paste0(scryr_card_search_url, catalog_name)
   
   # Check for internet
   check_internet()
   
   # Get search results
-  res <- GET(query_url, ua)
+  res <- GET(query_url, scryr_ua)
   
   # Check the result
   check_status(res)
