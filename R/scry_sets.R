@@ -3,7 +3,6 @@
 #' @description Function for getting-set level information (e.g. release date, 
 #' number of cards). Formatted as a tibble.
 #'
-#' @importFrom attempt stop_if_all
 #' @importFrom purrr compact
 #' @importFrom jsonlite fromJSON
 #' @importFrom httr GET

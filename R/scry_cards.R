@@ -13,7 +13,6 @@
 #'
 #' @importFrom utils URLencode
 #' @importFrom httr modify_url
-#' @importFrom attempt stop_if_all
 #' @importFrom jsonlite fromJSON
 #' @importFrom httr GET
 #' @importFrom rlang abort 
