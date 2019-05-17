@@ -1,3 +1,6 @@
+#' all of these objects are stored as internal data in R/sysdata.rda
+#' this file exists for documentation and in case they need to be reproduced or
+#' updated
 #' set user agent per httr vignette
 #' @importFrom httr user_agent
 #' @noRd
