@@ -22,11 +22,13 @@
 #' rarity, "color": color, "usd": price in US dollars, "tix"; price in tickets 
 #' on MTGO, "eur": price in Euros, "cmc": converted mana cost, "power": power, 
 #' "toughenss": toughness, "edhrec": EDHREC rating, or "artist": artist name. 
-#' See vignette("sorting-cards") for more information on how sorting works.
-#' @param direction Which direction cards are sorted in based on `.order`. 
-#' "auto" (default): order that makes most sense for `.order`, 
-#' "asc": ascending order, and "desc": descending order. See 
-#' vignette("sorting-cards") for more information on how sorting works.
+#' 
+#' @param direction Which direction cards are sorted in based on \code{.order}. 
+#' "auto" (default): order that makes most sense for \code{.order}, 
+#' "asc": ascending order, and "desc": descending order.  "auto" sorts in 
+#' descending order for prices ("usd", "tix", and "eur"), "release date", and 
+#' "rarity". For all other \code{.order} options, "auto sorts in ascending 
+#' order.
 #' @param include_extras Should results include extras like tokens or schemes. 
 #' The default is FALSE.
 #' @param include_multilingual Should results include cards in all supported 
