@@ -11,7 +11,8 @@
 #' While most catalog names are self-explanatory, "word-bank" is every English 
 #' word of 2+ letters that's appears in a card name.
 #'
-#' @param query
+#' @param query search query to pass to the API. A character string that looks
+#' the same as a search you'd manually enter into Scryfall.
 #' @param .unique  How Scryfall handles cases where different versions of the 
 #' same card match the `query`. "cards" (default) returns only one instance of 
 #' card, "art" returns each instance with a different art "prints" returns all 
