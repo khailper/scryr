@@ -1,6 +1,6 @@
 #' @title Query Scryfall Catalog API
 #' 
-#' @description Function for reuqesting contents of catalogs. Catalogs contains 
+#' @description Request contents of catalogs. Catalogs contains 
 #' all existing versions of that object. For example scry_catalog("toughnesses") 
 #' returns every toughness that has ever been printed on a __Magic__ card, 
 #' including non-mumeric values like "*+1". \cr

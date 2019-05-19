@@ -17,8 +17,8 @@ a \link[tibble:tibble-package]{tibble} of the result of the query
 (documention of set object at https://scryfall.com/docs/api/sets)
 }
 \description{
-Function for getting-set level information (e.g. release date,
-number of cards). Formatted as a tibble.
+Request set-level information (e.g. release date,
+number of cards).
 }
 \examples{
 scry_sets() #returns all sets

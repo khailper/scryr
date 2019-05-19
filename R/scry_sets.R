@@ -1,7 +1,7 @@
 #' @title Query Scryfall Set API
 #' 
-#' @description Function for getting-set level information (e.g. release date, 
-#' number of cards). Formatted as a tibble.
+#' @description Request set-level information (e.g. release date, 
+#' number of cards).
 #'
 #' @param set_code Three letter set code. If NULL (default), returns all sets.
 #' @param delay Number of milliseconds scryr should wait between requests 

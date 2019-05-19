@@ -17,7 +17,7 @@ Description for available catalogs.}
 character vector of objects in the catalog
 }
 \description{
-Function for reuqesting contents of catalogs. Catalogs contains
+Request contents of catalogs. Catalogs contains
 all existing versions of that object. For example scry_catalog("toughnesses")
 returns every toughness that has ever been printed on a \strong{Magic} card,
 including non-mumeric values like "*+1". \cr
