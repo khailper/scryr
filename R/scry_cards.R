@@ -1,15 +1,7 @@
 #' @title Query Scryfall Card Search API
 #' 
-#' @description Function for contents of catalogs. Catalogs contains all 
-#' existing versions of that object. For example scry_catalog("toughnesses") 
-#' returns every toughness that has ever been printed on a __Magic__ card, 
-#' including non-mumeric values like "*+1". \cr
-#' Available catalogs are "card-names", "artist-names", "word-bank",
-#' "creature-types", "planeswalker-types", "land-types","artifact-types",
-#' "enchantment-types", "spell-types", "powers", "toughnesses",
-#' "loyalties", "watermarks". \cr
-#' While most catalog names are self-explanatory, "word-bank" is every English 
-#' word of 2+ letters that's appears in a card name.
+#' @description Request card-level information. This API call operates in a 
+#' similar manner to a manual Scryfall search.
 #'
 #' @param query search query to pass to the API. A character string that looks
 #' the same as a search you'd manually enter into Scryfall.
@@ -22,7 +14,6 @@
 #' rarity, "color": color, "usd": price in US dollars, "tix"; price in tickets 
 #' on MTGO, "eur": price in Euros, "cmc": converted mana cost, "power": power, 
 #' "toughenss": toughness, "edhrec": EDHREC rating, or "artist": artist name. 
-#' 
 #' @param direction Which direction cards are sorted in based on \code{.order}. 
 #' "auto" (default): order that makes most sense for \code{.order}, 
 #' "asc": ascending order, and "desc": descending order.  "auto" sorts in 

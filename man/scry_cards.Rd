@@ -48,16 +48,8 @@ a \link[tibble:tibble-package]{tibble} of cards matching the search
 parameters
 }
 \description{
-Function for contents of catalogs. Catalogs contains all
-existing versions of that object. For example scry_catalog("toughnesses")
-returns every toughness that has ever been printed on a \strong{Magic} card,
-including non-mumeric values like "*+1". \cr
-Available catalogs are "card-names", "artist-names", "word-bank",
-"creature-types", "planeswalker-types", "land-types","artifact-types",
-"enchantment-types", "spell-types", "powers", "toughnesses",
-"loyalties", "watermarks". \cr
-While most catalog names are self-explanatory, "word-bank" is every English
-word of 2+ letters that's appears in a card name.
+Request card-level information. This API call operates in a
+similar manner to a manual Scryfall search.
 }
 \examples{
 scry_catalog("artist-names")
