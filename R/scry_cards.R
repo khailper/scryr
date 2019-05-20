@@ -5,7 +5,7 @@
 #'
 #' @param query search query to pass to the API. A character string that looks
 #' the same as a search you'd manually enter into Scryfall. 
-#' (see: https://scryfall.com/docs/syntax for docuementation on searching
+#' (see: \url{https://scryfall.com/docs/syntax} for docuementation on searching
 #' Scryfall)
 #' @param .unique  How Scryfall handles cases where different versions of the 
 #' same card match the `query`. "cards" (default) returns only one instance of 

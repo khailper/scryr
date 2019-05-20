@@ -14,7 +14,7 @@ scry_sets(set_code = NULL, delay = 75)
 }
 \value{
 a \link[tibble:tibble-package]{tibble} of the result of the query
-(documention of set object at https://scryfall.com/docs/api/sets)
+(documention of set object at \url{https://scryfall.com/docs/api/sets)}
 }
 \description{
 Request set-level information (e.g. release date,
