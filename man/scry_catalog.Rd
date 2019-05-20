@@ -30,6 +30,5 @@ word of 2+ letters that's appears in a card name.
 }
 \examples{
 scry_catalog("artist-names")
-library(dplyr)
 scry_catalog("toughnesses") \%>\% as.numeric()
 }

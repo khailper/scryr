@@ -11,7 +11,9 @@ scry_cards(query, .unique = "cards", .order = "name",
 }
 \arguments{
 \item{query}{search query to pass to the API. A character string that looks
-the same as a search you'd manually enter into Scryfall.}
+the same as a search you'd manually enter into Scryfall.
+(see: https://scryfall.com/docs/syntax for docuementation on searching
+Scryfall)}
 
 \item{.unique}{How Scryfall handles cases where different versions of the
 same card match the \code{query}. "cards" (default) returns only one instance of
