@@ -7,7 +7,7 @@
 scry_cards(query, .unique = "cards", .order = "name",
   direction = "auto", include_extras = FALSE,
   include_multilingual = FALSE, include_variations = FALSE,
-  delay = 75)
+  include_ids = FALSE, include_uris = FALSE, delay = 75)
 }
 \arguments{
 \item{query}{search query to pass to the API. A character string that looks
@@ -33,14 +33,17 @@ descending order for prices ("usd", "tix", and "eur"), "release date", and
 "rarity". For all other \code{.order} options, "auto sorts in ascending
 order.}
 
-\item{include_extras}{Should results include extras like tokens or schemes.
-The default is FALSE.}
+\item{include_extras}{Should results include extras like tokens or schemes.}
 
 \item{include_multilingual}{Should results include cards in all supported
-languages. The default is FALSE.}
+languages.}
 
-\item{include_variations}{Should results include rare case variants. The
-default is FALSE.}
+\item{include_variations}{Should results include rare case variants.}
+
+\item{include_ids}{Should results include ID variables (e.g. Oracle ID)}
+
+\item{include_uris}{Should results include URI variables (e.g. the URL for
+the card on Scryfall)}
 
 \item{delay}{Number of milliseconds scryr should wait between requests.
 (Scryfall asks for 50-100)}
@@ -54,7 +57,6 @@ Request card-level information. This API call operates in a
 similar manner to a manual Scryfall search.
 }
 \examples{
-scry_catalog("artist-names")
-library(dplyr)
-scry_catalog("toughnesses") \%>\% as.numeric() \%>\% unique()
+scry_cards("set:ktk")
+scry_cards("set:ktk wm:mardu")
 }

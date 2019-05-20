@@ -4,7 +4,9 @@
 #' similar manner to a manual Scryfall search.
 #'
 #' @param query search query to pass to the API. A character string that looks
-#' the same as a search you'd manually enter into Scryfall.
+#' the same as a search you'd manually enter into Scryfall. 
+#' (see: https://scryfall.com/docs/syntax for docuementation on searching
+#' Scryfall)
 #' @param .unique  How Scryfall handles cases where different versions of the 
 #' same card match the `query`. "cards" (default) returns only one instance of 
 #' card, "art" returns each instance with a different art "prints" returns all 
@@ -21,11 +23,12 @@
 #' "rarity". For all other \code{.order} options, "auto sorts in ascending 
 #' order.
 #' @param include_extras Should results include extras like tokens or schemes. 
-#' The default is FALSE.
 #' @param include_multilingual Should results include cards in all supported 
-#' languages. The default is FALSE.
-#' @param include_variations Should results include rare case variants. The 
-#' default is FALSE.
+#' languages. 
+#' @param include_variations Should results include rare case variants.
+#' @param include_ids Should results include ID variables (e.g. Oracle ID)
+#' @param include_uris Should results include URI variables (e.g. the URL for
+#' the card on Scryfall)
 #' @param delay  Number of milliseconds scryr should wait between requests. 
 #' (Scryfall asks for 50-100)
 #' @export
@@ -34,13 +37,12 @@
 #' @return a [tibble][tibble::tibble-package] of cards matching the search 
 #' parameters
 #' @examples
-#' scry_catalog("artist-names")
-#' library(dplyr)
-#' scry_catalog("toughnesses") %>% as.numeric() %>% unique()
+#' scry_cards("set:ktk")
+#' scry_cards("set:ktk wm:mardu")
 scry_cards <- function(query, .unique = "cards", .order = "name", 
                        direction = "auto", include_extras = FALSE, 
                        include_multilingual = FALSE, include_variations = FALSE,
-                       delay = 75){
+                       include_ids = FALSE, include_uris = FALSE, delay = 75){
   
   polite_rate_limit(delay)
   
@@ -93,9 +95,20 @@ scry_cards <- function(query, .unique = "cards", .order = "name",
   # if the results are large, we need to query multiple times and consolidate 
   # the data. If not, we can return early
   if (!exists("next_page", where = jsonlite::fromJSON(rawToChar(res$content)))){
-    return(first_page)
+    search_results <- first_page
+  } else {
+    search_results <- handle_pagination(current_data = first_page, 
+                                        next_page_uri = jsonlite::fromJSON(rawToChar(res$content))$next_page,
+                                        delay = delay)
   }
-  handle_pagination(current_data = first_page, 
-                    next_page_uri = jsonlite::fromJSON(rawToChar(res$content))$next_page,
-                    delay = delay)
+  
+  if (!include_ids){
+    search_results <- dplyr::select(search_results, -dplyr::ends_with("id"))
+  }
+  
+  if (!include_uris){
+    search_results <- dplyr::select(search_results, -dplyr::contains("uri"))
+  }
+  
+  tibble::as_tibble(search_results)
 }
