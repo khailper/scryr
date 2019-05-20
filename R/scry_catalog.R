@@ -21,7 +21,6 @@
 #' @return character vector of objects in the catalog
 #' @examples
 #' scry_catalog("artist-names")
-#' library(dplyr)
 #' scry_catalog("toughnesses") %>% as.numeric()
 scry_catalog <- function(catalog_name, delay = 75){
   
