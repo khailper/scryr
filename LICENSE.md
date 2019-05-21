@@ -1,4 +1,4 @@
-# MIT License
+# MIT License (with some modifications)
 
 Copyright (c) 2018 Karl Hailperin
 
@@ -11,6 +11,13 @@ furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
+
+scryr is unofficial Fan Content permitted under the Fan Content Policy. 
+Not approved/endorsed by Wizards. Portions of the materials used are property of
+Wizards of the Coast. ©Wizards of the Coast LLC.
+
+scryr is not endorsed or supported by Scryfall. Any use of scryr is subject to 
+Scryfall's "Use of Scryfall Data" policy at https://scryfall.com/docs/api.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
