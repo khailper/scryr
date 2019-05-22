@@ -4,10 +4,16 @@
 \alias{scry_sets}
 \title{Query Scryfall Set API}
 \usage{
-scry_sets(set_code = NULL, delay = 75)
+scry_sets(set_code = NULL, include_ids = FALSE, include_uris = FALSE,
+  delay = 75)
 }
 \arguments{
 \item{set_code}{Three letter set code. If NULL (default), returns all sets.}
+
+\item{include_ids}{Should results include ID variables (e.g. TCGPlayer ID)}
+
+\item{include_uris}{Should results include URI variables (e.g. the URL for
+the set on Scryfall)}
 
 \item{delay}{Number of milliseconds scryr should wait between requests
 (Scryfall asks for 50-100).}
@@ -23,5 +29,5 @@ number of cards).
 \examples{
 scry_sets() #returns all sets
 scry_sets("aer") 
-scry_sets("m19") # block-related columns absent
+scry_sets("m19") # block-related columns absent since M19 isn't in a block
 }

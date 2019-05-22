@@ -4,6 +4,9 @@
 #' number of cards).
 #'
 #' @param set_code Three letter set code. If NULL (default), returns all sets.
+#' @param include_ids Should results include ID variables (e.g. TCGPlayer ID)
+#' @param include_uris Should results include URI variables (e.g. the URL for
+#' the set on Scryfall)
 #' @param delay Number of milliseconds scryr should wait between requests 
 #' (Scryfall asks for 50-100).
 #' @export
@@ -14,8 +17,11 @@
 #' @examples
 #' scry_sets() #returns all sets
 #' scry_sets("aer") 
-#' scry_sets("m19") # block-related columns absent
-scry_sets <- function(set_code = NULL, delay = 75){
+#' scry_sets("m19") # block-related columns absent since M19 isn't in a block
+scry_sets <- function(set_code = NULL,
+                      include_ids = FALSE, 
+                      include_uris = FALSE, 
+                      delay = 75){
 
   polite_rate_limit(delay)
   
@@ -34,9 +40,21 @@ scry_sets <- function(set_code = NULL, delay = 75){
   # Get the content and return it as a data.frame
   
   if (!is.null(set_code)){
-    return(tibble::as_tibble(jsonlite::fromJSON(rawToChar(res$content))))
+    search_results <- tibble::as_tibble(jsonlite::fromJSON(rawToChar(res$content)))
+  } else {
+    search_results <- tibble::as_tibble(jsonlite::fromJSON(rawToChar(res$content))$data)
   }
-  tibble::as_tibble(jsonlite::fromJSON(rawToChar(res$content))$data)
+  
+  if (!include_ids){
+    search_results <- dplyr::select(search_results, -dplyr::ends_with("id"))
+  }
+  
+  if (!include_uris){
+    search_results <- dplyr::select(search_results, -dplyr::contains("uri"))
+  }
+  
+  search_results
+  
   
   # may want to add ways to handle the fact that some sets don't have all 
   # values/columns. Probably not going to have much impact, so not urgent.
