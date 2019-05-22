@@ -1,11 +1,95 @@
 ---
-title: "Untitled"
-output: html_document
+title: "scryr"
+output: github_document
 ---
 
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 
+scryr provides R functions to access Scryfall's APIs for 
+[catalogs](https://scryfall.com/docs/api/catalogs), 
+[sets](https://scryfall.com/docs/api/sets), and 
+[card search](https://scryfall.com/docs/api/cards/search).
 
+# Installation
+
+Install scryr from Github with 
+[devtools](https://cran.r-project.org/web/packages/devtools/index.html)
+
+```{r eval=FALSE}
+# install.packages("devtools")
+library(devtools)
+install_github("khailper/scryr")
+```
+
+# Usage
+```{r setup, message = FALSE}
+library(tidyverse)
+library(scryr)
+```
+## scry_catalog()
+Scryfall catalogs contain each unique value of the catalogs content, returned as
+a vector of strings. So, if you wanted every enchantment subtype:
+```{r catalog_example}
+scry_catalog("enchantment-types")
+```
+
+The list of available catalogs can be found with `?scry_catalog`.
+
+## scry_sets()
+`scry_sets` can either return a tibble containing the information for all sets
+(the default), or `scry_sets("set's three letter")` to get just the information
+for that set.
+```{r sets_example}
+scry_sets("war")
+```
+
+## scry_cards()
+`scry_cards()` returns a tibble containing cards matching the seach in the 
+`query`arguement. So, if we instead of wanting the information about **War of 
+the Spark**, we wanted all cards in that set:
+```{r cards_example_a}
+war_cards <- scry_cards("s:war")
+war_cards
+```
+
+`scry_cards` also supports more complex searches (the query syntax is available 
+at [https://scryfall.com/docs/syntax](https://scryfall.com/docs/syntax)):
+```{r cards_example_b}
+# all mono-colored creatures in War of the Spark"
+scry_cards("set:war t:'creature' c:1") %>% 
+  # need to unlist colors so it can be a grouping variable for count
+  mutate(colors = unlist(colors),
+         colors = fct_relevel(colors, "W", "U", "B", "R", "G")) %>% 
+  # getting each color's mana curve
+  count(cmc,colors) %>% 
+  ggplot(aes(cmc, n, fill = colors)) +
+  geom_col() +
+  facet_wrap(~colors) + 
+  guides(fill = FALSE) + 
+  labs(title = "Mana curve by color in War of the Spark",
+       subtitle = "mono-colored creatures only",
+       x = "Converted mana cost", 
+       y = "Number of cards") +
+  theme(strip.background = element_blank(), strip.text.x = element_blank()) +
+  scale_fill_manual(values = c("W" = "#ffe7b9",
+                               "U" = "#0e68ab",
+                               "B" = "#150b00",
+                               "R" = "#d3202a",
+                               "G" = "#00733e"))
+  
+```
+
+
+Note: both `scry_sets` and `scry_cards` by default drop columns related 
+containing IDs and URIs. This can be overridden with `include_ids = TRUE` and
+`include_uris = TRUE`, respectively.
+
+scryr is unofficial Fan Content permitted under the Fan Content Policy. 
+Not approved/endorsed by Wizards. Portions of the materials used are property of
+Wizards of the Coast. ©Wizards of the Coast LLC.
+
+scryr is not endorsed or supported by Scryfall. Any use of scryr is subject to 
+Scryfall's "Use of Scryfall Data" policy at https://scryfall.com/docs/api.
 
 Please note that the 'scryr' project is released with a
 [Contributor Code of Conduct](.github/CODE_OF_CONDUCT.md).
