@@ -47,6 +47,7 @@ scry_sets <- function(set_code = NULL,
   
   if (!include_ids){
     search_results <- dplyr::select(search_results, -dplyr::ends_with("id"))
+    search_results <- dplyr::select(search_results, -dplyr::ends_with("ids"))
   }
   
   if (!include_uris){
