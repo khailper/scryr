@@ -39,10 +39,16 @@
 #' @examples
 #' scry_cards("set:ktk")
 #' scry_cards("set:ktk wm:mardu")
-scry_cards <- function(query, .unique = "cards", .order = "name", 
-                       direction = "auto", include_extras = FALSE, 
-                       include_multilingual = FALSE, include_variations = FALSE,
-                       include_ids = FALSE, include_uris = FALSE, delay = 75){
+scry_cards <- function(query, 
+                       .unique = "cards", 
+                       .order = "name", 
+                       direction = "auto", 
+                       include_extras = FALSE, 
+                       include_multilingual = FALSE, 
+                       include_variations = FALSE,
+                       include_ids = FALSE, 
+                       include_uris = FALSE, 
+                       delay = 75){
   
   polite_rate_limit(delay)
   

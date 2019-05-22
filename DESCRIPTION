@@ -4,8 +4,8 @@ Version: 0.1.0.9000
 Authors@R: c(person('Karl', 'Hailperin', email = 'khailper@gmail.com', role = c('cre', 'aut')), person('Colin', 'Fay', role = c('ctb'), comment = c('Wrote generic API code that was the basis of much of the scry_* functions (https://colinfay.me/build-api-wrapper-package-r/)')))
 Description: scryr provides R functions to access Scryfall's APIs for card search, sets, and catalogs.
 License: MIT + file LICENSE
-URL: http://this
-BugReports: http://that
+URL: https://github.com/khailper/scryr
+BugReports: https://github.com/khailper/scryr/issues
 Imports: 
     attempt,
     curl,
