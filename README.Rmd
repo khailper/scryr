@@ -5,7 +5,7 @@ output: github_document
 
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 
-scryr provides R functions to access Scryfall's APIs for 
+`scryr` provides R functions to access Scryfall's APIs for 
 [catalogs](https://scryfall.com/docs/api/catalogs), 
 [sets](https://scryfall.com/docs/api/sets), and 
 [card search](https://scryfall.com/docs/api/cards/search).
