@@ -1,0 +1,16 @@
+destination: docs
+pandoc: 2.7.2
+pkgdown: 1.3.0
+pkgdown_sha: ~
+articles: []
+url: https://khailper.github.io/scryr/
+reference:
+- title: "Search functions"
+  desc: "Functions for querying the Scryfall API"
+  contents:
+  - has_concept("search")
+- title: "Labeling functions"
+  desc: "Functions to add guild/shard/clan labels"
+  contents:
+  - has_concept("label")
+  - '`scry_sets`'

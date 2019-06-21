@@ -31,3 +31,4 @@ scry_sets() #returns all sets
 scry_sets("aer") 
 scry_sets("m19") # block-related columns absent since M19 isn't in a block
 }
+\concept{search}

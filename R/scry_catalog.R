@@ -10,6 +10,8 @@
 #' "loyalties", "watermarks". \cr
 #' While most catalog names are self-explanatory, "word-bank" is every English 
 #' word of 2+ letters that's appears in a card name.
+#' 
+#' @concept search
 #'
 #' @param catalog_name The name of the catalog you want (character). See 
 #' Description for available catalogs.

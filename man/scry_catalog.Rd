@@ -32,3 +32,4 @@ word of 2+ letters that's appears in a card name.
 scry_catalog("artist-names")
 scry_catalog("toughnesses") \%>\% as.numeric()
 }
+\concept{search}

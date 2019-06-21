@@ -60,3 +60,4 @@ similar manner to a manual Scryfall search.
 scry_cards("set:ktk")
 scry_cards("set:ktk wm:mardu")
 }
+\concept{search}

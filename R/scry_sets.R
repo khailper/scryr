@@ -2,6 +2,8 @@
 #' 
 #' @description Request set-level information (e.g. release date, 
 #' number of cards).
+#' 
+#' @concept search
 #'
 #' @param set_code Three letter set code. If NULL (default), returns all sets.
 #' @param include_ids Should results include ID variables (e.g. TCGPlayer ID)

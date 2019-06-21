@@ -2,6 +2,8 @@
 #' 
 #' @description Request card-level information. This API call operates in a 
 #' similar manner to a manual Scryfall search.
+#' 
+#' @concept search
 #'
 #' @param query search query to pass to the API. A character string that looks
 #' the same as a search you'd manually enter into Scryfall. 
