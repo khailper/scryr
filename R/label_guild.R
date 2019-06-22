@@ -21,11 +21,12 @@
 #' @return a list of strings with all guild(s) matching the \{color_code}
 #' 
 #' @examples 
-#' label_guild(c("U", "W"))
-#' label_guild("U")
-#' label_guild("U", inclusive = TRUE)
+#' label_guild(list("U", "W"))
+#' label_guild(list("U"))
+#' label_guild(list("U"), inclusive = TRUE)
 #' @export
 label_guild <- function(color_code, inclusive = FALSE){
+  
   labels <- dplyr::case_when(
     # if length == 2, doesn't matter what inclusive is
     length(color_code) ==  2 ~ exclusive_label_guild(color_code),
