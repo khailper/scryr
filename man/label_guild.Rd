@@ -24,8 +24,8 @@ cards with hybrid costs are treated as belonging to both colors, as though
 they were gold cards.
 }
 \examples{
-label_guild(c("U", "W"))
-label_guild("U")
-label_guild("U", inclusive = TRUE)
+label_guild(list("U", "W"))
+label_guild(list("U"))
+label_guild(list("U"), inclusive = TRUE)
 }
 \concept{label}

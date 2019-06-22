@@ -26,6 +26,9 @@
 #' label_guild(list("U"), inclusive = TRUE)
 #' @export
 label_guild <- function(color_code, inclusive = FALSE){
+  if (!is.list(color_code)){
+    rlang::abort("color_code needs to be a list")
+  }
   
   labels <- dplyr::case_when(
     # if length == 2, doesn't matter what inclusive is

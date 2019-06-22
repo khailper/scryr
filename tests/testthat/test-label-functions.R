@@ -1,3 +1,8 @@
+test_that("label_guild and label_tri check type"){
+  expect_error(label_guild(c("B", "G")))
+  expect_error(label_tri(c("B", "G", "U")))
+}
+
 test_that("label_guild doesn't assign guilds to cards without exactly 2 colors", {
   expect_true(is.na(label_guild(list("B"))))
   expect_true(is.na(label_guild(list("B", "G", "U"))))
