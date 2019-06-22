@@ -37,13 +37,13 @@ inclusive_label_guild <- function(color_code){
     identical(color_code, list("B")) ~ 
       list("Dimir", "Golgari", "Orzhov", "Rakdos"),
     identical(color_code, list("G")) ~ 
-      list("Golgari", "Gruul", "Simic", "Golgari"),
+      list("Golgari", "Gruul", "Selesnya", "Simic"),
     identical(color_code, list("R")) ~ 
-      list("Orzhov", "Dimir", "Rakdos", "Golgari"),
+      list("Boros", "Gruul", "Izzet", "Rakdos"),
     identical(color_code, list("U")) ~ 
-      list("Orzhov", "Dimir", "Rakdos", "Golgari"),
+      list("Azorius", "Dimir", "Izzet", "Simic"),
     identical(color_code, list("W")) ~ 
-      list("Orzhov", "Dimir", "Rakdos", "Golgari"),
+      list("Azorius", "Boros", "Orzhov", "Selesnya"),
     identical(color_code, list("U", "W")) ~ list("Azoruis"),
     identical(color_code, list("R", "W")) ~ list("Boros"),
     identical(color_code, list("B", "U")) ~ list("Dimir"),
