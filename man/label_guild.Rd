@@ -2,15 +2,26 @@
 % Please edit documentation in R/label_guild.R
 \name{label_guild}
 \alias{label_guild}
-\title{Assign guild identity based on color/color ID}
+\title{Assign guild identity based on color/color identity}
 \usage{
-label_guild(color_code, inclusive = FALSE, mana_cost = NULL)
+label_guild(color_code, inclusive = FALSE)
 }
 \arguments{
-\item{inclusive}{}
+\item{color_code}{list of characters of the card's color/color identity,
+using WUBRG notation. Letters must be capital and in alphabetic order. If
+using with \code{link{[dplyr]mutate}} and the results of
+\code{link{scry_cards}}, use the \code{color} or \code{color_identity} column.}
+}
+\value{
+a list of strings with all guild(s) matching the {color_code}
 }
 \description{
-Assign guild identity based on color/color ID
+Given a card's color (or color identity), return the Ravinca
+guild assoicated with the card. By default, \code{label_guild} requires the
+card to be both of the guild's colors, but if \code{inclusive = TRUE},
+mono-color cards are labeled with all guilds they could belong to. NOTE:
+cards with hybrid costs are treated as belonging to both colors, as though
+they were gold cards.
 }
 \examples{
 label_guild(c("U", "W"))

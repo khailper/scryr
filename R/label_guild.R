@@ -1,15 +1,24 @@
-#' @title Assign guild identity based on color/color ID
+#' @title Assign guild identity based on color/color identity
 #' 
-#' @description 
+#' @description Given a card's color (or color identity), return the Ravinca 
+#' guild assoicated with the card. By default, \code{label_guild} requires the 
+#' card to be both of the guild's colors, but if \code{inclusive = TRUE}, 
+#' mono-color cards are labeled with all guilds they could belong to. NOTE: 
+#' cards with hybrid costs are treated as belonging to both colors, as though 
+#' they were gold cards.
 #' 
 #' @concept label
 #' 
-#' @param color_code
-#' @param inclusive
+#' @param color_code list of characters of the card's color/color identity, 
+#' using WUBRG notation. Letters must be capital and in alphabetic order. If 
+#' using with \code{link{[dplyr]mutate}} and the results of 
+#' \code{link{scry_cards}}, use the \code{color} or \code{color_identity} column.
+#' @param inclusive if \{color_code} is just one color, should 
+#' \code{label_guild} return all guilds that contain that color?
 #' 
 #' @rdname label_guild
 #' 
-#' @return 
+#' @return a list of strings with all guild(s) matching the \{color_code}
 #' 
 #' @examples 
 #' label_guild(c("U", "W"))
@@ -32,6 +41,9 @@ label_guild <- function(color_code, inclusive = FALSE){
   labels[1]
 }
 
+#' functions for using match color to guild. Pulled out of label_guild to make
+#' flow clearer by avoiding nested case_whens
+#' @noRd
 inclusive_label_guild <- function(color_code){
   dplyr::case_when(
     # 
@@ -59,7 +71,7 @@ inclusive_label_guild <- function(color_code){
   )
 }
 
-
+#' @noRd
 exclusive_label_guild <- function(color_code){
   dplyr::case_when(
     identical(color_code, list("U", "W")) ~ list("Azoruis"),
