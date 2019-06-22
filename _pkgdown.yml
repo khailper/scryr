@@ -10,7 +10,7 @@ reference:
   contents:
   - has_concept("search")
 - title: "Labeling functions"
-  desc: "Functions to add guild/shard/clan labels"
+  desc: "Functions to add guild/shard/wedge labels"
   contents:
   - has_concept("label")
-  - '`scry_sets`'
+  
