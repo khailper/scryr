@@ -27,9 +27,10 @@
 #' @export
 label_guild <- function(color_code, inclusive = FALSE){
   labels <- dplyr::case_when(
-    inclusive & length(color_code) %in% 1:2 ~ 
+    # if length == 2, doesn't matter what inclusive is
+    length(color_code) ==  2 ~ exclusive_label_guild(color_code),
+    inclusive & length(color_code) == 1 ~ 
       inclusive_label_guild(color_code),
-    !inclusive & length(color_code) ==  2 ~ exclusive_label_guild(color_code),
     TRUE ~ list(NA_character_)
   )
   
