@@ -133,7 +133,8 @@ they were gold cards.</p>
       <td><p>list of characters of the card's color/color identity,
 using WUBRG notation. Letters must be capital and in alphabetic order. If
 using with <code>link{[dplyr]mutate}</code> and the results of
-<code>link{scry_cards}</code>, use the <code>color</code> or <code>color_identity</code> column.</p></td>
+<code>link{scry_cards}</code>, use the <code>colors</code> or <code>color_identity</code>
+column.</p></td>
     </tr>
     </table>
     
@@ -143,22 +144,7 @@ using with <code>link{[dplyr]mutate}</code> and the results of
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>label_guild</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='st'>"U"</span>, <span class='st'>"W"</span>))</div><div class='output co'>#&gt; [[1]]
-#&gt; [1] "Azoruis"
-#&gt; </div><div class='input'><span class='fu'>label_guild</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='st'>"U"</span>))</div><div class='output co'>#&gt; [[1]]
-#&gt; [1] NA
-#&gt; </div><div class='input'><span class='fu'>label_guild</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='st'>"U"</span>), <span class='kw'>inclusive</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [[1]]
-#&gt; [1] "Azorius"
-#&gt; 
-#&gt; [[2]]
-#&gt; [1] "Dimir"
-#&gt; 
-#&gt; [[3]]
-#&gt; [1] "Izzet"
-#&gt; 
-#&gt; [[4]]
-#&gt; [1] "Simic"
-#&gt; </div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>label_guild</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='st'>"U"</span>, <span class='st'>"W"</span>))</div><div class='output co'>#&gt; <span class='error'>Error: Case 2 (`identical(color_code, list()) ~ list("Azorius", "Boros", "Dimir", "Golgari", ...`) must be a two-sided formula, not a list</span></div><div class='input'><span class='fu'>label_guild</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='st'>"U"</span>))</div><div class='output co'>#&gt; <span class='error'>Error: Case 2 (`identical(color_code, list()) ~ list("Azorius", "Boros", "Dimir", "Golgari", ...`) must be a two-sided formula, not a list</span></div><div class='input'><span class='fu'>label_guild</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='st'>"U"</span>), <span class='kw'>inclusive</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='error'>Error: Case 2 (`identical(color_code, list()) ~ list("Azorius", "Boros", "Dimir", "Golgari", ...`) must be a two-sided formula, not a list</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

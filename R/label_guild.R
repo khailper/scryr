@@ -12,8 +12,9 @@
 #' @param color_code list of characters of the card's color/color identity, 
 #' using WUBRG notation. Letters must be capital and in alphabetic order. If 
 #' using with \code{link{[dplyr]mutate}} and the results of 
-#' \code{link{scry_cards}}, use the \code{color} or \code{color_identity} column.
-#' @param inclusive if \{color_code} is just one color, should 
+#' \code{link{scry_cards}}, use the \code{colors} or \code{color_identity} 
+#' column.
+#' @param inclusive if \{color_code} is just one (or no) color, should 
 #' \code{label_guild} return all guilds that contain that color?
 #' 
 #' @rdname label_guild
@@ -38,11 +39,16 @@ label_guild <- function(color_code, inclusive = FALSE){
     TRUE ~ list(NA_character_)
   )
   
-  # labels recycles to length 4, to match longest possible length
-  # if not expecting that, trim to length one
-  if (inclusive & length(color_code) == 1){
+  # labels recycles to length 10, to match longest possible length
+  # if not expecting that, trim to corect length
+  if (inclusive & length(color_code) == 0){
     return(labels)
   }
+  
+  if (inclusive & length(color_code) == 1){
+    return(labels[1:4])
+  }
+  
   labels[1]
 }
 
@@ -51,17 +57,20 @@ label_guild <- function(color_code, inclusive = FALSE){
 #' @noRd
 inclusive_label_guild <- function(color_code){
   dplyr::case_when(
-    # 
+    identical(color_code, list()) ~ 
+      list("Azorius", "Boros", "Dimir", "Golgari", "Gruul", 
+           "Izzet", "Orzhov", "Rakdos", "Selesnya", "Simic"),
+    # padding with NAs to avoid case_when error
     identical(color_code, list("B")) ~ 
-      list("Dimir", "Golgari", "Orzhov", "Rakdos"),
+      list("Dimir", "Golgari", "Orzhov", "Rakdos", NA, NA, NA, NA, NA, NA),
     identical(color_code, list("G")) ~ 
-      list("Golgari", "Gruul", "Selesnya", "Simic"),
+      list("Golgari", "Gruul", "Selesnya", "Simic", NA, NA, NA, NA, NA, NA),
     identical(color_code, list("R")) ~ 
-      list("Boros", "Gruul", "Izzet", "Rakdos"),
+      list("Boros", "Gruul", "Izzet", "Rakdos", NA, NA, NA, NA, NA, NA),
     identical(color_code, list("U")) ~ 
-      list("Azorius", "Dimir", "Izzet", "Simic"),
+      list("Azorius", "Dimir", "Izzet", "Simic", NA, NA, NA, NA, NA, NA),
     identical(color_code, list("W")) ~ 
-      list("Azorius", "Boros", "Orzhov", "Selesnya"),
+      list("Azorius", "Boros", "Orzhov", "Selesnya", NA, NA, NA, NA, NA, NA),
     identical(color_code, list("U", "W")) ~ list("Azoruis"),
     identical(color_code, list("R", "W")) ~ list("Boros"),
     identical(color_code, list("B", "U")) ~ list("Dimir"),

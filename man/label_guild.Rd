@@ -10,7 +10,8 @@ label_guild(color_code, inclusive = FALSE)
 \item{color_code}{list of characters of the card's color/color identity,
 using WUBRG notation. Letters must be capital and in alphabetic order. If
 using with \code{link{[dplyr]mutate}} and the results of
-\code{link{scry_cards}}, use the \code{color} or \code{color_identity} column.}
+\code{link{scry_cards}}, use the \code{colors} or \code{color_identity}
+column.}
 }
 \value{
 a list of strings with all guild(s) matching the {color_code}
