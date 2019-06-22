@@ -34,21 +34,26 @@ label_guild <- function(color_code, inclusive = FALSE, mana_cost = NULL){
 inclusive_label_guild <- function(color_code){
   dplyr::case_when(
     # 
-    identical(color_code, "B") ~ list("Dimir", "Golgari", "Orzhov", "Rakdos"),
-    identical(color_code, "G") ~ list("Golgari", "Gruul", "Simic", "Golgari"),
-    identical(color_code, "R") ~ list("Orzhov", "Dimir", "Rakdos", "Golgari"),
-    identical(color_code, "U") ~ list("Orzhov", "Dimir", "Rakdos", "Golgari"),
-    identical(color_code, "W") ~ list("Orzhov", "Dimir", "Rakdos", "Golgari"),
-    identical(color_code, c("U", "W")) ~ list("Azoruis"),
-    identical(color_code, c("R", "W")) ~ list("Boros"),
-    identical(color_code, c("B", "U")) ~ list("Dimir"),
-    identical(color_code, c("B", "G")) ~ list("Golgari"),
-    identical(color_code, c("G", "R")) ~ list("Gruul"),
-    identical(color_code, c("R", "U")) ~ list("Izzet"),
-    identical(color_code, c("B", "W")) ~ list("Orzhov"),
-    identical(color_code, c("B", "R")) ~ list("Rakdos"),
-    identical(color_code, c("G", "W")) ~ list("Selesnya"),
-    identical(color_code, c("G", "U")) ~ list("Azoruis"),
+    identical(color_code, list("B")) ~ 
+      list("Dimir", "Golgari", "Orzhov", "Rakdos"),
+    identical(color_code, list("G")) ~ 
+      list("Golgari", "Gruul", "Simic", "Golgari"),
+    identical(color_code, list("R")) ~ 
+      list("Orzhov", "Dimir", "Rakdos", "Golgari"),
+    identical(color_code, list("U")) ~ 
+      list("Orzhov", "Dimir", "Rakdos", "Golgari"),
+    identical(color_code, list("W")) ~ 
+      list("Orzhov", "Dimir", "Rakdos", "Golgari"),
+    identical(color_code, list("U", "W")) ~ list("Azoruis"),
+    identical(color_code, list("R", "W")) ~ list("Boros"),
+    identical(color_code, list("B", "U")) ~ list("Dimir"),
+    identical(color_code, list("B", "G")) ~ list("Golgari"),
+    identical(color_code, list("G", "R")) ~ list("Gruul"),
+    identical(color_code, list("R", "U")) ~ list("Izzet"),
+    identical(color_code, list("B", "W")) ~ list("Orzhov"),
+    identical(color_code, list("B", "R")) ~ list("Rakdos"),
+    identical(color_code, list("G", "W")) ~ list("Selesnya"),
+    identical(color_code, list("G", "U")) ~ list("Azoruis"),
     TRUE ~ list(NA_character_)
   )
 }
@@ -56,16 +61,16 @@ inclusive_label_guild <- function(color_code){
 
 exclusive_label_guild <- function(color_code){
   dplyr::case_when(
-    identical(color_code, c("U", "W")) ~ list("Azoruis"),
-    identical(color_code, c("R", "W")) ~ list("Boros"),
-    identical(color_code, c("B", "U")) ~ list("Dimir"),
-    identical(color_code, c("B", "G")) ~ list("Golgari"),
-    identical(color_code, c("G", "R")) ~ list("Gruul"),
-    identical(color_code, c("R", "U")) ~ list("Izzet"),
-    identical(color_code, c("B", "W")) ~ list("Orzhov"),
-    identical(color_code, c("B", "R")) ~ list("Rakdos"),
-    identical(color_code, c("G", "W")) ~ list("Selesnya"),
-    identical(color_code, c("G", "U")) ~ list("Azoruis"),
+    identical(color_code, list("U", "W")) ~ list("Azoruis"),
+    identical(color_code, list("R", "W")) ~ list("Boros"),
+    identical(color_code, list("B", "U")) ~ list("Dimir"),
+    identical(color_code, list("B", "G")) ~ list("Golgari"),
+    identical(color_code, list("G", "R")) ~ list("Gruul"),
+    identical(color_code, list("R", "U")) ~ list("Izzet"),
+    identical(color_code, list("B", "W")) ~ list("Orzhov"),
+    identical(color_code, list("B", "R")) ~ list("Rakdos"),
+    identical(color_code, list("G", "W")) ~ list("Selesnya"),
+    identical(color_code, list("G", "U")) ~ list("Azoruis"),
     TRUE ~ list(NA_character_)
   )
 }
