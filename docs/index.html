@@ -99,13 +99,12 @@
 <a href="#scry_sets" class="anchor"></a>scry_sets()</h2>
 <p><code>scry_sets</code> can either return a tibble containing the information for all sets (the default), or <code><a href="reference/scry_set.html">scry_sets("set's three letter")</a></code> to get just the information for that set.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw"><a href="reference/scry_set.html">scry_sets</a></span>(<span class="st">"war"</span>)</a></code></pre></div>
-<pre><code>## # A tibble: 1 x 17
-##   object id    code  mtgo_code tcgplayer_id name  uri   scryfall_uri
-##   &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;            &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;       
-## 1 set    ee04~ war   war               2418 War ~ http~ https://scr~
-## # ... with 9 more variables: search_uri &lt;chr&gt;, released_at &lt;chr&gt;,
-## #   set_type &lt;chr&gt;, card_count &lt;int&gt;, digital &lt;lgl&gt;, foil_only &lt;lgl&gt;,
-## #   block_code &lt;chr&gt;, block &lt;chr&gt;, icon_svg_uri &lt;chr&gt;</code></pre>
+<pre><code>## # A tibble: 1 x 11
+##   object code  mtgo_code name  released_at set_type card_count digital
+##   &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;         &lt;int&gt; &lt;lgl&gt;  
+## 1 set    war   war       War ~ 2019-05-03  expansi~        311 FALSE  
+## # ... with 3 more variables: foil_only &lt;lgl&gt;, block_code &lt;chr&gt;,
+## #   block &lt;chr&gt;</code></pre>
 </div>
 <div id="scry_cards" class="section level2">
 <h2 class="hasAnchor">
