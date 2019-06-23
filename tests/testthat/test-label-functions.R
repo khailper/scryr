@@ -1,7 +1,7 @@
-test_that("label_guild and label_tri check type"){
+test_that("label_guild and label_tri check type",{
   expect_error(label_guild(c("B", "G")))
   expect_error(label_tri(c("B", "G", "U")))
-}
+})
 
 test_that("label_guild doesn't assign guilds to cards without exactly 2 colors", {
   expect_true(is.na(label_guild(list("B"))))
@@ -55,11 +55,11 @@ test_that("label_tri corectly labels a 3 color card", {
 test_that("label_tri(inclusive = TRUE) corectly labels a 1 or 2 color card", {
   expect_equal(label_tri(list("B"), 
                          inclusive = TRUE), 
-               list("Abzan", "Esper", "Grixis", "Jund", "Mardu", "Sultai"))
+               list("Esper", "Grixis", "Jund", "Abzan", "Mardu", "Sultai"))
   expect_equal(label_tri(list("B"), 
                          inclusive = TRUE, 
                          shard_or_wedge = "either"), 
-               list("Abzan", "Esper", "Grixis", "Jund", "Mardu", "Sultai"))
+               list("Esper", "Grixis", "Jund", "Abzan", "Mardu", "Sultai"))
   expect_equal(label_tri(list("B"), 
                          inclusive = TRUE, 
                          shard_or_wedge = "shard"), 
@@ -70,11 +70,11 @@ test_that("label_tri(inclusive = TRUE) corectly labels a 1 or 2 color card", {
                list("Abzan", "Mardu", "Sultai"))
   expect_equal(label_tri(list("B", "G"), 
                          inclusive = TRUE), 
-               list("Abzan", "Jund", "Sultai"))
+               list("Jund", "Abzan", "Sultai"))
   expect_equal(label_tri(list("B", "G"), 
                          inclusive = TRUE, 
                          shard_or_wedge = "either"), 
-               list("Abzan", "Jund", "Sultai"))
+               list("Jund", "Abzan", "Sultai"))
   expect_equal(label_tri(list("B", "G"), 
                          inclusive = TRUE, 
                          shard_or_wedge = "shard"), 
