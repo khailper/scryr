@@ -73,16 +73,27 @@ label_tri <- function(color_code,
 #' @noRd
 exclusive_either_label_tri <- function(color_code){
   dplyr::case_when(
-    identical(color_code, list("G", "U", "W")) ~ list("Bant"),
-    identical(color_code, list("B", "U", "W")) ~ list("Esper"),
-    identical(color_code, list("B", "R", "U")) ~ list("Grixis"),
-    identical(color_code, list("B", "G", "R")) ~ list("Jund"),
-    identical(color_code, list("G", "R", "W")) ~ list("Naya"),
-    identical(color_code, list("B", "G", "W")) ~ list("Abzan"),
-    identical(color_code, list("R", "U", "W")) ~ list("Jeskai"),
-    identical(color_code, list("B", "R", "W")) ~ list("Mardu"),
-    identical(color_code, list("B", "G", "U")) ~ list("Sultai"),
-    identical(color_code, list("G", "R", "U")) ~ list("Temur"),
+    # padding with NAs to avoid case_when error, will trim them later
+    identical(color_code, list("G", "U", "W")) ~ list("Bant", NA, NA, NA, NA, 
+                                                      NA, NA, NA, NA, NA),
+    identical(color_code, list("B", "U", "W")) ~ list("Esper", NA, NA, NA, NA, 
+                                                      NA, NA, NA, NA, NA),
+    identical(color_code, list("B", "R", "U")) ~ list("Grixis", NA, NA, NA, NA, 
+                                                      NA, NA, NA, NA, NA),
+    identical(color_code, list("B", "G", "R")) ~ list("Jund", NA, NA, NA, NA, 
+                                                      NA, NA, NA, NA, NA),
+    identical(color_code, list("G", "R", "W")) ~ list("Naya", NA, NA, NA, NA, 
+                                                      NA, NA, NA, NA, NA),
+    identical(color_code, list("B", "G", "W")) ~ list("Abzan", NA, NA, NA, NA, 
+                                                      NA, NA, NA, NA, NA),
+    identical(color_code, list("R", "U", "W")) ~ list("Jeskai", NA, NA, NA, NA, 
+                                                      NA, NA, NA, NA, NA),
+    identical(color_code, list("B", "R", "W")) ~ list("Mardu", NA, NA, NA, NA, 
+                                                      NA, NA, NA, NA, NA),
+    identical(color_code, list("B", "G", "U")) ~ list("Sultai", NA, NA, NA, NA, 
+                                                      NA, NA, NA, NA, NA),
+    identical(color_code, list("G", "R", "U")) ~ list("Temur", NA, NA, NA, NA, 
+                                                      NA, NA, NA, NA, NA),
     TRUE ~ list(NA_character_)
   )
 }
@@ -90,11 +101,17 @@ exclusive_either_label_tri <- function(color_code){
 #' @noRd
 exclusive_shard_label_tri <- function(color_code){
   dplyr::case_when(
-    identical(color_code, list("G", "U", "W")) ~ list("Bant"),
-    identical(color_code, list("B", "U", "W")) ~ list("Esper"),
-    identical(color_code, list("B", "R", "U")) ~ list("Grixis"),
-    identical(color_code, list("B", "G", "R")) ~ list("Jund"),
-    identical(color_code, list("G", "R", "W")) ~ list("Naya"),
+    # padding with NAs to avoid case_when error, will trim them later
+    identical(color_code, list("G", "U", "W")) ~ list("Bant", NA, NA, NA, NA, 
+                                                      NA, NA, NA, NA, NA),
+    identical(color_code, list("B", "U", "W")) ~ list("Esper", NA, NA, NA, NA, 
+                                                      NA, NA, NA, NA, NA),
+    identical(color_code, list("B", "R", "U")) ~ list("Grixis", NA, NA, NA, NA, 
+                                                      NA, NA, NA, NA, NA),
+    identical(color_code, list("B", "G", "R")) ~ list("Jund", NA, NA, NA, NA, 
+                                                      NA, NA, NA, NA, NA),
+    identical(color_code, list("G", "R", "W")) ~ list("Naya", NA, NA, NA, NA, 
+                                                      NA, NA, NA, NA, NA),
     TRUE ~ list(NA_character_)
   )
 }
@@ -102,11 +119,17 @@ exclusive_shard_label_tri <- function(color_code){
 #' @noRd
 exclusive_wedge_label_tri <- function(color_code){
   dplyr::case_when(
-    identical(color_code, list("B", "G", "W")) ~ list("Abzan"),
-    identical(color_code, list("R", "U", "W")) ~ list("Jeskai"),
-    identical(color_code, list("B", "R", "W")) ~ list("Mardu"),
-    identical(color_code, list("B", "G", "U")) ~ list("Sultai"),
-    identical(color_code, list("G", "R", "U")) ~ list("Temur"),
+    # padding with NAs to avoid case_when error, will trim them later
+    identical(color_code, list("B", "G", "W")) ~ list("Abzan", NA, NA, NA, NA, 
+                                                      NA, NA, NA, NA, NA),
+    identical(color_code, list("R", "U", "W")) ~ list("Jeskai", NA, NA, NA, NA, 
+                                                      NA, NA, NA, NA, NA),
+    identical(color_code, list("B", "R", "W")) ~ list("Mardu", NA, NA, NA, NA, 
+                                                      NA, NA, NA, NA, NA),
+    identical(color_code, list("B", "G", "U")) ~ list("Sultai", NA, NA, NA, NA, 
+                                                      NA, NA, NA, NA, NA),
+    identical(color_code, list("G", "R", "U")) ~ list("Temur", NA, NA, NA, NA, 
+                                                      NA, NA, NA, NA, NA),
     TRUE ~ list(NA_character_)
   )
 }
