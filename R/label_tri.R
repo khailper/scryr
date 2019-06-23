@@ -45,11 +45,11 @@ label_tri <- function(color_code,
       exclusive_shard_label_tri(color_code),
     length(color_code) ==  3 & shard_or_wedge == "wedge" ~ 
       exclusive_wedge_label_tri(color_code),
-    inclusive & length(color_code) <  3 & shard_or_wedge == "either" ~ 
+    inclusive & length(color_code) <  3 & shard_or_wedge == "either" ~
       inclusive_either_label_tri(color_code),
-    inclusive & length(color_code) <  3 & shard_or_wedge == "shard" ~ 
+    inclusive & length(color_code) <  3 & shard_or_wedge == "shard" ~
       inclusive_shard_label_tri(color_code),
-    inclusive & length(color_code) <  3 & shard_or_wedge == "wedge" ~ 
+    inclusive & length(color_code) <  3 & shard_or_wedge == "wedge" ~
       inclusive_wedge_label_tri(color_code),
     TRUE ~ list(NA_character_)
   )
@@ -57,43 +57,12 @@ label_tri <- function(color_code,
   
   # labels recycles to length 10, to match longest possible length
   # if not expecting that, trim to corect length
-  if (inclusive & length(color_code) == 0 & shard_or_wedge == "either"){
-    return(labels)
-  }
-  if (inclusive & length(color_code) == 0 & shard_or_wedge == "shard"){
-    return(labels[1:5])
+  if(length(color_code) > 3 | (!inclusive & length(color_code != 3))){
+    return(labels[1])
   }
   
-  if(inclusive & length(color_code) == 0 & shard_or_wedge == "wedge"){
-      labels[1:5]
-  }
+  labels[!is.na(labels)]
   
-  if(inclusive & length(color_code) == 1 & shard_or_wedge == "either"){
-    return(labels[1:6])
-  }
-  
-  if(inclusive & length(color_code) == 1 & shard_or_wedge == "shard"){
-    return(labels[1:3])
-  }
-  
-  if(inclusive & length(color_code) == 1 & shard_or_wedge == "wedge"){
-    return(labels[1:3])
-  }
-  
-  if(inclusive & length(color_code) == 2 & shard_or_wedge == "either"){
-    return(labels[1:3])
-  }
-  
-  # need to fix these last two to account for difference between enemy and ally
-  if (inclusive & length(color_code) == 2 & shard_or_wedge == "shard"){
-    return(labels[1:2])
-  }
-  
-  if(inclusive & length(color_code) == 2 & shard_or_wedge == "wedge"){
-    return(labels[1:2])
-  }
-  
-  labels[1]
 
 }
 
@@ -109,7 +78,7 @@ exclusive_either_label_tri <- function(color_code){
     identical(color_code, list("G", "R", "W")) ~ list("Naya"),
     identical(color_code, list("B", "G", "W")) ~ list("Abzan"),
     identical(color_code, list("R", "U", "W")) ~ list("Jeskai"),
-    identical(color_code, list("B", "G", "R")) ~ list("Mardu"),
+    identical(color_code, list("B", "R", "W")) ~ list("Mardu"),
     identical(color_code, list("B", "G", "U")) ~ list("Sultai"),
     identical(color_code, list("G", "R", "U")) ~ list("Temur"),
     TRUE ~ list(NA_character_)
@@ -133,7 +102,7 @@ exclusive_wedge_label_tri <- function(color_code){
   dplyr::case_when(
     identical(color_code, list("B", "G", "W")) ~ list("Abzan"),
     identical(color_code, list("R", "U", "W")) ~ list("Jeskai"),
-    identical(color_code, list("B", "G", "R")) ~ list("Mardu"),
+    identical(color_code, list("B", "R", "W")) ~ list("Mardu"),
     identical(color_code, list("B", "G", "U")) ~ list("Sultai"),
     identical(color_code, list("G", "R", "U")) ~ list("Temur"),
     TRUE ~ list(NA_character_)
