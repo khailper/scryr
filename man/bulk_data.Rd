@@ -7,7 +7,13 @@
 \usage{
 bulk_rulings()
 
-bulk_default_cards()
+bulk_default_cards(include_ids = FALSE, include_uris = FALSE)
+}
+\arguments{
+\item{include_ids}{Should results include ID variables (e.g. Oracle ID)}
+
+\item{include_uris}{Should results include URI variables (e.g. the URL for
+the card on Scryfall)}
 }
 \value{
 \code{bulk_rulings} returns a \link[tibble:tibble-package]{tibble} of all
