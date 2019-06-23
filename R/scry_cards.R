@@ -111,11 +111,15 @@ scry_cards <- function(query,
   }
   
   if (!include_ids){
-    search_results <- dplyr::select(search_results, -dplyr::ends_with("id"))
+    search_results <- dplyr::select(search_results, 
+                                    -dplyr::ends_with("id"),
+                                    -dplyr::ends_with("ids"))
   }
   
   if (!include_uris){
-    search_results <- dplyr::select(search_results, -dplyr::contains("uri"))
+    search_results <- dplyr::select(search_results, 
+                                    -dplyr::contains("uri"),
+                                    -dplyr::ends_with("uris"))
   }
   
   tibble::as_tibble(search_results)
