@@ -60,7 +60,7 @@ label_tri <- function(color_code,
   
   # labels recycles to length 10, to match longest possible length
   # if not expecting that, trim to corect length
-  if(length(color_code) > 3 | (!inclusive & length(color_code) != 3)){
+  if(length(color_code) > 3 | !inclusive){
     return(labels[1])
   }
   
