@@ -57,19 +57,43 @@ label_tri <- function(color_code,
   
   # labels recycles to length 10, to match longest possible length
   # if not expecting that, trim to corect length
-  dplyr::case_when(
-    inclusive & length(color_code) == 0 & shard_or_wedge == "either" ~labels,
-    inclusive & length(color_code) == 0 & shard_or_wedge == "shard" ~labels[1:5],
-    inclusive & length(color_code) == 0 & shard_or_wedge == "wedge" ~labels[1:5],    
-    inclusive & length(color_code) == 1 & shard_or_wedge == "either" ~labels[1:6],
-    inclusive & length(color_code) == 1 & shard_or_wedge == "shard" ~labels[1:3],
-    inclusive & length(color_code) == 1 & shard_or_wedge == "wedge" ~labels[1:3],
-    inclusive & length(color_code) == 2 & shard_or_wedge == "either" ~labels[1:3],
-    # need to fix these last three to account for difference between enemy and ally
-    inclusive & length(color_code) == 2 & shard_or_wedge == "shard" ~labels[1:2],
-    inclusive & length(color_code) == 2 & shard_or_wedge == "wedge" ~labels[1:2],
-    TRUE ~ labels[1]
-  )
+  if (inclusive & length(color_code) == 0 & shard_or_wedge == "either"){
+    return(labels)
+  }
+  if (inclusive & length(color_code) == 0 & shard_or_wedge == "shard"){
+    return(labels[1:5])
+  }
+  
+  if(inclusive & length(color_code) == 0 & shard_or_wedge == "wedge"){
+      labels[1:5]
+  }
+  
+  if(inclusive & length(color_code) == 1 & shard_or_wedge == "either"){
+    return(labels[1:6])
+  }
+  
+  if(inclusive & length(color_code) == 1 & shard_or_wedge == "shard"){
+    return(labels[1:3])
+  }
+  
+  if(inclusive & length(color_code) == 1 & shard_or_wedge == "wedge"){
+    return(labels[1:3])
+  }
+  
+  if(inclusive & length(color_code) == 2 & shard_or_wedge == "either"){
+    return(labels[1:3])
+  }
+  
+  # need to fix these last two to account for difference between enemy and ally
+  if (inclusive & length(color_code) == 2 & shard_or_wedge == "shard"){
+    return(labels[1:2])
+  }
+  
+  if(inclusive & length(color_code) == 2 & shard_or_wedge == "wedge"){
+    return(labels[1:2])
+  }
+  
+  labels[1]
 
 }
 
