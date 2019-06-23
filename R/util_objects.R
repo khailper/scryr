@@ -1,6 +1,6 @@
 #' all of these objects are stored as internal data in R/sysdata.rda
 #' this file exists for documentation and in case they need to be reproduced or
-#' updated
+#' updated with usethis:use_data(..., internal = TRUE, overwrite = TRUE)
 #' set user agent per httr vignette
 #' @importFrom httr user_agent
 #' @noRd
@@ -13,6 +13,7 @@
 # scryr_set_url <- paste0(scryr_base_url, "sets/")
 # scryr_catalog_url <- paste0(scryr_base_url, "catalog/")
 # scryr_card_search_url <- paste0(scryr_base_url, "cards/search?q=")
+# bulk_data_url <- "https://archive.scryfall.com/json/scryfall-"
 #'
 #'list of available catalogs so scry_catalog() can throw error
 #' source: https://scryfall.com/docs/api/catalogs
