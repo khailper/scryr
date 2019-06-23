@@ -37,6 +37,9 @@ label_tri <- function(color_code,
   if (!(shard_or_wedge[1] %in% c("either", "shard", "wedge"))){
     rlang::abort("shard_or_wedge needs to be 'either', 'shard', or 'wedge'.")
   }
+  
+  shard_or_wedge <- shard_or_wedge[1]
+  
   labels <- dplyr::case_when(
     # if length == 3, doesn't matter what inclusive is
     length(color_code) ==  3 & shard_or_wedge == "either" ~ 
@@ -57,13 +60,12 @@ label_tri <- function(color_code,
   
   # labels recycles to length 10, to match longest possible length
   # if not expecting that, trim to corect length
-  if(length(color_code) > 3 | (!inclusive & length(color_code != 3))){
+  if(length(color_code) > 3 | (!inclusive & length(color_code) != 3)){
     return(labels[1])
   }
   
   labels[!is.na(labels)]
   
-
 }
 
 #' functions for using match color to shard/wedge. Pulled out of label_tri to 
