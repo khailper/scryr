@@ -45,6 +45,18 @@
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="articles/using_label_functions.html">Using label functions</a>
+    </li>
+  </ul>
+</li>
 <li>
   <a href="news/index.html">Changelog</a>
 </li>
@@ -112,36 +124,35 @@
 <p><code><a href="reference/scry_cards.html">scry_cards()</a></code> returns a tibble containing cards matching the seach in the <code>query</code>arguement. So, if we instead of wanting the information about <strong>War of the Spark</strong>, we wanted all cards in that set:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">war_cards &lt;-<span class="st"> </span><span class="kw"><a href="reference/scry_cards.html">scry_cards</a></span>(<span class="st">"s:war"</span>)</a>
 <a class="sourceLine" id="cb7-2" title="2">war_cards</a></code></pre></div>
-<pre><code>## # A tibble: 265 x 57
-##    object multiverse_ids name  lang  released_at layout highres_image
-##    &lt;chr&gt;  &lt;list&gt;         &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;  &lt;lgl&gt;        
-##  1 card   &lt;int [1]&gt;      Ahn-~ en    2019-05-03  normal TRUE         
-##  2 card   &lt;int [1]&gt;      Aid ~ en    2019-05-03  normal TRUE         
-##  3 card   &lt;int [1]&gt;      Ajan~ en    2019-05-03  normal TRUE         
-##  4 card   &lt;int [1]&gt;      Ajan~ en    2019-05-03  normal TRUE         
-##  5 card   &lt;int [1]&gt;      Angr~ en    2019-05-03  normal TRUE         
-##  6 card   &lt;int [1]&gt;      Angr~ en    2019-05-03  normal TRUE         
-##  7 card   &lt;int [1]&gt;      Arbo~ en    2019-05-03  normal TRUE         
-##  8 card   &lt;int [1]&gt;      Arli~ en    2019-05-03  normal TRUE         
-##  9 card   &lt;int [1]&gt;      Arli~ en    2019-05-03  normal TRUE         
-## 10 card   &lt;int [1]&gt;      Ashi~ en    2019-05-03  normal TRUE         
-## # ... with 255 more rows, and 50 more variables: mana_cost &lt;chr&gt;,
-## #   cmc &lt;dbl&gt;, type_line &lt;chr&gt;, oracle_text &lt;chr&gt;, power &lt;chr&gt;,
-## #   toughness &lt;chr&gt;, colors &lt;list&gt;, color_identity &lt;list&gt;, games &lt;list&gt;,
-## #   reserved &lt;lgl&gt;, foil &lt;lgl&gt;, nonfoil &lt;lgl&gt;, oversized &lt;lgl&gt;,
-## #   promo &lt;lgl&gt;, reprint &lt;lgl&gt;, variation &lt;lgl&gt;, set &lt;chr&gt;,
-## #   set_name &lt;chr&gt;, set_type &lt;chr&gt;, collector_number &lt;chr&gt;, digital &lt;lgl&gt;,
-## #   rarity &lt;chr&gt;, flavor_text &lt;chr&gt;, artist &lt;chr&gt;, border_color &lt;chr&gt;,
-## #   frame &lt;chr&gt;, full_art &lt;lgl&gt;, textless &lt;lgl&gt;, booster &lt;lgl&gt;,
-## #   story_spotlight &lt;lgl&gt;, edhrec_rank &lt;int&gt;, loyalty &lt;chr&gt;,
-## #   all_parts &lt;list&gt;, frame_effect &lt;chr&gt;, promo_types &lt;list&gt;,
-## #   legalities.standard &lt;chr&gt;, legalities.future &lt;chr&gt;,
-## #   legalities.frontier &lt;chr&gt;, legalities.modern &lt;chr&gt;,
-## #   legalities.legacy &lt;chr&gt;, legalities.pauper &lt;chr&gt;,
-## #   legalities.vintage &lt;chr&gt;, legalities.penny &lt;chr&gt;,
-## #   legalities.commander &lt;chr&gt;, legalities.duel &lt;chr&gt;,
-## #   legalities.oldschool &lt;chr&gt;, prices.usd &lt;chr&gt;, prices.usd_foil &lt;chr&gt;,
-## #   prices.eur &lt;chr&gt;, prices.tix &lt;chr&gt;</code></pre>
+<pre><code>## # A tibble: 265 x 56
+##    object name  lang  released_at layout highres_image mana_cost   cmc
+##    &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;  &lt;lgl&gt;         &lt;chr&gt;     &lt;dbl&gt;
+##  1 card   Ahn-~ en    2019-05-03  normal TRUE          {2}{R}        3
+##  2 card   Aid ~ en    2019-05-03  normal TRUE          {1}{B}        2
+##  3 card   Ajan~ en    2019-05-03  normal TRUE          {1}{W}        2
+##  4 card   Ajan~ en    2019-05-03  normal TRUE          {2}{G}{W}     4
+##  5 card   Angr~ en    2019-05-03  normal TRUE          {2}{B/R}~     4
+##  6 card   Angr~ en    2019-05-03  normal TRUE          {B}{R}        2
+##  7 card   Arbo~ en    2019-05-03  normal TRUE          {G}           1
+##  8 card   Arli~ en    2019-05-03  normal TRUE          {2}{G}        3
+##  9 card   Arli~ en    2019-05-03  normal TRUE          {4}{G}{G}     6
+## 10 card   Ashi~ en    2019-05-03  normal TRUE          {1}{U/B}~     3
+## # ... with 255 more rows, and 48 more variables: type_line &lt;chr&gt;,
+## #   oracle_text &lt;chr&gt;, power &lt;chr&gt;, toughness &lt;chr&gt;, colors &lt;list&gt;,
+## #   color_identity &lt;list&gt;, games &lt;list&gt;, reserved &lt;lgl&gt;, foil &lt;lgl&gt;,
+## #   nonfoil &lt;lgl&gt;, oversized &lt;lgl&gt;, promo &lt;lgl&gt;, reprint &lt;lgl&gt;,
+## #   variation &lt;lgl&gt;, set &lt;chr&gt;, set_name &lt;chr&gt;, set_type &lt;chr&gt;,
+## #   collector_number &lt;chr&gt;, digital &lt;lgl&gt;, rarity &lt;chr&gt;,
+## #   flavor_text &lt;chr&gt;, artist &lt;chr&gt;, border_color &lt;chr&gt;, frame &lt;chr&gt;,
+## #   full_art &lt;lgl&gt;, textless &lt;lgl&gt;, booster &lt;lgl&gt;, story_spotlight &lt;lgl&gt;,
+## #   edhrec_rank &lt;int&gt;, loyalty &lt;chr&gt;, all_parts &lt;list&gt;,
+## #   frame_effect &lt;chr&gt;, promo_types &lt;list&gt;, legalities.standard &lt;chr&gt;,
+## #   legalities.future &lt;chr&gt;, legalities.frontier &lt;chr&gt;,
+## #   legalities.modern &lt;chr&gt;, legalities.legacy &lt;chr&gt;,
+## #   legalities.pauper &lt;chr&gt;, legalities.vintage &lt;chr&gt;,
+## #   legalities.penny &lt;chr&gt;, legalities.commander &lt;chr&gt;,
+## #   legalities.duel &lt;chr&gt;, legalities.oldschool &lt;chr&gt;, prices.usd &lt;chr&gt;,
+## #   prices.usd_foil &lt;chr&gt;, prices.eur &lt;chr&gt;, prices.tix &lt;chr&gt;</code></pre>
 <p><code>scry_cards</code> also supports more complex searches (the query syntax is available at <a href="https://scryfall.com/docs/syntax">https://scryfall.com/docs/syntax</a>):</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="co"># all mono-colored creatures in War of the Spark"</span></a>
 <a class="sourceLine" id="cb9-2" title="2"><span class="kw"><a href="reference/scry_cards.html">scry_cards</a></span>(<span class="st">"set:war t:'creature' c:1"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
