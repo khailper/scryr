@@ -1,0 +1,21 @@
+---
+title: "Using label functions"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{using_label_functions}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(scryr)
+library(tidyverse)
+library(gganimate)
+```
