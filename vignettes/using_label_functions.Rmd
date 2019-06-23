@@ -19,3 +19,32 @@ library(scryr)
 library(tidyverse)
 library(gganimate)
 ```
+
+Let's use `scry_cards` and `label_guilds` to explore the mana curves of each of 
+the draft archetypes in *Modern Horizons*. First, let's find all of the common 
+and uncommon cards that either are creatures or make tokens.
+```{r scry_data}
+# Card Search API syntax guide at https://scryfall.com/docs/syntax
+creatures <- scry_cards("t:creature s:mh1 r<=u")
+token_makers <- scry_cards("o:token -t:creature s:mh1 r<=u -'generous gift'")
+
+cards <- bind_rows(creatures, token_makers)
+
+cards %>% 
+  select(name, mana_cost, cmc, colors) %>% 
+  head()
+```
+
+Now we can use `label_guild` to assign each card to the color pair(s) that can 
+use it (we're going to completely ignore the fact that some cards, like
+[Throatseeker](https://scryfall.com/card/mh1/110/throatseeker), are clearly 
+better in some archetypes than others). By default, `label_guild` requires an
+exact match, so [Alpine Guide](https://scryfall.com/card/mh1/117/alpine-guide) 
+would return `NA`. We can use `inclusive = TRUE` to instead get 
+`list("Boros", "Gruul", "Izzet", "Rakdos")`.
+
+```{r add_guild}
+cards_with_guilds <- cards %>% 
+  mutate(color_pair = label_guild(colors, inclusive = TRUE))
+```
+
