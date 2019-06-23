@@ -34,7 +34,7 @@ label_guild <- function(color_code, inclusive = FALSE){
   labels <- dplyr::case_when(
     # if length == 2, doesn't matter what inclusive is
     length(color_code) ==  2 ~ exclusive_label_guild(color_code),
-    inclusive & length(color_code) == 1 ~ 
+    inclusive & length(color_code) < 2 ~ 
       inclusive_label_guild(color_code),
     TRUE ~ list(NA_character_)
   )
@@ -60,7 +60,7 @@ inclusive_label_guild <- function(color_code){
     identical(color_code, list()) ~ 
       list("Azorius", "Boros", "Dimir", "Golgari", "Gruul", 
            "Izzet", "Orzhov", "Rakdos", "Selesnya", "Simic"),
-    # padding with NAs to avoid case_when error
+    # padding with NAs to avoid case_when error, will trim them later
     identical(color_code, list("B")) ~ 
       list("Dimir", "Golgari", "Orzhov", "Rakdos", NA, NA, NA, NA, NA, NA),
     identical(color_code, list("G")) ~ 
@@ -71,16 +71,6 @@ inclusive_label_guild <- function(color_code){
       list("Azorius", "Dimir", "Izzet", "Simic", NA, NA, NA, NA, NA, NA),
     identical(color_code, list("W")) ~ 
       list("Azorius", "Boros", "Orzhov", "Selesnya", NA, NA, NA, NA, NA, NA),
-    identical(color_code, list("U", "W")) ~ list("Azoruis"),
-    identical(color_code, list("R", "W")) ~ list("Boros"),
-    identical(color_code, list("B", "U")) ~ list("Dimir"),
-    identical(color_code, list("B", "G")) ~ list("Golgari"),
-    identical(color_code, list("G", "R")) ~ list("Gruul"),
-    identical(color_code, list("R", "U")) ~ list("Izzet"),
-    identical(color_code, list("B", "W")) ~ list("Orzhov"),
-    identical(color_code, list("B", "R")) ~ list("Rakdos"),
-    identical(color_code, list("G", "W")) ~ list("Selesnya"),
-    identical(color_code, list("G", "U")) ~ list("Azoruis"),
     TRUE ~ list(NA_character_)
   )
 }
