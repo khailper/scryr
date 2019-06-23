@@ -1,11 +1,11 @@
-#' @title Assign guild identity based on color/color identity
+#' @title Assign shard and/or wedge based on color/color identity
 #' 
-#' @description Given a card's color (or color identity), return the Ravinca 
-#' guild assoicated with the card. By default, \code{label_guild} requires the 
-#' card to be both of the guild's colors, but if \code{inclusive = TRUE}, 
-#' mono-color cards are labeled with all guilds they could belong to. NOTE: 
-#' cards with hybrid costs are treated as belonging to both colors, as though 
-#' they were gold cards.
+#' @description Given a card's color (or color identity), return the Alara 
+#' and/or Tarkir wedge assoicated with the card. By default, \code{label_tri} 
+#' requires the card to be both all the group's colors, but if 
+#' \code{inclusive = TRUE}, cards with less than three colors are labeled with 
+#' all groups they could belong to. NOTE: cards with hybrid costs are treated 
+#' as belonging to both colors, as though they were gold cards.
 #' 
 #' @concept label
 #' 
@@ -14,18 +14,21 @@
 #' using with \code{link{[dplyr]mutate}} and the results of 
 #' \code{link{scry_cards}}, use the \code{colors} or \code{color_identity} 
 #' column.
-#' @param inclusive if \{color_code} is just one color, should 
-#' \code{label_guild} return all guilds that contain that color?
-#' @param shard_or_wedge
+#' @param inclusive if \code{color_code} is just one color, should 
+#' \code{label_tri} return all groups that contain that color?
+#' @param shard_or_wedge Should \code{label_tri} match based on shards and 
+#' wedges ("either"), just shards ("shard"), or just wedges ("wedge")?
 #' 
-#' @rdname label_guild
+#' @rdname label_tri
 #' 
-#' @return a list of strings with all guild(s) matching the \{color_code}
+#' @return a list of strings with all group(s) matching the \code{color_code}
 #' 
 #' @examples 
-#' label_guild(list("U", "W"))
-#' label_guild(list("U"))
-#' label_guild(list("U"), inclusive = TRUE)
+#' label_tri(list("B", "U", "W"))
+#' label_tri(list("B", "U", "W"), shard_or_wedge = "shard")
+#' label_tri(list("B", "U", "W"), shard_or_wedge = "wedge")
+#' label_tri(list("U"))
+#' label_tri(list("U"), inclusive = TRUE)
 #'@export
 label_tri <- function(color_code, 
                       inclusive = FALSE, 

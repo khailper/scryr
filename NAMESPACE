@@ -2,6 +2,7 @@
 
 export("%>%")
 export(label_guild)
+export(label_tri)
 export(scry_cards)
 export(scry_catalog)
 export(scry_sets)
