@@ -10,7 +10,9 @@
 #' @rdname bulk_data
 #' @return \code{bulk_rulings} returns a [tibble][tibble::tibble-package] of all
 #' rulings as of the latest update. \code{oracle-id} column refers to the card
-#' associate with the ruling
+#' associate with the ruling. The \code{bulk_*_cards} functions return a 
+#' [tibble][tibble::tibble-package] with all relevent cards as of the latest 
+#' update.
 #' 
 #' @export
 bulk_rulings <- function(){
@@ -28,7 +30,9 @@ bulk_rulings <- function(){
   tibble::as_tibble(jsonlite::fromJSON(rawToChar(res$content)))
 }
 
-#' @param include_ids Should results include ID variables (e.g. Oracle ID)
+#' @param include_ids Should results include ID variables (e.g. MTGO ID). Note 
+#' that this includes Oracle ID, which may make it hard to work with 
+#' \code{bulk_oracle_cards} if you're planning on using that as a unique ID.
 #' @param include_uris Should results include URI variables (e.g. the URL for
 #' the card on Scryfall)
 #' @concept bulk_data

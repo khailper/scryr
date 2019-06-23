@@ -3,14 +3,22 @@
 \name{bulk_rulings}
 \alias{bulk_rulings}
 \alias{bulk_default_cards}
+\alias{bulk_oracle_cards}
+\alias{bulk_all_cards}
 \title{Fetch Scryfall Bulk Data}
 \usage{
 bulk_rulings()
 
 bulk_default_cards(include_ids = FALSE, include_uris = FALSE)
+
+bulk_oracle_cards(include_ids = FALSE, include_uris = FALSE)
+
+bulk_all_cards(include_ids = FALSE, include_uris = FALSE)
 }
 \arguments{
-\item{include_ids}{Should results include ID variables (e.g. Oracle ID)}
+\item{include_ids}{Should results include ID variables (e.g. MTGO ID). Note
+that this includes Oracle ID, which may make it hard to work with
+\code{bulk_oracle_cards} if you're planning on using that as a unique ID.}
 
 \item{include_uris}{Should results include URI variables (e.g. the URL for
 the card on Scryfall)}
@@ -18,7 +26,9 @@ the card on Scryfall)}
 \value{
 \code{bulk_rulings} returns a \link[tibble:tibble-package]{tibble} of all
 rulings as of the latest update. \code{oracle-id} column refers to the card
-associate with the ruling
+associate with the ruling. The \code{bulk_*_cards} functions return a
+\link[tibble:tibble-package]{tibble} with all relevent cards as of the latest
+update.
 }
 \description{
 Scryfall releases bulk data files for cards and rulings that are
