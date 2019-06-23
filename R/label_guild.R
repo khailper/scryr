@@ -1,4 +1,4 @@
-#' @title Assign guild identity based on color/color identity
+#' @title Assign guild based on color/color identity
 #' 
 #' @description Given a card's color (or color identity), return the Ravinca 
 #' guild assoicated with the card. By default, \code{label_guild} requires the 
@@ -14,7 +14,7 @@
 #' using with \code{link{[dplyr]mutate}} and the results of 
 #' \code{link{scry_cards}}, use the \code{colors} or \code{color_identity} 
 #' column.
-#' @param inclusive if \{color_code} is just one (or no) color, should 
+#' @param inclusive if \code{color_code} is just one (or no) color, should 
 #' \code{label_guild} return all guilds that contain that color?
 #' 
 #' @rdname label_guild

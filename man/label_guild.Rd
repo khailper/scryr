@@ -2,7 +2,7 @@
 % Please edit documentation in R/label_guild.R
 \name{label_guild}
 \alias{label_guild}
-\title{Assign guild identity based on color/color identity}
+\title{Assign guild based on color/color identity}
 \usage{
 label_guild(color_code, inclusive = FALSE)
 }
@@ -12,6 +12,9 @@ using WUBRG notation. Letters must be capital and in alphabetic order. If
 using with \code{link{[dplyr]mutate}} and the results of
 \code{link{scry_cards}}, use the \code{colors} or \code{color_identity}
 column.}
+
+\item{inclusive}{if \code{color_code} is just one (or no) color, should
+\code{label_guild} return all guilds that contain that color?}
 }
 \value{
 a list of strings with all guild(s) matching the {color_code}
