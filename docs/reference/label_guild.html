@@ -68,7 +68,7 @@ they were gold cards." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">scryr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0.9000</span>
       </span>
     </div>
 
@@ -135,47 +135,43 @@ they were gold cards.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>label_guild</span>(<span class='no'>color_code</span>, <span class='kw'>inclusive</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>label_guild</span>(<span class='no'>color_code</span>, <span class='kw'>inclusive</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>convert_to_list</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>color_code</th>
-      <td><p>list of characters of the card's color/color identity,
+      <td><p>vector of characters of the card's color/color identity,
 using WUBRG notation. Letters must be capital and in alphabetic order. If
-using with <code>link{[dplyr]mutate}</code> and the results of
-<code>link{scry_cards}</code>, use the <code>colors</code> or <code>color_identity</code>
-column.</p></td>
+using with <code>link{[dplyr]mutate}</code>, <code>link{[purrr]map_chr}</code>, and the
+results of <code>link{scry_cards}</code>, use the <code>colors</code> or
+<code>color_identity</code> column. See<code>vingette("using_label_functions")</code>.</p></td>
     </tr>
     <tr>
       <th>inclusive</th>
       <td><p>if <code>color_code</code> is just one (or no) color, should
 <code>label_guild</code> return all guilds that contain that color?</p></td>
     </tr>
+    <tr>
+      <th>convert_to_list</th>
+      <td><p>Should <code>label_guild</code> a list instead of a vector?
+Useful if you're planning on using functions like <code>link[tidyr]unnest</code>.</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a list of strings with all guild(s) matching the color_code</p>
+    <p>a vector of strings with all guild(s) matching the color_code</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>label_guild</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='st'>"U"</span>, <span class='st'>"W"</span>))</div><div class='output co'>#&gt; [[1]]
-#&gt; [1] "Azoruis"
-#&gt; </div><div class='input'><span class='fu'>label_guild</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='st'>"U"</span>))</div><div class='output co'>#&gt; [[1]]
-#&gt; [1] NA
-#&gt; </div><div class='input'><span class='fu'>label_guild</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='st'>"U"</span>), <span class='kw'>inclusive</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [[1]]
+    <pre class="examples"><div class='input'><span class='fu'>label_guild</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"U"</span>, <span class='st'>"W"</span>))</div><div class='output co'>#&gt; [[1]]
 #&gt; [1] "Azorius"
-#&gt; 
-#&gt; [[2]]
-#&gt; [1] "Dimir"
-#&gt; 
-#&gt; [[3]]
-#&gt; [1] "Izzet"
-#&gt; 
-#&gt; [[4]]
-#&gt; [1] "Simic"
+#&gt; </div><div class='input'><span class='fu'>label_guild</span>(<span class='st'>"U"</span>)</div><div class='output co'>#&gt; [[1]]
+#&gt; [1] NA
+#&gt; </div><div class='input'><span class='fu'>label_guild</span>(<span class='st'>"U"</span>, <span class='kw'>inclusive</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [[1]]
+#&gt; [1] "Azorius" "Dimir"   "Izzet"   "Simic"  
 #&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
