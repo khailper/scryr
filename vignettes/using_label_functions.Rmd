@@ -14,9 +14,12 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
+```{r setup, message=FALSE}
 library(scryr)
 library(tidyverse)
+# dev version needed for themes (as of 2019-06-23)
+# devtools::install_github("wilkelab/cowplot")
+library(cowplot)
 library(gganimate)
 ```
 
@@ -87,4 +90,17 @@ cmc_count <- cards_with_guilds %>%
   count(cmc, colors, color_pair)
 ```
 
+Now we can visualize our data with `gganimate`
+```{r viz}
+ggplot(cmc_count, aes(cmc, n, fill = colors)) + 
+  # black borders so white fill shows up
+  geom_col(color = "black") +
+  transition_states(color_pair, transition_length = 3, state_length = 5) +
+  cowplot::theme_minimal_hgrid() +
+  labs(title = "Common and uncommon creatures/token makers in MH1",
+       subtitle = "{closest_state}", 
+       x = "Converted Mana Cost", 
+       y = "Number of Cards",
+       fill = "Color")
+```
 
