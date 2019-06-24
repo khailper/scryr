@@ -9,11 +9,11 @@
 #' 
 #' @concept label
 #' 
-#' @param color_code list of characters of the card's color/color identity, 
+#' @param color_code vector of characters of the card's color/color identity, 
 #' using WUBRG notation. Letters must be capital and in alphabetic order. If 
-#' using with \code{link{[dplyr]mutate}} and the results of 
-#' \code{link{scry_cards}}, use the \code{colors} or \code{color_identity} 
-#' column.
+#' using with \code{link{[dplyr]mutate}}, \code{link{[purrr]map_chr}}, and the 
+#' results of \code{link{scry_cards}}, use the \code{colors} or 
+#' \code{color_identity} column. See\code{vingette("using_label_functions")}.
 #' @param inclusive if \code{color_code} is just one (or no) color, should 
 #' \code{label_guild} return all guilds that contain that color?
 #' 
@@ -22,9 +22,9 @@
 #' @return a list of strings with all guild(s) matching the \{color_code}
 #' 
 #' @examples 
-#' label_guild(list("U", "W"))
-#' label_guild(list("U"))
-#' label_guild(list("U"), inclusive = TRUE)
+#' label_guild(c("U", "W"))
+#' label_guild("U")
+#' label_guild("U", inclusive = TRUE)
 #' @export
 label_guild <- function(color_code, inclusive = FALSE){
 
