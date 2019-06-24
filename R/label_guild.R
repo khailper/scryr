@@ -42,7 +42,7 @@ label_guild <- function(color_code, inclusive = FALSE){
 #' @noRd
 inclusive_label_guild <- function(color_code){
   dplyr::case_when(
-    identical(color_code, list()) ~ 
+    length(color_code) == 0 ~ 
       list(c("Azorius", "Boros", "Dimir", "Golgari", "Gruul", 
            "Izzet", "Orzhov", "Rakdos", "Selesnya", "Simic")),
     # padding with NAs to avoid case_when error, will trim them later
