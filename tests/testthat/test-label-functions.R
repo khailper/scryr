@@ -1,8 +1,3 @@
-test_that("label_guild and label_tri check type",{
-  expect_error(label_guild(c("B", "G")))
-  expect_error(label_tri(c("B", "G", "U")))
-})
-
 test_that("label_guild doesn't assign guilds to cards without exactly 2 colors", {
   expect_true(is.na(label_guild(list("B"))))
   expect_true(is.na(label_guild(list("B", "G", "U"))))
@@ -17,12 +12,12 @@ test_that("label_guild(inclusive = TRUE) doesn't assign guilds to cards with >2 
 })
 
 test_that("label_guild corectly labels a 2 color card", {
-  expect_equal(label_guild(list("B", "G")), list("Golgari"))
+  expect_equal(label_guild(c("B", "G")), list("Golgari"))
 })
 
 test_that("label_guild(inclusive = TRUE) corectly labels a 1 color card", {
-  expect_equal(label_guild(list("B"), inclusive = TRUE), 
-               list("Dimir", "Golgari", "Orzhov", "Rakdos"))
+  expect_equal(label_guild("B", inclusive = TRUE), 
+               list(c("Dimir", "Golgari", "Orzhov", "Rakdos")))
 })
 
 test_that("label_tri doesn't assign guilds to cards without exactly 3 colors", {
