@@ -41,10 +41,11 @@ use it (we're going to completely ignore the fact that some cards, like
 better in some archetypes than others). By default, `label_guild` requires an
 exact match, so [Alpine Guide](https://scryfall.com/card/mh1/117/alpine-guide) 
 would return `NA`. We can use `inclusive = TRUE` to instead get 
-`list("Boros", "Gruul", "Izzet", "Rakdos")`.
+`list("Boros", "Gruul", "Izzet", "Rakdos")`. Since `colors` is a list column, we 
+need to use `purrr::map`.
 
 ```{r add_guild}
 cards_with_guilds <- cards %>% 
-  mutate(color_pair = label_guild(colors, inclusive = TRUE))
+  mutate(color_pair = map(colors, label_guild, inclusive = TRUE))
 ```
 

@@ -22,7 +22,7 @@ test_that("label_guild(inclusive = TRUE) corectly labels a 1 color card", {
 
 test_that("label_tri doesn't assign guilds to cards without exactly 3 colors", {
   expect_true(is.na(label_tri("B")))
-  expect_true(is.na(label_tri(("B", "G"))))
+  expect_true(is.na(label_tri(c("B", "G"))))
   expect_true(is.na(label_tri(c("B", "G", "R", "U"))))
   expect_true(is.na(label_tri(c("B", "G", "R", "U", "W"))))
 })
@@ -44,7 +44,7 @@ test_that("label_tri corectly labels a 3 color card", {
                list("Jund"))  
   expect_equal(label_tri(c("B", "G", "R"), shard_or_wedge = "shard"), 
                list("Jund"))
-  expect_true(is.na(label_tri(x("B", "G", "R"), shard_or_wedge = "wedge")))
+  expect_true(is.na(label_tri(c("B", "G", "R"), shard_or_wedge = "wedge")))
 })
 
 test_that("label_tri(inclusive = TRUE) corectly labels a 1 or 2 color card", {

@@ -8,11 +8,11 @@ label_tri(color_code, inclusive = FALSE, shard_or_wedge = c("either",
   "shard", "wedge"))
 }
 \arguments{
-\item{color_code}{list of characters of the card's color/color identity,
+\item{color_code}{vector of characters of the card's color/color identity,
 using WUBRG notation. Letters must be capital and in alphabetic order. If
-using with \code{link{[dplyr]mutate}} and the results of
-\code{link{scry_cards}}, use the \code{colors} or \code{color_identity}
-column.}
+using with \code{link{[dplyr]mutate}}, \code{link{[purrr]map_chr}}, and
+the results of \code{link{scry_cards}}, use the \code{colors} or
+\code{color_identity} column. See\code{vingette("using_label_functions")}.}
 
 \item{inclusive}{if \code{color_code} is just one color, should
 \code{label_tri} return all groups that contain that color?}
@@ -32,10 +32,10 @@ all groups they could belong to. NOTE: cards with hybrid costs are treated
 as belonging to both colors, as though they were gold cards.
 }
 \examples{
-label_tri(list("B", "U", "W"))
-label_tri(list("B", "U", "W"), shard_or_wedge = "shard")
-label_tri(list("B", "U", "W"), shard_or_wedge = "wedge")
-label_tri(list("U"))
-label_tri(list("U"), inclusive = TRUE)
+label_tri(c("B", "U", "W"))
+label_tri(c("B", "U", "W"), shard_or_wedge = "shard")
+label_tri(c("B", "U", "W"), shard_or_wedge = "wedge")
+label_tri("U")
+label_tri("U", inclusive = TRUE)
 }
 \concept{label}
