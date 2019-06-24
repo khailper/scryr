@@ -77,7 +77,11 @@ create_color_label <- function(color_code){
 }
 
 cards_with_guilds <- mutate(cards_with_guilds,
-                            colors = map_chr(colors, create_color_label))
+                            colors = map_chr(colors, create_color_label),
+                            # relevel for legend
+                            colors = fct_relevel(colors, "White", "Blue", 
+                                                 "Black", "Red", "Green",
+                                                 "Multicolored", "Artifact"))
 ```
 
 With `tidyr::unnest()`, we can replicate each card for each archetype it could 
@@ -101,6 +105,15 @@ ggplot(cmc_count, aes(cmc, n, fill = colors)) +
        subtitle = "{closest_state}", 
        x = "Converted Mana Cost", 
        y = "Number of Cards",
-       fill = "Color")
+       fill = "Color") +
+  scale_fill_manual(values = c(
+    "Artifact" = "#c6c5c5",
+    "Multicolored" = "#e1cd92",
+    "White" = "#f9faf4",
+    "Blue" = "#0e68ab",
+    "Black" = "#150b00",
+    "Green" = "#00733e",
+    "Red" = "#d3202a"
+  ))
 ```
 
