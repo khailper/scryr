@@ -70,7 +70,7 @@ inclusive_label_guild <- function(color_code){
 #' @noRd
 exclusive_label_guild <- function(color_code){
   dplyr::case_when(
-    identical(color_code, c("U", "W")) ~ list("Azoruis"),
+    identical(color_code, c("U", "W")) ~ list("Azorius"),
     identical(color_code, c("R", "W")) ~ list("Boros"),
     identical(color_code, c("B", "U")) ~ list("Dimir"),
     identical(color_code, c("B", "G")) ~ list("Golgari"),
