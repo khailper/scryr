@@ -5,7 +5,7 @@
 \title{Assign shard and/or wedge based on color/color identity}
 \usage{
 label_tri(color_code, inclusive = FALSE, shard_or_wedge = c("either",
-  "shard", "wedge"))
+  "shard", "wedge"), convert_to_list = FALSE)
 }
 \arguments{
 \item{color_code}{vector of characters of the card's color/color identity,
@@ -19,9 +19,12 @@ the results of \code{link{scry_cards}}, use the \code{colors} or
 
 \item{shard_or_wedge}{Should \code{label_tri} match based on shards and
 wedges ("either"), just shards ("shard"), or just wedges ("wedge")?}
+
+\item{convert_to_list}{Should \code{label_tri} a list instead of a vector?
+Useful if you're planning on using functions like \code{link[tidyr]unnest}.}
 }
 \value{
-a list of strings with all group(s) matching the \code{color_code}
+a vector of strings with all group(s) matching the \code{color_code}
 }
 \description{
 Given a card's color (or color identity), return the Alara

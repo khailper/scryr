@@ -16,25 +16,32 @@
 #' \code{color_identity} column. See\code{vingette("using_label_functions")}.
 #' @param inclusive if \code{color_code} is just one (or no) color, should 
 #' \code{label_guild} return all guilds that contain that color?
+#' @param convert_to_list Should \code{label_guild} a list instead of a vector?
+#' Useful if you're planning on using functions like \code{link[tidyr]unnest}.
 #' 
 #' @rdname label_guild
 #' 
-#' @return a list of strings with all guild(s) matching the \{color_code}
+#' @return a vector of strings with all guild(s) matching the \{color_code}
 #' 
 #' @examples 
 #' label_guild(c("U", "W"))
 #' label_guild("U")
 #' label_guild("U", inclusive = TRUE)
 #' @export
-label_guild <- function(color_code, inclusive = FALSE){
+label_guild <- function(color_code, inclusive = FALSE, convert_to_list = FALSE){
 
-    dplyr::case_when(
+   labels <- dplyr::case_when(
     # if length == 2, doesn't matter what inclusive is
     length(color_code) ==  2 ~ exclusive_label_guild(color_code),
     inclusive & length(color_code) < 2 ~ 
       inclusive_label_guild(color_code),
-    TRUE ~ list(NA_character_)
-  )
+    TRUE ~ list(NA_character_))
+    
+   if (convert_to_list){
+    return(purrr::map(labels, as.list)[[1]])
+   }
+   
+   labels
 }
 
 #' functions for using match color to guild. Pulled out of label_guild to make

@@ -4,7 +4,7 @@
 \alias{label_guild}
 \title{Assign guild based on color/color identity}
 \usage{
-label_guild(color_code, inclusive = FALSE)
+label_guild(color_code, inclusive = FALSE, convert_to_list = FALSE)
 }
 \arguments{
 \item{color_code}{vector of characters of the card's color/color identity,
@@ -15,9 +15,12 @@ results of \code{link{scry_cards}}, use the \code{colors} or
 
 \item{inclusive}{if \code{color_code} is just one (or no) color, should
 \code{label_guild} return all guilds that contain that color?}
+
+\item{convert_to_list}{Should \code{label_guild} a list instead of a vector?
+Useful if you're planning on using functions like \code{link[tidyr]unnest}.}
 }
 \value{
-a list of strings with all guild(s) matching the {color_code}
+a vector of strings with all guild(s) matching the {color_code}
 }
 \description{
 Given a card's color (or color identity), return the Ravinca

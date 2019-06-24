@@ -18,10 +18,12 @@
 #' \code{label_tri} return all groups that contain that color?
 #' @param shard_or_wedge Should \code{label_tri} match based on shards and 
 #' wedges ("either"), just shards ("shard"), or just wedges ("wedge")?
+#' @param convert_to_list Should \code{label_tri} a list instead of a vector?
+#' Useful if you're planning on using functions like \code{link[tidyr]unnest}.
 #' 
 #' @rdname label_tri
 #' 
-#' @return a list of strings with all group(s) matching the \code{color_code}
+#' @return a vector of strings with all group(s) matching the \code{color_code}
 #' 
 #' @examples 
 #' label_tri(c("B", "U", "W"))
@@ -32,7 +34,8 @@
 #'@export
 label_tri <- function(color_code, 
                       inclusive = FALSE, 
-                      shard_or_wedge = c("either", "shard", "wedge")){
+                      shard_or_wedge = c("either", "shard", "wedge"),
+                      convert_to_list = FALSE){
 
   if (!(shard_or_wedge[1] %in% c("either", "shard", "wedge"))){
     rlang::abort("shard_or_wedge needs to be 'either', 'shard', or 'wedge'.")
@@ -40,7 +43,7 @@ label_tri <- function(color_code,
   
   shard_or_wedge <- shard_or_wedge[1]
   
-  dplyr::case_when(
+  labels <- dplyr::case_when(
     # if length == 3, doesn't matter what inclusive is
     length(color_code) ==  3 & shard_or_wedge == "either" ~ 
       exclusive_either_label_tri(color_code),
@@ -56,6 +59,12 @@ label_tri <- function(color_code,
       inclusive_wedge_label_tri(color_code),
     TRUE ~ list(NA_character_)
   )
+  
+  if (convert_to_list){
+    return(purrr::map(labels, as.list)[[1]])
+  }
+  
+  labels
 }
 
 #' functions for using match color to shard/wedge. Pulled out of label_tri to 
