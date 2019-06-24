@@ -95,7 +95,7 @@ Now we can visualize our data with `gganimate`
 ggplot(cmc_count, aes(cmc, n, fill = colors)) + 
   # black borders so white fill shows up
   geom_col(color = "black") +
-  transition_states(color_pair, transition_length = 3, state_length = 5) +
+  transition_states(color_pair, transition_length = 2, state_length = 5) +
   cowplot::theme_minimal_hgrid() +
   labs(title = "Common and uncommon creatures/token makers in MH1",
        subtitle = "{closest_state}", 
