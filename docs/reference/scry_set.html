@@ -64,7 +64,7 @@ number of cards)." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">scryr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1.9000</span>
       </span>
     </div>
 
@@ -160,20 +160,20 @@ the set on Scryfall)</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>scry_sets</span>() <span class='co'>#returns all sets</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 549 x 12</span><span>
+    <pre class="examples"><div class='input'><span class='fu'>scry_sets</span>() <span class='co'>#returns all sets</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 550 x 12</span><span>
 #&gt;    object code  name  released_at set_type card_count digital foil_only
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;lgl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;lgl&gt;</span><span>    
 #&gt; </span><span style='color: #555555;'> 1</span><span> set    c19   Comm~ 2019-08-23  command~          0 FALSE   FALSE    
-#&gt; </span><span style='color: #555555;'> 2</span><span> set    ppp1  M20 ~ 2019-07-12  promo             5 FALSE   FALSE    
-#&gt; </span><span style='color: #555555;'> 3</span><span> set    pm20  Core~ 2019-07-12  promo             6 FALSE   FALSE    
-#&gt; </span><span style='color: #555555;'> 4</span><span> set    tm20  Core~ 2019-07-12  token            12 FALSE   FALSE    
-#&gt; </span><span style='color: #555555;'> 5</span><span> set    m20   Core~ 2019-07-12  core            166 FALSE   FALSE    
-#&gt; </span><span style='color: #555555;'> 6</span><span> set    ss2   Sign~ 2019-06-28  spellbo~          8 FALSE   FALSE    
-#&gt; </span><span style='color: #555555;'> 7</span><span> set    pmh1  Mode~ 2019-06-14  promo             1 FALSE   FALSE    
-#&gt; </span><span style='color: #555555;'> 8</span><span> set    mh1   Mode~ 2019-06-14  draft_i~        255 FALSE   FALSE    
-#&gt; </span><span style='color: #555555;'> 9</span><span> set    tmh1  Mode~ 2019-05-30  token            21 FALSE   FALSE    
-#&gt; </span><span style='color: #555555;'>10</span><span> set    twar  War ~ 2019-05-03  token            19 FALSE   FALSE    
-#&gt; </span><span style='color: #555555;'># ... with 539 more rows, and 4 more variables: block_code </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, block </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>,
+#&gt; </span><span style='color: #555555;'> 2</span><span> set    ps19  San ~ 2019-07-18  promo             5 FALSE   FALSE    
+#&gt; </span><span style='color: #555555;'> 3</span><span> set    tm20  Core~ 2019-07-12  token            12 FALSE   FALSE    
+#&gt; </span><span style='color: #555555;'> 4</span><span> set    pm20  Core~ 2019-07-12  promo             6 FALSE   FALSE    
+#&gt; </span><span style='color: #555555;'> 5</span><span> set    ppp1  M20 ~ 2019-07-12  promo             5 FALSE   FALSE    
+#&gt; </span><span style='color: #555555;'> 6</span><span> set    m20   Core~ 2019-07-12  core            306 FALSE   FALSE    
+#&gt; </span><span style='color: #555555;'> 7</span><span> set    ss2   Sign~ 2019-06-28  spellbo~          8 FALSE   FALSE    
+#&gt; </span><span style='color: #555555;'> 8</span><span> set    pmh1  Mode~ 2019-06-14  promo             1 FALSE   FALSE    
+#&gt; </span><span style='color: #555555;'> 9</span><span> set    mh1   Mode~ 2019-06-14  draft_i~        255 FALSE   FALSE    
+#&gt; </span><span style='color: #555555;'>10</span><span> set    tmh1  Mode~ 2019-05-30  token            21 FALSE   FALSE    
+#&gt; </span><span style='color: #555555;'># ... with 540 more rows, and 4 more variables: block_code </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, block </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>,
 #&gt; #   parent_set_code </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, mtgo_code </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'><span class='fu'>scry_sets</span>(<span class='st'>"aer"</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 1 x 11</span><span>
 #&gt;   object code  mtgo_code name  released_at set_type card_count digital foil_only
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;lgl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;lgl&gt;</span><span>    

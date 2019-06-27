@@ -1,6 +1,6 @@
 Package: scryr
 Title: Wrapper for Scryfall API
-Version: 0.2.0.9000
+Version: 0.2.1.9000
 Authors@R: c(person('Karl', 'Hailperin', email = 'khailper@gmail.com', role = c('cre', 'aut')), person('Colin', 'Fay', role = c('ctb'), comment = c('Wrote generic API code that was the basis of much of the scry_* functions (https://colinfay.me/build-api-wrapper-package-r/)')))
 Description: scryr provides R functions to access Scryfall's APIs for card search, sets, and catalogs.
 License: MIT + file LICENSE
@@ -16,12 +16,15 @@ Imports:
     tibble,
     rlang,
     magrittr
-Encoding: UTF-8
-LazyData: true
-Suggests: 
+Suggests:
     testthat,
     knitr,
-    rmarkdown
+    rmarkdown,
+    tidyverse,
+    cowplot,
+    gganimate
+Encoding: UTF-8
+LazyData: true
 RoxygenNote: 6.1.1
 Roxygen: list(markdown = TRUE)
 VignetteBuilder: knitr

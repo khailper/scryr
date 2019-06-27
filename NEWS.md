@@ -1,3 +1,6 @@
+# scryr 0.2.1.9000
+* updated `Suggests` to reflect packages used in vignette
+
 # scyr 0.2.0.9000
 * added functions for the Bulk Data API
 * added `label_guild` and `label_tri` functions to streamline labelling cards 
