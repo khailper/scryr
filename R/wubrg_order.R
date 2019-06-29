@@ -29,7 +29,7 @@ wubrg_order <- function(label_chr){
                                "Multicolored", "Colorless")
   
   # if any are false, average will be <1
-  if(ave(in_wubrg != 1)){
+  if(mean(in_wubrg) != 1){
     rlang::abort('Strings in wubrg_order() need to be "White", "Blue", "Black", "Red", "Green", "Multicolored", or "Colorless".')
   }
   
