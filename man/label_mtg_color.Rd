@@ -37,4 +37,4 @@ relabel_mtg_color(c("G", "U"))
 \code{\link{wubrg_order}} for converting the output into an ordered
 factor.
 }
-\concept{label}
+\concept{color_code}
