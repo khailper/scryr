@@ -25,4 +25,4 @@ display in a useful order.
 \code{\link{relabel_mtg_color}} for the main source of inputs to
 this function
 }
-\concept{color_code}
+\concept{label}

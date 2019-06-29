@@ -11,7 +11,7 @@
 #' \code{\link{[dplyr]mutate}}, you'll need to pair it with
 #' \code{\link{[purrr]map_chr}}. See\code{vingette("using_label_functions")}.
 #' 
-#' @concept color_code
+#' @concept label
 #' 
 #' @param color_code character vector (which can be of length 0) containing 
 #' single letter WUBRG color codes.
