@@ -1,6 +1,6 @@
 #' @title Convert MTG color names into ordered factor
 #' 
-#' @description Turn the outputs of \code{\link{relabel_mtg_colors}} into an
+#' @description Turn the outputs of \code{\link{relabel_mtg_color}} into an
 #' ordered factor (WUBRG order, then "Multicolored", followed by "Colorless").
 #' Converting strings into ordered factors is useful for having plot outputs
 #' display in a useful order. 
@@ -9,7 +9,7 @@
 #' 
 #' @param label_chr vector of characters that can contain the values 
 #' "White", "Blue", "Black", "Red", "Green", "Multicolored", or "Colorless".
-#' The main source is \code{\link{relabel_mtg_colors}}.
+#' The main source is \code{\link{relabel_mtg_color}}.
 #' 
 #' @seealso \code{\link{relabel_mtg_color}} for the main source of inputs to 
 #' this function

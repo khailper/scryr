@@ -9,14 +9,14 @@ wubrg_order(label_chr)
 \arguments{
 \item{label_chr}{vector of characters that can contain the values
 "White", "Blue", "Black", "Red", "Green", "Multicolored", or "Colorless".
-The main source is \code{\link{relabel_mtg_colors}}.}
+The main source is \code{\link{relabel_mtg_color}}.}
 }
 \value{
 vector of ordered factors with the same length and labels as
 \code{label_chr}
 }
 \description{
-Turn the outputs of \code{\link{relabel_mtg_colors}} into an
+Turn the outputs of \code{\link{relabel_mtg_color}} into an
 ordered factor (WUBRG order, then "Multicolored", followed by "Colorless").
 Converting strings into ordered factors is useful for having plot outputs
 display in a useful order.
