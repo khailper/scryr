@@ -4,9 +4,12 @@
 #' character strings (e.g. "U" for blue cards). \code{relabel_mtg_color} 
 #' converts them into human-readable text,  (e.g. "Red" or "Multicolored").
 #' 
-#' @section Warning:
+#' @section Warnings:
 #' \code{relabel_mtg_color} treats any character vector of length >1 as a 
-#' multicolored card.
+#' multicolored card. \cr
+#' If you're using \code{relabel_mtg_color} inside 
+#' \code{\link{[dplyr]mutate}}, you'll need to pair it with
+#' \code{\link{[purrr]map_chr}}. See\code{vingette("using_label_functions")}.
 #' 
 #' @concept label
 #' 

@@ -34,6 +34,13 @@ cards with hybrid costs are treated as belonging to both colors, as though
 they were gold cards.
 }
 
+\section{Warning}{
+
+If you're using \code{label_guild} inside
+\code{\link{[dplyr]mutate}}, you'll need to pair it with
+\code{\link{[purrr]map}}. See\code{vingette("using_label_functions")}.
+}
+
 \examples{
 label_guild(c("U", "W"))
 label_guild("U")

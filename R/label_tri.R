@@ -10,6 +10,11 @@
 #' cards with hybrid costs are treated 
 #' as belonging to both colors, as though they were gold cards.
 #' 
+#' @section Warning:
+#' If you're using \code{label_tri} inside 
+#' \code{\link{[dplyr]mutate}}, you'll need to pair it with
+#' \code{\link{[purrr]map}}. See\code{vingette("using_label_functions")}.
+#' 
 #' @concept label
 #' 
 #' @param color_code vector of characters of the card's color/color identity, 

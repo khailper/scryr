@@ -39,6 +39,13 @@ cards with hybrid costs are treated
 as belonging to both colors, as though they were gold cards.
 }
 
+\section{Warning}{
+
+If you're using \code{label_tri} inside
+\code{\link{[dplyr]mutate}}, you'll need to pair it with
+\code{\link{[purrr]map}}. See\code{vingette("using_label_functions")}.
+}
+
 \examples{
 label_tri(c("B", "U", "W"))
 label_tri(c("B", "U", "W"), shard_or_wedge = "shard")
