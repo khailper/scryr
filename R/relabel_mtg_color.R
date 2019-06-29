@@ -26,7 +26,7 @@
 #' relabel_mtg_color("G")
 #' relabel_mtg_color(c("G", "U"))
 #' 
-#' @rdname label_mtg_color
+#' @rdname relabel_mtg_color
 #' 
 #' @export
 relabel_mtg_color <- function(color_code){
