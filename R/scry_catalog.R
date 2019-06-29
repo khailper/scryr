@@ -3,7 +3,9 @@
 #' @description Request contents of catalogs. Catalogs contains 
 #' all existing versions of that object. For example scry_catalog("toughnesses") 
 #' returns every toughness that has ever been printed on a __Magic__ card, 
-#' including non-mumeric values like "*+1". \cr
+#' including non-mumeric values like "*+1". 
+#' 
+#' @seealso Catalogs:
 #' Available catalogs are "card-names", "artist-names", "word-bank",
 #' "creature-types", "planeswalker-types", "land-types","artifact-types",
 #' "enchantment-types", "spell-types", "powers", "toughnesses",

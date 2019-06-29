@@ -4,7 +4,10 @@
 #' and/or Tarkir wedge assoicated with the card. By default, \code{label_tri} 
 #' requires the card to be both all the group's colors, but if 
 #' \code{inclusive = TRUE}, cards with less than three colors are labeled with 
-#' all groups they could belong to. NOTE: cards with hybrid costs are treated 
+#' all groups they could belong to. 
+#' 
+#' @section Note: 
+#' cards with hybrid costs are treated 
 #' as belonging to both colors, as though they were gold cards.
 #' 
 #' @concept label
@@ -20,6 +23,8 @@
 #' wedges ("either"), just shards ("shard"), or just wedges ("wedge")?
 #' @param convert_to_list Should \code{label_tri} a list instead of a vector?
 #' Useful if you're planning on using functions like \code{link[tidyr]unnest}.
+#' 
+#' @seealso \code{\link{label_guild}}
 #' 
 #' @rdname label_tri
 #' 

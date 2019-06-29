@@ -3,7 +3,9 @@
 #' @description Given a card's color (or color identity), return the Ravinca 
 #' guild assoicated with the card. By default, \code{label_guild} requires the 
 #' card to be both of the guild's colors, but if \code{inclusive = TRUE}, 
-#' mono-color cards are labeled with all guilds they could belong to. NOTE: 
+#' mono-color cards are labeled with all guilds they could belong to. 
+#' 
+#' @section  Note: 
 #' cards with hybrid costs are treated as belonging to both colors, as though 
 #' they were gold cards.
 #' 
@@ -18,6 +20,8 @@
 #' \code{label_guild} return all guilds that contain that color?
 #' @param convert_to_list Should \code{label_guild} a list instead of a vector?
 #' Useful if you're planning on using functions like \code{link[tidyr]unnest}.
+#' 
+#' @seealso \code{\link{label_tri}}
 #' 
 #' @rdname label_guild
 #' 

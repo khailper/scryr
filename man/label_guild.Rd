@@ -26,13 +26,20 @@ a vector of strings with all guild(s) matching the {color_code}
 Given a card's color (or color identity), return the Ravinca
 guild assoicated with the card. By default, \code{label_guild} requires the
 card to be both of the guild's colors, but if \code{inclusive = TRUE},
-mono-color cards are labeled with all guilds they could belong to. NOTE:
+mono-color cards are labeled with all guilds they could belong to.
+}
+\section{Note}{
+
 cards with hybrid costs are treated as belonging to both colors, as though
 they were gold cards.
 }
+
 \examples{
 label_guild(c("U", "W"))
 label_guild("U")
 label_guild("U", inclusive = TRUE)
+}
+\seealso{
+\code{\link{label_tri}}
 }
 \concept{label}

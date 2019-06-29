@@ -31,14 +31,22 @@ Given a card's color (or color identity), return the Alara
 and/or Tarkir wedge assoicated with the card. By default, \code{label_tri}
 requires the card to be both all the group's colors, but if
 \code{inclusive = TRUE}, cards with less than three colors are labeled with
-all groups they could belong to. NOTE: cards with hybrid costs are treated
+all groups they could belong to.
+}
+\section{Note}{
+
+cards with hybrid costs are treated
 as belonging to both colors, as though they were gold cards.
 }
+
 \examples{
 label_tri(c("B", "U", "W"))
 label_tri(c("B", "U", "W"), shard_or_wedge = "shard")
 label_tri(c("B", "U", "W"), shard_or_wedge = "wedge")
 label_tri("U")
 label_tri("U", inclusive = TRUE)
+}
+\seealso{
+\code{\link{label_guild}}
 }
 \concept{label}
