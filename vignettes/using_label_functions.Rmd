@@ -58,30 +58,9 @@ cards_with_guilds <- cards %>%
 
 Let's turn `colors` into something more human-readable
 ```{r color_change}
-create_color_label <- function(color_code){
-  case_when(
-    length(color_code) == 0 ~ "Artifact",
-    length(color_code) > 1 ~ "Multicolored",
-    identical(color_code, "B") ~ 
-      "Black",
-    identical(color_code, "G") ~ 
-      "Green",
-    identical(color_code, "R") ~ 
-      "Red",
-    identical(color_code, "U") ~ 
-      "Blue",
-    identical(color_code, "W") ~ 
-      "White",
-    TRUE ~ NA_character_
-  )
-}
 
 cards_with_guilds <- mutate(cards_with_guilds,
-                            colors = map_chr(colors, create_color_label),
-                            # relevel for legend
-                            colors = fct_relevel(colors, "White", "Blue", 
-                                                 "Black", "Red", "Green",
-                                                 "Multicolored", "Artifact"))
+                            colors = relabel_mtg_color(colors))
 ```
 
 With `tidyr::unnest()`, we can replicate each card for each archetype it could 
@@ -90,7 +69,9 @@ belong to, making it easier to count by color pair.
 ```{r cmc_count}
 cmc_count <- cards_with_guilds %>% 
   unnest(color_pair, .drop = FALSE) %>% 
-  mutate(color_pair = unlist(color_pair)) %>% 
+  mutate(color_pair = unlist(color_pair),
+         colors = map_chr(colors, relabel_mtg_color),
+         colors = wubrg_order(colors)) %>% 
   count(cmc, colors, color_pair)
 ```
 
