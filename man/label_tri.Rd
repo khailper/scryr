@@ -56,4 +56,4 @@ label_tri("U", inclusive = TRUE)
 \seealso{
 \code{\link{label_guild}}
 }
-\concept{label}
+\concept{manipulate}

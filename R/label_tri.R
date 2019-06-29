@@ -15,7 +15,7 @@
 #' \code{\link{[dplyr]mutate}}, you'll need to pair it with
 #' \code{\link{[purrr]map}}. See\code{vingette("using_label_functions")}.
 #' 
-#' @concept label
+#' @concept manipulate
 #' 
 #' @param color_code vector of characters of the card's color/color identity, 
 #' using WUBRG notation. Letters must be capital and in alphabetic order. If 

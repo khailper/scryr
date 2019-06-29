@@ -9,10 +9,10 @@ reference:
   desc: "Functions for querying the Scryfall API"
   contents:
   - has_concept("search")
-- title: "Labeling functions"
-  desc: "Functions to add guild/shard/wedge labels"
+- title: "Data manipulation"
+  desc: "Functions for manipulating data from Scryfall"
   contents:
-  - has_concept("label")
+  - has_concept("manipulate")
 - title: "Bulk data functions"
   desc: "Functions for fetching Scryfall's Bulk Data"
   contents:

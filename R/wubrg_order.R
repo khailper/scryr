@@ -5,7 +5,7 @@
 #' Converting strings into ordered factors is useful for having plot outputs
 #' display in a useful order. 
 #' 
-#' @concept label
+#' @concept manipulate
 #' 
 #' @param label_chr vector of characters that can contain the values 
 #' "White", "Blue", "Black", "Red", "Green", "Multicolored", or "Colorless".
