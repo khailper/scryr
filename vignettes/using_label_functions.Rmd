@@ -60,7 +60,7 @@ Let's turn `colors` into something more human-readable
 ```{r color_change}
 
 cards_with_guilds <- mutate(cards_with_guilds,
-                            colors = relabel_mtg_color(colors))
+                            colors2 = map_chr(colors, relabel_mtg_color))
 ```
 
 With `tidyr::unnest()`, we can replicate each card for each archetype it could 
@@ -88,13 +88,13 @@ ggplot(cmc_count, aes(cmc, n, fill = colors)) +
        y = "Number of Cards",
        fill = "Color") +
   scale_fill_manual(values = c(
-    "Artifact" = "#c6c5c5",
-    "Multicolored" = "#e1cd92",
     "White" = "#f9faf4",
     "Blue" = "#0e68ab",
     "Black" = "#150b00",
     "Green" = "#00733e",
-    "Red" = "#d3202a"
+    "Red" = "#d3202a",
+    "Multicolored" = "#e1cd92",
+    "Colorless" = "#c6c5c5"
   ))
 ```
 
