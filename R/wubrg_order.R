@@ -17,7 +17,7 @@
 #' @return vector of ordered factors with the same length and labels as
 #'  \code{label_chr}
 #' 
-#' @example
+#' @examples
 #' wubrg_order(c("Blue", "Green", "Black"))
 #' 
 #' @rdname  wubrg_order

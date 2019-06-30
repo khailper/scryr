@@ -21,6 +21,10 @@ ordered factor (WUBRG order, then "Multicolored", followed by "Colorless").
 Converting strings into ordered factors is useful for having plot outputs
 display in a useful order.
 }
+\examples{
+wubrg_order(c("Blue", "Green", "Black"))
+
+}
 \seealso{
 \code{\link{relabel_mtg_color}} for the main source of inputs to
 this function
