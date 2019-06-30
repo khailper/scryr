@@ -22,6 +22,13 @@ Take a card's type type line (stored in the \code{type_line})
 column in the output from \code{\link{scry_cards}}) and get just the subtypes
 (everything after the '-')
 }
+\section{Warning}{
+
+If you're using \code{extract_subtypes} inside
+\code{\link{[dplyr]mutate}}, you'll need to pair it with
+\code{\link{[purrr]map}}.
+}
+
 \examples{
 extract_subtypes("Creature - Merfolk Wizard")
 extract_subtypes("Creature - Merfolk Wizard", split = TRUE)

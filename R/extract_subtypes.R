@@ -4,6 +4,11 @@
 #' column in the output from \code{\link{scry_cards}}) and get just the subtypes 
 #' (everything after the '-')
 #' 
+#' @section Warning:
+#' If you're using \code{extract_subtypes} inside 
+#' \code{\link{[dplyr]mutate}}, you'll need to pair it with
+#' \code{\link{[purrr]map}}.
+#' 
 #' @concept manipulate
 #' 
 #' @param type_line card's type line.

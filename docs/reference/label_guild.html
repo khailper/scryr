@@ -35,9 +35,7 @@
 <meta property="og:description" content="Given a card's color (or color identity), return the Ravinca
 guild assoicated with the card. By default, label_guild requires the
 card to be both of the guild's colors, but if inclusive = TRUE,
-mono-color cards are labeled with all guilds they could belong to. NOTE:
-cards with hybrid costs are treated as belonging to both colors, as though
-they were gold cards." />
+mono-color cards are labeled with all guilds they could belong to." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -68,7 +66,7 @@ they were gold cards." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">scryr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1.9000</span>
       </span>
     </div>
 
@@ -129,9 +127,7 @@ they were gold cards." />
     <p>Given a card's color (or color identity), return the Ravinca
 guild assoicated with the card. By default, <code>label_guild</code> requires the
 card to be both of the guild's colors, but if <code>inclusive = TRUE</code>,
-mono-color cards are labeled with all guilds they could belong to. NOTE:
-cards with hybrid costs are treated as belonging to both colors, as though
-they were gold cards.</p>
+mono-color cards are labeled with all guilds they could belong to.</p>
     
     </div>
 
@@ -164,6 +160,23 @@ Useful if you're planning on using functions like <code>link[tidyr]unnest</code>
 
     <p>a vector of strings with all guild(s) matching the color_code</p>
     
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    
+    <p>cards with hybrid costs are treated as belonging to both colors, as though
+they were gold cards.</p>
+    
+    <h2 class="hasAnchor" id="warning"><a class="anchor" href="#warning"></a>Warning</h2>
+
+    
+    <p>If you're using <code>label_guild</code> inside
+<code>[dplyr]mutate</code>, you'll need to pair it with
+<code>[purrr]map</code>. See<code>vingette("using_label_functions")</code>.</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='label_tri.html'>label_tri</a></code></p></div>
+    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>label_guild</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"U"</span>, <span class='st'>"W"</span>))</div><div class='output co'>#&gt; [[1]]
@@ -180,6 +193,12 @@ Useful if you're planning on using functions like <code>link[tidyr]unnest</code>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#note">Note</a></li>
+
+      <li><a href="#warning">Warning</a></li>
+
+      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
