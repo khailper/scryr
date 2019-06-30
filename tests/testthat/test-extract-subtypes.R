@@ -10,9 +10,11 @@ test_that("extract_subtypes() works", {
 test_that("extract_subtypes(split = TRUE) works", {
   expect_equal(extract_subtypes("Creature - Merfolk Wizard", split = TRUE),
                c("Merfolk", "Wizard"))
+  expect_equal(extract_subtypes("Instant - Arcane", split = TRUE),
+               c("Arcane"))
 })
 
 test_that("extract_subtypes fails for non-strings and lack of subtype",{
   expect_error(extract_subtypes(5))
-  expect_error(extract_subtypes("Instant"))
+  expect_true(is.na(extract_subtypes("Instant")))
 })
