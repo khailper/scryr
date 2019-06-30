@@ -60,7 +60,8 @@ Let's turn `colors` into something more human-readable
 ```{r color_change}
 
 cards_with_guilds <- mutate(cards_with_guilds,
-                            colors2 = map_chr(colors, relabel_mtg_color))
+                            colors = map_chr(colors, relabel_mtg_color))
+
 ```
 
 With `tidyr::unnest()`, we can replicate each card for each archetype it could 
@@ -70,7 +71,6 @@ belong to, making it easier to count by color pair.
 cmc_count <- cards_with_guilds %>% 
   unnest(color_pair, .drop = FALSE) %>% 
   mutate(color_pair = unlist(color_pair),
-         colors = map_chr(colors, relabel_mtg_color),
          colors = wubrg_order(colors)) %>% 
   count(cmc, colors, color_pair)
 ```
