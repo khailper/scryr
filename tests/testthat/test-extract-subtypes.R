@@ -1,10 +1,7 @@
 test_that("extract_subtypes() works", {
-  expect_equal(extract_subtypes("Creature - Merfolk Wizard", split = TRUE),
-               "Merfolk Wizard")
-  expect_equal(extract_subtypes("Artifact Creature - Golem", split = TRUE),
-               "Golem")
-  expect_equal(extract_subtypes("Instant - Arcane", split = TRUE),
-               "Arcane")
+  expect_equal(extract_subtypes("Creature - Merfolk Wizard"), "Merfolk Wizard")
+  expect_equal(extract_subtypes("Artifact Creature - Golem"), "Golem")
+  expect_equal(extract_subtypes("Instant - Arcane"), "Arcane")
 })
 
 test_that("extract_subtypes(split = TRUE) works", {
