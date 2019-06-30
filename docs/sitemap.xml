@@ -7,6 +7,9 @@
     <loc>https://khailper.github.io/scryr//reference/bulk_data.html</loc>
   </url>
   <url>
+    <loc>https://khailper.github.io/scryr//reference/extract_subtypes.html</loc>
+  </url>
+  <url>
     <loc>https://khailper.github.io/scryr//reference/label_guild.html</loc>
   </url>
   <url>
@@ -16,6 +19,9 @@
     <loc>https://khailper.github.io/scryr//reference/pipe.html</loc>
   </url>
   <url>
+    <loc>https://khailper.github.io/scryr//reference/relabel_mtg_color.html</loc>
+  </url>
+  <url>
     <loc>https://khailper.github.io/scryr//reference/scry_cards.html</loc>
   </url>
   <url>
@@ -23,6 +29,9 @@
   </url>
   <url>
     <loc>https://khailper.github.io/scryr//reference/scry_set.html</loc>
+  </url>
+  <url>
+    <loc>https://khailper.github.io/scryr//reference/wubrg_order.html</loc>
   </url>
   <url>
     <loc>https://khailper.github.io/scryr//articles/using_label_functions.html</loc>

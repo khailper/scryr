@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>NA • scryr</title>
+<title>Extract subtypes from card's type line — extract_subtypes • scryr</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -25,12 +25,17 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
-<link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script>
+<link href="../pkgdown.css" rel="stylesheet">
+<script src="../pkgdown.js"></script>
 
 
 
-<meta property="og:title" content="NA" />
+<meta property="og:title" content="Extract subtypes from card's type line — extract_subtypes" />
+
+<meta property="og:description" content="Take a card's type type line (stored in the type_line)
+column in the output from scry_cards) and get just the subtypes
+(everything after the '-')" />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -47,7 +52,7 @@
   </head>
 
   <body>
-    <div class="container template-title-body">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -59,7 +64,7 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="index.html">scryr</a>
+        <a class="navbar-link" href="../index.html">scryr</a>
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0.9000</span>
       </span>
     </div>
@@ -67,13 +72,13 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="reference/index.html">Reference</a>
+  <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -83,12 +88,12 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="articles/using_label_functions.html">Using label functions</a>
+      <a href="../articles/using_label_functions.html">Using label functions</a>
     </li>
   </ul>
 </li>
 <li>
-  <a href="news/index.html">Changelog</a>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
@@ -109,23 +114,60 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>NA</h1>
+    <h1>Extract subtypes from card's type line</h1>
+    <small class="dont-index">Source: <a href='https://github.com/khailper/scryr/blob/master/R/extract_subtypes.R'><code>R/extract_subtypes.R</code></a></small>
+    <div class="hidden name"><code>extract_subtypes.Rd</code></div>
     </div>
 
+    <div class="ref-description">
+    
+    <p>Take a card's type type line (stored in the <code>type_line</code>)
+column in the output from <code><a href='scry_cards.html'>scry_cards</a></code>) and get just the subtypes
+(everything after the '-')</p>
+    
+    </div>
 
-<p>Please briefly describe your problem and what output you expect. If you have a question, please don’t use this form. Instead, ask on <a href="https://stackoverflow.com/" class="uri">https://stackoverflow.com/</a> or <a href="https://community.rstudio.com/" class="uri">https://community.rstudio.com/</a>.</p>
-<p>Please include a minimal reproducible example (AKA a reprex). If you’ve never heard of a <a href="https://reprex.tidyverse.org/">reprex</a> before, start by reading <a href="https://www.tidyverse.org/help/#reprex" class="uri">https://www.tidyverse.org/help/#reprex</a>.</p>
-<hr>
-<p>Brief description of the problem</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co"># insert reprex here</span></a></code></pre></div>
+    <pre class="usage"><span class='fu'>extract_subtypes</span>(<span class='no'>type_line</span>, <span class='kw'>split</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>type_line</th>
+      <td><p>card's type line.</p></td>
+    </tr>
+    <tr>
+      <th>split</th>
+      <td><p>If the card has multiple subtypes, should
+<code>extract_subtypes</code> return a list where each subtype is its own element
+of the vector  or one element with all subtypes
+(list(c("Goblin", "Warrior")) vs list("Goblin Warrior")))?</p></td>
+    </tr>
+    </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
+    <p>list containing a character vector with the cards' subtypes</p>
+    
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>extract_subtypes</span>(<span class='st'>"Creature - Merfolk Wizard"</span>)</div><div class='output co'>#&gt; <span class='error'>Error in if_else(grepl("”", type_line), stringr::str_remove(type_line,     ".+” "), NA_character_): could not find function "if_else"</span></div><div class='input'><span class='fu'>extract_subtypes</span>(<span class='st'>"Creature - Merfolk Wizard"</span>, <span class='kw'>split</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='error'>Error in if_else(grepl("”", type_line), stringr::str_remove(type_line,     ".+” "), NA_character_): could not find function "if_else"</span></div><div class='input'>
+</div></pre>
+  </div>
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#value">Value</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
-
 </div>
-
 
       <footer>
       <div class="copyright">

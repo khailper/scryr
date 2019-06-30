@@ -60,7 +60,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">scryr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0.9000</span>
       </span>
     </div>
 
@@ -151,11 +151,17 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-labeling-functions" class="hasAnchor"><a href="#section-labeling-functions" class="anchor"></a>Labeling functions</h2>
-          <p class="section-desc"><p>Functions to add guild/shard/wedge labels</p></p>
+          <h2 id="section-data-manipulation" class="hasAnchor"><a href="#section-data-manipulation" class="anchor"></a>Data manipulation</h2>
+          <p class="section-desc"><p>Functions for manipulating data from Scryfall</p></p>
         </th>
       </tr>
       <tr>
+        
+        <td>
+          <p><code><a href="extract_subtypes.html">extract_subtypes()</a></code> </p>
+        </td>
+        <td><p>Extract subtypes from card's type line</p></td>
+      </tr><tr>
         
         <td>
           <p><code><a href="label_guild.html">label_guild()</a></code> </p>
@@ -167,6 +173,18 @@
           <p><code><a href="label_tri.html">label_tri()</a></code> </p>
         </td>
         <td><p>Assign shard and/or wedge based on color/color identity</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="relabel_mtg_color.html">relabel_mtg_color()</a></code> </p>
+        </td>
+        <td><p>Turn Scryfall color codes into human-readable labels</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="wubrg_order.html">wubrg_order()</a></code> </p>
+        </td>
+        <td><p>Convert MTG color names into ordered factor</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -190,7 +208,7 @@
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#section-search-functions">Search functions</a></li>
-      <li><a href="#section-labeling-functions">Labeling functions</a></li>
+      <li><a href="#section-data-manipulation">Data manipulation</a></li>
       <li><a href="#section-bulk-data-functions">Bulk data functions</a></li>
     </ul>
   </div>

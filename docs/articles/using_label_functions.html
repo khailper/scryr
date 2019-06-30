@@ -30,7 +30,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">scryr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0.9000</span>
       </span>
     </div>
 
@@ -123,35 +123,15 @@
 <a class="sourceLine" id="cb3-5" title="5">                          <span class="co"># so tidyr::unnest() will work well later</span></a>
 <a class="sourceLine" id="cb3-6" title="6">                          <span class="dt">convert_to_list =</span> <span class="ot">TRUE</span>))</a></code></pre></div>
 <p>Let’s turn <code>colors</code> into something more human-readable</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">create_color_label &lt;-<span class="st"> </span><span class="cf">function</span>(color_code){</a>
-<a class="sourceLine" id="cb4-2" title="2">  <span class="kw">case_when</span>(</a>
-<a class="sourceLine" id="cb4-3" title="3">    <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/length">length</a></span>(color_code) <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">~</span><span class="st"> "Artifact"</span>,</a>
-<a class="sourceLine" id="cb4-4" title="4">    <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/length">length</a></span>(color_code) <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span> <span class="op">~</span><span class="st"> "Multicolored"</span>,</a>
-<a class="sourceLine" id="cb4-5" title="5">    <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/identical">identical</a></span>(color_code, <span class="st">"B"</span>) <span class="op">~</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb4-6" title="6"><span class="st">      "Black"</span>,</a>
-<a class="sourceLine" id="cb4-7" title="7">    <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/identical">identical</a></span>(color_code, <span class="st">"G"</span>) <span class="op">~</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb4-8" title="8"><span class="st">      "Green"</span>,</a>
-<a class="sourceLine" id="cb4-9" title="9">    <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/identical">identical</a></span>(color_code, <span class="st">"R"</span>) <span class="op">~</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb4-10" title="10"><span class="st">      "Red"</span>,</a>
-<a class="sourceLine" id="cb4-11" title="11">    <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/identical">identical</a></span>(color_code, <span class="st">"U"</span>) <span class="op">~</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb4-12" title="12"><span class="st">      "Blue"</span>,</a>
-<a class="sourceLine" id="cb4-13" title="13">    <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/identical">identical</a></span>(color_code, <span class="st">"W"</span>) <span class="op">~</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb4-14" title="14"><span class="st">      "White"</span>,</a>
-<a class="sourceLine" id="cb4-15" title="15">    <span class="ot">TRUE</span> <span class="op">~</span><span class="st"> </span><span class="ot">NA_character_</span></a>
-<a class="sourceLine" id="cb4-16" title="16">  )</a>
-<a class="sourceLine" id="cb4-17" title="17">}</a>
-<a class="sourceLine" id="cb4-18" title="18"></a>
-<a class="sourceLine" id="cb4-19" title="19">cards_with_guilds &lt;-<span class="st"> </span><span class="kw">mutate</span>(cards_with_guilds,</a>
-<a class="sourceLine" id="cb4-20" title="20">                            <span class="dt">colors =</span> <span class="kw">map_chr</span>(colors, create_color_label),</a>
-<a class="sourceLine" id="cb4-21" title="21">                            <span class="co"># relevel for legend</span></a>
-<a class="sourceLine" id="cb4-22" title="22">                            <span class="dt">colors =</span> <span class="kw">fct_relevel</span>(colors, <span class="st">"White"</span>, <span class="st">"Blue"</span>, </a>
-<a class="sourceLine" id="cb4-23" title="23">                                                 <span class="st">"Black"</span>, <span class="st">"Red"</span>, <span class="st">"Green"</span>,</a>
-<a class="sourceLine" id="cb4-24" title="24">                                                 <span class="st">"Multicolored"</span>, <span class="st">"Artifact"</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"></a>
+<a class="sourceLine" id="cb4-2" title="2">cards_with_guilds &lt;-<span class="st"> </span><span class="kw">mutate</span>(cards_with_guilds,</a>
+<a class="sourceLine" id="cb4-3" title="3">                            <span class="dt">colors =</span> <span class="kw">map_chr</span>(colors, relabel_mtg_color))</a></code></pre></div>
 <p>With <code><a href="https://tidyr.tidyverse.org/reference/unnest.html">tidyr::unnest()</a></code>, we can replicate each card for each archetype it could belong to, making it easier to count by color pair.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">cmc_count &lt;-<span class="st"> </span>cards_with_guilds <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb5-2" title="2"><span class="st">  </span><span class="kw">unnest</span>(color_pair, <span class="dt">.drop =</span> <span class="ot">FALSE</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb5-3" title="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">color_pair =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/unlist">unlist</a></span>(color_pair)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb5-4" title="4"><span class="st">  </span><span class="kw">count</span>(cmc, colors, color_pair)</a></code></pre></div>
+<a class="sourceLine" id="cb5-3" title="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">color_pair =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/unlist">unlist</a></span>(color_pair),</a>
+<a class="sourceLine" id="cb5-4" title="4">         <span class="dt">colors =</span> <span class="kw"><a href="../reference/wubrg_order.html">wubrg_order</a></span>(colors)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-5" title="5"><span class="st">  </span><span class="kw">count</span>(cmc, colors, color_pair)</a></code></pre></div>
 <p>Now we can visualize our data with <code>gganimate</code></p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">ggplot</span>(cmc_count, <span class="kw">aes</span>(cmc, n, <span class="dt">fill =</span> colors)) <span class="op">+</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb6-2" title="2"><span class="st">  </span><span class="co"># black borders so white fill shows up</span></a>
@@ -164,13 +144,13 @@
 <a class="sourceLine" id="cb6-9" title="9">       <span class="dt">y =</span> <span class="st">"Number of Cards"</span>,</a>
 <a class="sourceLine" id="cb6-10" title="10">       <span class="dt">fill =</span> <span class="st">"Color"</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb6-11" title="11"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(</a>
-<a class="sourceLine" id="cb6-12" title="12">    <span class="st">"Artifact"</span> =<span class="st"> "#c6c5c5"</span>,</a>
-<a class="sourceLine" id="cb6-13" title="13">    <span class="st">"Multicolored"</span> =<span class="st"> "#e1cd92"</span>,</a>
-<a class="sourceLine" id="cb6-14" title="14">    <span class="st">"White"</span> =<span class="st"> "#f9faf4"</span>,</a>
-<a class="sourceLine" id="cb6-15" title="15">    <span class="st">"Blue"</span> =<span class="st"> "#0e68ab"</span>,</a>
-<a class="sourceLine" id="cb6-16" title="16">    <span class="st">"Black"</span> =<span class="st"> "#150b00"</span>,</a>
-<a class="sourceLine" id="cb6-17" title="17">    <span class="st">"Green"</span> =<span class="st"> "#00733e"</span>,</a>
-<a class="sourceLine" id="cb6-18" title="18">    <span class="st">"Red"</span> =<span class="st"> "#d3202a"</span></a>
+<a class="sourceLine" id="cb6-12" title="12">    <span class="st">"White"</span> =<span class="st"> "#f9faf4"</span>,</a>
+<a class="sourceLine" id="cb6-13" title="13">    <span class="st">"Blue"</span> =<span class="st"> "#0e68ab"</span>,</a>
+<a class="sourceLine" id="cb6-14" title="14">    <span class="st">"Black"</span> =<span class="st"> "#150b00"</span>,</a>
+<a class="sourceLine" id="cb6-15" title="15">    <span class="st">"Green"</span> =<span class="st"> "#00733e"</span>,</a>
+<a class="sourceLine" id="cb6-16" title="16">    <span class="st">"Red"</span> =<span class="st"> "#d3202a"</span>,</a>
+<a class="sourceLine" id="cb6-17" title="17">    <span class="st">"Multicolored"</span> =<span class="st"> "#e1cd92"</span>,</a>
+<a class="sourceLine" id="cb6-18" title="18">    <span class="st">"Colorless"</span> =<span class="st"> "#c6c5c5"</span></a>
 <a class="sourceLine" id="cb6-19" title="19">  ))</a></code></pre></div>
 <p><img src="using_label_functions_files/figure-html/viz-1.gif"><!-- --></p>
   </div>

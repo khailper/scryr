@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Assign guild based on color/color identity — label_guild • scryr</title>
+<title>Turn Scryfall color codes into human-readable labels — relabel_mtg_color • scryr</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,12 +30,11 @@
 
 
 
-<meta property="og:title" content="Assign guild based on color/color identity — label_guild" />
+<meta property="og:title" content="Turn Scryfall color codes into human-readable labels — relabel_mtg_color" />
 
-<meta property="og:description" content="Given a card's color (or color identity), return the Ravinca
-guild assoicated with the card. By default, label_guild requires the
-card to be both of the guild's colors, but if inclusive = TRUE,
-mono-color cards are labeled with all guilds they could belong to." />
+<meta property="og:description" content="Color values from scry_cards come in as single
+character strings (e.g. &quot;U&quot; for blue cards). relabel_mtg_color
+converts them into human-readable text,  (e.g. &quot;Red&quot; or &quot;Multicolored&quot;)." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -117,75 +116,54 @@ mono-color cards are labeled with all guilds they could belong to." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Assign guild based on color/color identity</h1>
-    <small class="dont-index">Source: <a href='https://github.com/khailper/scryr/blob/master/R/label_guild.R'><code>R/label_guild.R</code></a></small>
-    <div class="hidden name"><code>label_guild.Rd</code></div>
+    <h1>Turn Scryfall color codes into human-readable labels</h1>
+    <small class="dont-index">Source: <a href='https://github.com/khailper/scryr/blob/master/R/relabel_mtg_color.R'><code>R/relabel_mtg_color.R</code></a></small>
+    <div class="hidden name"><code>relabel_mtg_color.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Given a card's color (or color identity), return the Ravinca
-guild assoicated with the card. By default, <code>label_guild</code> requires the
-card to be both of the guild's colors, but if <code>inclusive = TRUE</code>,
-mono-color cards are labeled with all guilds they could belong to.</p>
+    <p>Color values from <code><a href='scry_cards.html'>scry_cards</a></code> come in as single
+character strings (e.g. "U" for blue cards). <code>relabel_mtg_color</code>
+converts them into human-readable text,  (e.g. "Red" or "Multicolored").</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>label_guild</span>(<span class='no'>color_code</span>, <span class='kw'>inclusive</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>convert_to_list</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>relabel_mtg_color</span>(<span class='no'>color_code</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>color_code</th>
-      <td><p>vector of characters of the card's color/color identity,
-using WUBRG notation. Letters must be capital and in alphabetic order. If
-using with <code>link{[dplyr]mutate}</code>, <code>link{[purrr]map_chr}</code>, and the
-results of <code>link{scry_cards}</code>, use the <code>colors</code> or
-<code>color_identity</code> column. See<code>vingette("using_label_functions")</code>.</p></td>
-    </tr>
-    <tr>
-      <th>inclusive</th>
-      <td><p>if <code>color_code</code> is just one (or no) color, should
-<code>label_guild</code> return all guilds that contain that color?</p></td>
-    </tr>
-    <tr>
-      <th>convert_to_list</th>
-      <td><p>Should <code>label_guild</code> a list instead of a vector?
-Useful if you're planning on using functions like <code>link[tidyr]unnest</code>.</p></td>
+      <td><p>character vector (which can be of length 0) containing
+single letter WUBRG color codes.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a vector of strings with all guild(s) matching the color_code</p>
+    <p>For mono-colored cards, <code>relabel_mtg_color</code> returns the card's
+color. Otherwise, it returns "Colorless" or "Multicolored", as appropriate.</p>
     
-    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+    <h2 class="hasAnchor" id="warnings"><a class="anchor" href="#warnings"></a>Warnings</h2>
 
     
-    <p>cards with hybrid costs are treated as belonging to both colors, as though
-they were gold cards.</p>
-    
-    <h2 class="hasAnchor" id="warning"><a class="anchor" href="#warning"></a>Warning</h2>
-
-    
-    <p>If you're using <code>label_guild</code> inside
+    <p><code>relabel_mtg_color</code> treats any character vector of length &gt;1 as a
+multicolored card. <br />
+If you're using <code>relabel_mtg_color</code> inside
 <code>[dplyr]mutate</code>, you'll need to pair it with
-<code>[purrr]map</code>. See<code>vingette("using_label_functions")</code>.</p>
+<code>[purrr]map_chr</code>. See<code>vingette("using_label_functions")</code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='label_tri.html'>label_tri</a></code></p></div>
+    <div class='dont-index'><p><code><a href='wubrg_order.html'>wubrg_order</a></code> for converting the output into an ordered
+factor.</p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>label_guild</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"U"</span>, <span class='st'>"W"</span>))</div><div class='output co'>#&gt; [[1]]
-#&gt; [1] "Azorius"
-#&gt; </div><div class='input'><span class='fu'>label_guild</span>(<span class='st'>"U"</span>)</div><div class='output co'>#&gt; [[1]]
-#&gt; [1] NA
-#&gt; </div><div class='input'><span class='fu'>label_guild</span>(<span class='st'>"U"</span>, <span class='kw'>inclusive</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [[1]]
-#&gt; [1] "Azorius" "Dimir"   "Izzet"   "Simic"  
-#&gt; </div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>relabel_mtg_color</span>(<span class='st'>"G"</span>)</div><div class='output co'>#&gt; <span class='error'>Error in case_when(length(color_code) == 0 ~ "Colorless", length(color_code) &gt;     1 ~ "Multicolored", identical(color_code, "B") ~ "Black",     identical(color_code, "G") ~ "Green", identical(color_code,         "R") ~ "Red", identical(color_code, "U") ~ "Blue", identical(color_code,         "W") ~ "White", TRUE ~ NA_character_): could not find function "case_when"</span></div><div class='input'><span class='fu'>relabel_mtg_color</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"G"</span>, <span class='st'>"U"</span>))</div><div class='output co'>#&gt; <span class='error'>Error in case_when(length(color_code) == 0 ~ "Colorless", length(color_code) &gt;     1 ~ "Multicolored", identical(color_code, "B") ~ "Black",     identical(color_code, "G") ~ "Green", identical(color_code,         "R") ~ "Red", identical(color_code, "U") ~ "Blue", identical(color_code,         "W") ~ "White", TRUE ~ NA_character_): could not find function "case_when"</span></div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -194,9 +172,7 @@ they were gold cards.</p>
       
       <li><a href="#value">Value</a></li>
 
-      <li><a href="#note">Note</a></li>
-
-      <li><a href="#warning">Warning</a></li>
+      <li><a href="#warnings">Warnings</a></li>
 
       <li><a href="#see-also">See also</a></li>
       

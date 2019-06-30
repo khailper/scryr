@@ -1,3 +1,12 @@
+# scryr 0.3.0.9000
+* added `relabel_mtg_color` to turn a Scryfall color code ("G") into a 
+human-readable label ("Green").
+* added `wubrg_order` to turn output of `relabel_mtg_color` into an ordered 
+factor (mainly for use with legends in `ggplot2`).
+* added `extract_subtypes` to strip card type from type lines in order to 
+just get subtypes
+* assirted minor documentation improvements
+
 # scryr 0.2.1.9000
 * updated `Suggests` to reflect packages used in vignette
 
