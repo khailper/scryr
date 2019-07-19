@@ -35,7 +35,7 @@ extract_subtypes <- function(type_line, split = FALSE){
   # Check if dash is present. If not, card has no subtypes
   # dash (emdash or endash) comes through as three characters ending in u201D
   
-  subtypes <- if_else(grepl("\u201D", type_line),
+  subtypes <- dplyr::if_else(grepl("\u201D", type_line),
                       stringr::str_remove(type_line, ".+\u201D "),
                       NA_character_)
   
