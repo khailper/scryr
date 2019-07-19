@@ -81,7 +81,7 @@ scry_cards <- function(query,
   
   
   # create query URL
-  encoded_query <- URLencode(query)
+  encoded_query <- utils::URLencode(query)
   query_url <- paste0(scryr_card_search_url, encoded_query, "&unique=", 
                       .unique, "&order=", .order, "&dir=", direction,
                       "&include_extras=", include_extras, 

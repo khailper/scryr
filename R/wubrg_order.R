@@ -33,7 +33,7 @@ wubrg_order <- function(label_chr){
     rlang::abort('Strings in wubrg_order() need to be "White", "Blue", "Black", "Red", "Green", "Multicolored", or "Colorless".')
   }
   
-  fct_relevel(label_chr, "White", "Blue", 
+  forcats::fct_relevel(label_chr, "White", "Blue", 
               "Black", "Red", "Green",
               "Multicolored", "Colorless")
 }
