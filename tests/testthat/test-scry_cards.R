@@ -7,8 +7,8 @@ test_that("scry_cards parses search query correctly", {
 
 
 test_that("scry_cards handles bad searches", {
-  expect_error(scry_cards(query = "set:ktk", .unique = "card"), 
-               ".unique must be one of 'cards', 'art', or 'prints'")
+  expect_error(scry_cards(query = "set:ktk", .unique = "card"))
+  expect_error(scry_cards(query = "set:ktk", .order = "names"))
 })
 
 test_that("pagination works for two pages", {

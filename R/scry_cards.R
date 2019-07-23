@@ -42,9 +42,11 @@
 #' scry_cards("set:ktk")
 #' scry_cards("set:ktk wm:mardu")
 scry_cards <- function(query, 
-                       .unique = "cards", 
-                       .order = "name", 
-                       direction = "auto", 
+                       .unique = c("cards", "art", "prints"), 
+                       .order = c("name", "set", "released", "rarity", "color", 
+                                  "usd", "tix", "eur", "cmc", "power", 
+                                  "toughness", "edhrec", "artist"), 
+                       direction = c("auto", "asc", "desc"), 
                        include_extras = FALSE, 
                        include_multilingual = FALSE, 
                        include_variations = FALSE,
@@ -57,25 +59,14 @@ scry_cards <- function(query,
 
   # Check arguements (https://scryfall.com/docs/api/cards/search for 
   # documentation of options)
-  if (!(.unique %in% c("cards", "art", "prints"))){
-    rlang::abort(".unique must be one of 'cards', 'art', or 'prints'.")
-  }
-  
-  if (!(.order %in% c("name", "set", "released", "rarity", "color", "usd",
-                      "tix", "eur", "cmc", "power", "toughness", "edhrec",
-                      "artist"))){
-    rlang::abort(".order must be one of 'name', 'set', 'released', 'rarity', 
-    'color', 'usd', 'tix', 'eur', 'cmc', 'power', 'toughness', 'edhrec', or 
-                 'artist'.")
-  }
-  
-  if (!(direction %in% c("auto", "asc", "desc"))){
-    rlang::abort("direction must be one of 'auto', 'asc', or 'desc'.")
-  }
+  .unique <- match.arg(.unique)
+  .order <- match.arg(.order)
+  direction <- match.arg(direction)
+
   
   if (!is.logical(include_extras) || !is.logical(include_multilingual) ||
       !is.logical(include_variations)){
-    rlang::abort("Both include_extras, include multilingual, and 
+    rlang::abort("include_extras, include multilingual, and 
     include_variations need to be Booleans.")
   }
   

@@ -4,8 +4,10 @@
 \alias{scry_cards}
 \title{Query Scryfall Card Search API}
 \usage{
-scry_cards(query, .unique = "cards", .order = "name",
-  direction = "auto", include_extras = FALSE,
+scry_cards(query, .unique = c("cards", "art", "prints"),
+  .order = c("name", "set", "released", "rarity", "color", "usd", "tix",
+  "eur", "cmc", "power", "toughness", "edhrec", "artist"),
+  direction = c("auto", "asc", "desc"), include_extras = FALSE,
   include_multilingual = FALSE, include_variations = FALSE,
   include_ids = FALSE, include_uris = FALSE, delay = 75)
 }
