@@ -19,7 +19,7 @@ list containing a character vector with the cards' subtypes
 }
 \description{
 Take a card's type type line (stored in the \code{type_line})
-column in the output from \code{\link[=scry_cards]{scry_cards()}}) and get just the subtypes
+column in the output from \code{\link{scry_cards}}) and get just the subtypes
 (everything after the '-')
 }
 \section{Warning}{

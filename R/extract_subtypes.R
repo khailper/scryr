@@ -1,11 +1,11 @@
 #' @title Extract subtypes from card's type line
 #' 
-#' @description Take a card's type type line (stored in the `type_line`) 
-#' column in the output from [scry_cards()]) and get just the subtypes 
+#' @description Take a card's type type line (stored in the \code{type_line}) 
+#' column in the output from \code{\link{scry_cards}}) and get just the subtypes 
 #' (everything after the '-')
 #' 
 #' @section Warning:
-#' If you're using `extract_subtypes` inside 
+#' If you're using \code{extract_subtypes} inside 
 #' \code{\link{[dplyr]mutate}}, you'll need to pair it with
 #' \code{\link{[purrr]map}}.
 #' 
@@ -13,7 +13,7 @@
 #' 
 #' @param type_line card's type line.
 #' @param split If the card has multiple subtypes, should 
-#' `extract_subtypes` return a list where each subtype is its own element 
+#' \code{extract_subtypes} return a list where each subtype is its own element 
 #' of the vector  or one element with all subtypes 
 #' (list(c("Goblin", "Warrior")) vs list("Goblin Warrior")))?
 #' 
