@@ -30,7 +30,7 @@
 #' 
 #' @export
 relabel_mtg_color <- function(color_code){
-  if(length(color_code) > 1 & !is.character(color_code)){
+  if(length(color_code) > 0 & !is.character(color_code)){
     rlang::abort("color_code needs to be a character vector")
   }
   
