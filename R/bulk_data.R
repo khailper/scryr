@@ -5,12 +5,12 @@
 #' come in three versions: default (every card in English (unless only available 
 #' in a non-English language)), oracle (one card per Oracle ID), and all (every 
 #' card in every language). Documentation is available at 
-#' \url{https://scryfall.com/docs/api/bulk-data}.
+#' <https://scryfall.com/docs/api/bulk-data>.
 #' @concept bulk_data
 #' @rdname bulk_data
-#' @return \code{bulk_rulings} returns a [tibble][tibble::tibble-package] of all
-#' rulings as of the latest update. \code{oracle-id} column refers to the card
-#' associate with the ruling. The \code{bulk_*_cards} functions return a 
+#' @return `bulk_rulings` returns a [tibble][tibble::tibble-package] of all
+#' rulings as of the latest update. `oracle-id` column refers to the card
+#' associate with the ruling. The `bulk_*_cards` functions return a 
 #' [tibble][tibble::tibble-package] with all relevent cards as of the latest 
 #' update.
 #' 
@@ -32,7 +32,7 @@ bulk_rulings <- function(){
 
 #' @param include_ids Should results include ID variables (e.g. MTGO ID). Note 
 #' that this includes Oracle ID, which may make it hard to work with 
-#' \code{bulk_oracle_cards} if you're planning on using that as a unique ID.
+#' `bulk_oracle_cards` if you're planning on using that as a unique ID.
 #' @param include_uris Should results include URI variables (e.g. the URL for
 #' the card on Scryfall)
 #' @concept bulk_data
