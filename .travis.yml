@@ -2,5 +2,20 @@
 
 language: R
 cache: packages
+
+
+addons:
+  apt:
+    update: true
+    packages:
+      - libfreetype6
+      - libmagick++-dev
+      - cargo
+      - libavfilter-dev
+    sources:
+      - sourceline: 'ppa:jonathonf/ffmpeg-4'
+      - sourceline: 'ppa:jonathonf/ffmpeg-3'
+      
+      
 after_success:
   - Rscript -e 'covr::codecov()'
