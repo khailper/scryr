@@ -34,7 +34,7 @@ relabel_mtg_color <- function(color_code){
     rlang::abort("color_code needs to be a character vector")
   }
   
-  dplryr::case_when(
+  dplyr::case_when(
     length(color_code) == 0 ~ "Colorless",
     length(color_code) > 1 ~ "Multicolored",
     identical(color_code, "B") ~ 
