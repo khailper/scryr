@@ -39,5 +39,5 @@ extract_subtypes <- function(type_line, split = FALSE){
                       stringr::str_remove(type_line, ".+\u201D "),
                       NA_character_)
   
-  if_else(split, stringr::str_split(subtypes, pattern = " "), list(subtypes))
+  dplyr::if_else(split, stringr::str_split(subtypes, pattern = " "), list(subtypes))
 }
