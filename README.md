@@ -3,7 +3,15 @@ scryr
 
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 
-scryr provides R functions to access Scryfall’s APIs for
+<!-- badges: start -->
+
+[![Travis build
+status](https://travis-ci.org/khailper/scryr.svg?branch=master)](https://travis-ci.org/khailper/scryr?branch=master)
+[![Codecov test
+coverage](https://codecov.io/gh/khailper/scryr/branch/master/graph/badge.svg)](https://codecov.io/gh/khailper/scryr?branch=master)
+<!-- badges: end -->
+
+`scryr` provides R functions to access Scryfall’s APIs for
 [catalogs](https://scryfall.com/docs/api/catalogs),
 [sets](https://scryfall.com/docs/api/sets), and [card
 search](https://scryfall.com/docs/api/cards/search).
@@ -50,13 +58,12 @@ the information for that set.
 scry_sets("war")
 ```
 
-    ## # A tibble: 1 x 17
-    ##   object id    code  mtgo_code tcgplayer_id name  uri   scryfall_uri
-    ##   <chr>  <chr> <chr> <chr>            <int> <chr> <chr> <chr>       
-    ## 1 set    ee04~ war   war               2418 War ~ http~ https://scr~
-    ## # ... with 9 more variables: search_uri <chr>, released_at <chr>,
-    ## #   set_type <chr>, card_count <int>, digital <lgl>, foil_only <lgl>,
-    ## #   block_code <chr>, block <chr>, icon_svg_uri <chr>
+    ## # A tibble: 1 x 11
+    ##   object code  mtgo_code name  released_at set_type card_count digital
+    ##   <chr>  <chr> <chr>     <chr> <chr>       <chr>         <int> <lgl>  
+    ## 1 set    war   war       War ~ 2019-05-03  expansi~        311 FALSE  
+    ## # ... with 3 more variables: foil_only <lgl>, block_code <chr>,
+    ## #   block <chr>
 
 ## scry\_cards()
 
@@ -69,35 +76,35 @@ war_cards <- scry_cards("s:war")
 war_cards
 ```
 
-    ## # A tibble: 265 x 52
-    ##    object multiverse_ids name  lang  released_at layout highres_image
-    ##    <chr>  <list>         <chr> <chr> <chr>       <chr>  <lgl>        
-    ##  1 card   <int [1]>      Ahn-~ en    2019-05-03  normal TRUE         
-    ##  2 card   <int [1]>      Aid ~ en    2019-05-03  normal TRUE         
-    ##  3 card   <int [1]>      Ajan~ en    2019-05-03  normal TRUE         
-    ##  4 card   <int [1]>      Ajan~ en    2019-05-03  normal TRUE         
-    ##  5 card   <int [1]>      Angr~ en    2019-05-03  normal TRUE         
-    ##  6 card   <int [1]>      Angr~ en    2019-05-03  normal TRUE         
-    ##  7 card   <int [1]>      Arbo~ en    2019-05-03  normal TRUE         
-    ##  8 card   <int [1]>      Arli~ en    2019-05-03  normal TRUE         
-    ##  9 card   <int [1]>      Arli~ en    2019-05-03  normal TRUE         
-    ## 10 card   <int [1]>      Ashi~ en    2019-05-03  normal TRUE         
-    ## # ... with 255 more rows, and 45 more variables: mana_cost <chr>,
-    ## #   cmc <dbl>, type_line <chr>, oracle_text <chr>, power <chr>,
-    ## #   toughness <chr>, colors <list>, color_identity <list>, games <list>,
-    ## #   reserved <lgl>, foil <lgl>, nonfoil <lgl>, oversized <lgl>,
-    ## #   promo <lgl>, reprint <lgl>, set <chr>, set_name <chr>,
+    ## # A tibble: 265 x 56
+    ##    object name  lang  released_at layout highres_image mana_cost   cmc
+    ##    <chr>  <chr> <chr> <chr>       <chr>  <lgl>         <chr>     <dbl>
+    ##  1 card   Ahn-~ en    2019-05-03  normal TRUE          {2}{R}        3
+    ##  2 card   Aid ~ en    2019-05-03  normal TRUE          {1}{B}        2
+    ##  3 card   Ajan~ en    2019-05-03  normal TRUE          {1}{W}        2
+    ##  4 card   Ajan~ en    2019-05-03  normal TRUE          {2}{G}{W}     4
+    ##  5 card   Angr~ en    2019-05-03  normal TRUE          {2}{B/R}~     4
+    ##  6 card   Angr~ en    2019-05-03  normal TRUE          {B}{R}        2
+    ##  7 card   Arbo~ en    2019-05-03  normal TRUE          {G}           1
+    ##  8 card   Arli~ en    2019-05-03  normal TRUE          {2}{G}        3
+    ##  9 card   Arli~ en    2019-05-03  normal TRUE          {4}{G}{G}     6
+    ## 10 card   Ashi~ en    2019-05-03  normal TRUE          {1}{U/B}~     3
+    ## # ... with 255 more rows, and 48 more variables: type_line <chr>,
+    ## #   oracle_text <chr>, power <chr>, toughness <chr>, colors <list>,
+    ## #   color_identity <list>, games <list>, reserved <lgl>, foil <lgl>,
+    ## #   nonfoil <lgl>, oversized <lgl>, promo <lgl>, reprint <lgl>,
+    ## #   variation <lgl>, set <chr>, set_name <chr>, set_type <chr>,
     ## #   collector_number <chr>, digital <lgl>, rarity <chr>,
     ## #   flavor_text <chr>, artist <chr>, border_color <chr>, frame <chr>,
-    ## #   full_art <lgl>, story_spotlight <lgl>, edhrec_rank <int>,
-    ## #   loyalty <chr>, all_parts <list>, frame_effect <chr>,
-    ## #   legalities.standard <chr>, legalities.future <chr>,
-    ## #   legalities.frontier <chr>, legalities.modern <chr>,
-    ## #   legalities.legacy <chr>, legalities.pauper <chr>,
-    ## #   legalities.vintage <chr>, legalities.penny <chr>,
-    ## #   legalities.commander <chr>, legalities.duel <chr>,
-    ## #   legalities.oldschool <chr>, prices.usd <chr>, prices.usd_foil <chr>,
-    ## #   prices.eur <chr>, prices.tix <chr>
+    ## #   full_art <lgl>, textless <lgl>, booster <lgl>, story_spotlight <lgl>,
+    ## #   edhrec_rank <int>, loyalty <chr>, all_parts <list>,
+    ## #   frame_effect <chr>, promo_types <list>, legalities.standard <chr>,
+    ## #   legalities.future <chr>, legalities.frontier <chr>,
+    ## #   legalities.modern <chr>, legalities.legacy <chr>,
+    ## #   legalities.pauper <chr>, legalities.vintage <chr>,
+    ## #   legalities.penny <chr>, legalities.commander <chr>,
+    ## #   legalities.duel <chr>, legalities.oldschool <chr>, prices.usd <chr>,
+    ## #   prices.usd_foil <chr>, prices.eur <chr>, prices.tix <chr>
 
 `scry_cards` also supports more complex searches (the query syntax is
 available at <https://scryfall.com/docs/syntax>):
@@ -134,7 +141,7 @@ TRUE` and `include_uris = TRUE`, respectively.
 
 scryr is unofficial Fan Content permitted under the Fan Content Policy.
 Not approved/endorsed by Wizards. Portions of the materials used are
-property of Wizards of the Coast. ©Wizards of the Coast LLC.
+property of Wizards of the Coast. Â©Wizards of the Coast LLC.
 
 scryr is not endorsed or supported by Scryfall. Any use of scryr is
 subject to Scryfall’s “Use of Scryfall Data” policy at
