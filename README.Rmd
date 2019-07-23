@@ -5,6 +5,12 @@ output: github_document
 
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 
+<!-- badges: start -->
+[![Travis build status](https://travis-ci.org/khailper/scryr.svg?branch=master)](https://travis-ci.org/khailper/scryr)
+[![Codecov test coverage](https://codecov.io/gh/khailper/scryr/branch/master/graph/badge.svg)](https://codecov.io/gh/khailper/scryr?branch=master)
+<!-- badges: end -->
+
+
 `scryr` provides R functions to access Scryfall's APIs for 
 [catalogs](https://scryfall.com/docs/api/catalogs), 
 [sets](https://scryfall.com/docs/api/sets), and 
@@ -86,7 +92,7 @@ containing IDs and URIs. This can be overridden with `include_ids = TRUE` and
 
 scryr is unofficial Fan Content permitted under the Fan Content Policy. 
 Not approved/endorsed by Wizards. Portions of the materials used are property of
-Wizards of the Coast. ©Wizards of the Coast LLC.
+Wizards of the Coast. Â©Wizards of the Coast LLC.
 
 scryr is not endorsed or supported by Scryfall. Any use of scryr is subject to 
 Scryfall's "Use of Scryfall Data" policy at https://scryfall.com/docs/api.

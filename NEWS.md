@@ -1,3 +1,7 @@
+# scryr 0.3.2.9000
+* added Travis CI
+* fixed functions with improper namespace usage
+
 # scryr 0.3.1.9000
 * discovered `extract_subtypes` also needs to be used in `purrr::map`
 
