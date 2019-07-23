@@ -7,7 +7,8 @@ test_that("scry_cards parses search query correctly", {
 
 
 test_that("scry_cards handles bad searches", {
-  expect_error(scry_cards(query = "set:ktk", .unique = "card"))
+  expect_error(scry_cards(query = "set:ktk", .unique = "carded"))
+  expect_error(scry_cards(query = "set:ktk", .unique = c("cards", "names")))
   expect_error(scry_cards(query = "set:ktk", .order = "names"))
 })
 
